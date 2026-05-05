@@ -42,11 +42,13 @@ The hook tweet is what the timeline scrolls past or stops at. It does the work f
 
 ### Tweet 2
 
-> The stack is six layers. Everything Claude Code (skills + agents). Toprank (SEO + ads). Frontend-Design. graphify (knowledge graph). Obsidian as the second brain. Claude Code as the runtime.
+> The stack is 4 core layers + 2 opt-in extensions.
 >
-> Five of those six are other people's work. What is mine is the install path and the glue.
+> Core: Claude Code (runtime), Obsidian (second brain), graphify (knowledge graph), Frontend-Design (UI).
+>
+> Opt-in: Everything Claude Code (skills + agents catalog), Toprank (SEO + ads).
 
-(269 chars.)
+(244 chars.)
 
 ### Tweet 3
 
@@ -76,9 +78,9 @@ The hook tweet is what the timeline scrolls past or stops at. It does the work f
 
 > Most AI tooling is written for engineers. This is written for operators.
 >
-> If you are running 2+ AI products at once, or trying to, this is the install path I wish I'd had four months ago. MIT. Forks welcome. Issues open.
+> Five of those six layers are other people's work. What is mine is the install path and the glue. MIT. Forks welcome. Issues open.
 
-(222 chars.)
+(207 chars.)
 
 ---
 

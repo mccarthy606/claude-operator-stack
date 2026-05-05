@@ -4,9 +4,24 @@
 **Author:** [@affaan-m](https://github.com/affaan-m)
 **License:** MIT
 
-ECC is the skill and agent backbone of this stack: 182 skills, 48 agents, 68 commands, hooks, and rules — all under MIT.
+ECC is a skill and agent catalog: 182 skills, 48 agents, 68 commands, hooks, and rules — all under MIT.
 
 This stack does not redistribute ECC. The installer adds the marketplace and lets ECC update independently, so you always pull the latest from upstream.
+
+## Status: opt-in
+
+Everything Claude Code is **opt-in** in this stack. The 4 core components (Claude Code, Obsidian, graphify, Frontend-Design) work without it. Add ECC when:
+
+- You want a broad pre-built catalog of 182 skills + 48 agents instead of writing each one as needed
+- You want multi-harness support (Cursor, Codex, OpenCode, Gemini, Antigravity) — ECC ships configs for all of them
+- You're shipping in a domain ECC has explicit skill coverage for (TDD, security review, doc lookup, etc.)
+
+Skip or defer ECC when:
+
+- You're shipping one product and don't need cross-domain skill coverage yet
+- You prefer to grow your own skill catalog one prompt at a time
+
+Many cookbook recipes in this repo assume some ECC skills are available. Read each recipe's "Stack" header — recipes that depend on ECC say so explicitly.
 
 ## What I actually use from ECC, daily
 

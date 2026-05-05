@@ -14,21 +14,21 @@ GitHub caps the description at 350 characters. Use closer to 200 for skim-readab
 
 **Variant 1 (recommended) — operator-first framing:**
 
-> Curated stack and playbook for solo founders running multiple AI products on Claude Code. Install path, cookbook of twelve real recipes, sanitized hooks, two scaffolds, four operator profiles. Most components are other people's work; what is here is the glue.
+> Curated stack and playbook for solo founders running multiple AI products on Claude Code. 4 core components (Claude Code, Obsidian, graphify, Frontend-Design) + 2 opt-in extensions (Everything Claude Code, Toprank). Install path, cookbook, hooks, scaffolds, profiles.
 
-(259 chars.)
+(266 chars.)
 
 **Variant 2 — metric-first framing:**
 
-> The stack and playbook one operator used to ship 7 AI products in 4 months solo. Install path, cookbook, sanitized hooks, scaffolds, profiles. Curator-toolkit, not a runtime — built on Everything Claude Code, Toprank, Frontend-Design, graphify, Obsidian.
+> The stack and playbook one operator used to ship 7 AI products in 4 months solo. Install path, cookbook, sanitized hooks, scaffolds, profiles. 4 core components (Claude Code, Obsidian, graphify, Frontend-Design) + 2 opt-in extensions (Everything Claude Code, Toprank).
 
-(251 chars.)
+(265 chars.)
 
 **Variant 3 — outcome-first framing:**
 
-> A non-engineer's install path for Claude Code as orchestrator across multiple products. Twelve copy-pasteable recipes, six sanitized hooks, two scaffolds, four operator profiles. MIT. Curator-toolkit on top of ECC, Toprank, Frontend-Design, graphify, Obsidian.
+> A non-engineer's install path for Claude Code as orchestrator across multiple products. Twelve recipes, six hooks, two scaffolds, four profiles. MIT. 4 core (Claude Code, Obsidian, graphify, Frontend-Design) + 2 opt-in (Everything Claude Code, Toprank).
 
-(257 chars.)
+(252 chars.)
 
 **Recommended default: Variant 1.** It leads with the audience, names the artefacts, and acknowledges the credits chain in the same sentence. Variant 2 leans on the metric, which is true but reads as the kind of claim every launch makes. Variant 3 is solid but slightly longer and less specific.
 

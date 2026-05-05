@@ -12,7 +12,7 @@ created: 2026-05-04
 
 ## What This Is
 
-A curated toolkit and operator playbook for solo founders running multiple AI products in parallel using Claude Code. Documents which stack to install (Everything Claude Code, Toprank, Frontend-Design, graphify, Obsidian, curated MCP set) and how to compose those parts into real shipping workflows. It is not a fork, not a redistribution, not a runtime — it is the install path, the workflows, the case studies, and the credits chain that pulls one operator's output across seven products into a single replicable stack.
+A curated toolkit and operator playbook for solo founders running multiple AI products in parallel using Claude Code. Documents which stack to install — 4 core components (Claude Code, Obsidian, graphify, Frontend-Design) plus 2 opt-in extensions (Everything Claude Code, Toprank) — and how to compose those parts into real shipping workflows. It is not a fork, not a redistribution, not a runtime — it is the install path, the workflows, the case studies, and the credits chain that pulls one operator's output across seven products into a single replicable stack.
 
 ## Core Value
 

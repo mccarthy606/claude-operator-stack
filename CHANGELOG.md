@@ -18,6 +18,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). The
 - Renamed `stack/omega-memory.md` → `stack/graphify.md`
 - Updated stack table, all 7 READMEs, configs, profiles, skills, workflows, credits to reference graphify
 - Added `Graphify/`, `Weekly/`, `graphify-out/` to documented Brain vault structure
+- Reframed stack as 4 core components (Claude Code, Obsidian, graphify, Frontend-Design) + 2 opt-in extensions (Everything Claude Code, Toprank). Updated stack tables in all 7 READMEs, stack/README, ecc.md, toprank.md status sections, profile install tables, cookbook 01 install steps, configs/settings.json.example, install.sh wizard messaging.
 
 ## [1.0.0] — 2026-05-05
 

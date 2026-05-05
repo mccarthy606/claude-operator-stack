@@ -12,18 +12,18 @@ You arrived at this stack because you saw a tweet about somebody shipping seven 
 
 ## Install priority
 
-The full stack has six layers (see [stack/](../stack/)). For this profile, install in this order — earlier components compound the later ones.
+The stack ships as 4 core components (always installed) and 2 opt-in components (install when the use case earns it). See [stack/](../stack/). For this profile, the priority is:
 
-| Order | Component | Why for this profile |
-|-------|-----------|----------------------|
-| 1 | **Claude Code** | The runtime. Everything else loads on top. |
-| 2 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill and agent backbone. Turns Claude Code from a chat box into a tool runtime. |
-| 3 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub, Supabase, Vercel, scrapling. The integrations every product reaches for. |
-| 4 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Knowledge-graph queries across all your project folders. The fix for "by Thursday I forgot which decision belonged to which product." |
-| 5 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | UI generation that does not look like every other shadcn template. |
-| 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | Skip until you have a product that needs paid distribution. |
+| Order | Component | Status | Why for this profile |
+|-------|-----------|--------|----------------------|
+| 1 | **Claude Code** | **Required** | The runtime. Everything else loads on top. |
+| 2 | **Obsidian** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | **Required** | Where your projects live — `~/Brain/Projects/<name>.md` is the cross-session memory that fixes "by Thursday I forgot what I decided on Product B." |
+| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | **Required** | Knowledge-graph queries across all your project folders. Compounds with Obsidian. |
+| 4 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | **Required** | UI generation that does not look like every other shadcn template. |
+| 5 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | **Opt-in (recommend)** | Broad skill + agent catalog. Worth installing on day one when you ship multiple products — the GSD family, code review skills, and chief-of-staff pay back fast at three-product cadence. |
+| 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | **Opt-in (skip day 1)** | Add when you start running paid traffic experiments on a product that has cleared its first paying-user threshold. Skip until then. |
 
-Obsidian is optional for this profile — see "What to skip."
+The 4 core install at any point — they are the runtime, the memory, the cross-project context, and the visible-quality lever. The 2 opt-in are real layers but only earn their keep once specific use cases show up.
 
 ## Workflows to read first
 
@@ -67,8 +67,7 @@ If you are building a WhatsApp-first service, use [scaffolds/whatsapp-saas](../s
 
 The stack has parts that do not earn their keep for this profile:
 
-- **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) — useful, but the setup cost is high and graphify covers most of the cross-project context gap. Add Obsidian once you have five or more concurrent projects, or once you are also doing content.
-- **Toprank** ([stack/toprank.md](../stack/toprank.md)) — paid distribution is rarely the bottleneck on a product that has not validated. Skip until your first product clears its first paying-user threshold.
+- **Toprank** ([stack/toprank.md](../stack/toprank.md)) — opt-in. Paid distribution is rarely the bottleneck on a product that has not validated. Skip until your first product clears its first paying-user threshold, then revisit when you start a paid traffic experiment.
 - **content-pipeline workflow** — only relevant if content is part of your distribution. If your distribution is X build-in-public posts, you do not need a pipeline yet.
 - **GSD skill family** (see [stack/ecc-skill-index.md](../stack/ecc-skill-index.md)) — opinionated, slows you down at three-product cadence. Adopt later when one product becomes a real long-running build.
 - **Most C-suite advisor skills** — interesting framing for board-stage companies. Overkill for week-long bets.
@@ -85,6 +84,6 @@ The stack has parts that do not earn their keep for this profile:
 
 A 30-60 minute first session should produce:
 
-1. Claude Code installed, ECC marketplace added, graphify skill wired in.
+1. Claude Code installed, Obsidian + `~/Brain/` skeleton up, graphify wired in, Frontend-Design plugin enabled. ECC opt-in added in the same pass if you want the broad skill catalog from day one.
 2. The three hooks above copied into `~/.claude/hooks/` and registered in `settings.json`.
 3. One product cloned from [scaffolds/web-saas](../scaffolds/web-saas/), env file filled, dev server running locally.

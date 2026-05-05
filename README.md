@@ -52,14 +52,21 @@ It's aimed at people running 2+ products at the same time, founders without a CS
 
 ## The Stack
 
+**Core (always install):**
+
 | Layer | Component | Author | What it does for me |
 |-------|-----------|--------|---------------------|
-| **Skills + Agents** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | 182 skills, 48 agents — backbone for any task |
-| **SEO + Ads** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Google Ads, Meta Ads, GEO, broken-link checks |
-| **UI generation** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | Distinctive, production-grade UI |
-| **Knowledge graph** | graphify | local | Folder of files → navigable knowledge graph with community detection |
-| **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | `~/Brain` vault as project + identity context |
 | **Orchestration** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | The runtime |
+| **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | `~/Brain` vault as project + identity context |
+| **Knowledge graph** | graphify | local | Folder of files → navigable knowledge graph with community detection |
+| **UI generation** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | Distinctive, production-grade UI |
+
+**Opt-in (install when the use case fits):**
+
+| Layer | Component | Author | When to add |
+|-------|-----------|--------|-------------|
+| **Skills + Agents** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | When you want a broad skill + agent catalog (182 skills, 48 agents) |
+| **SEO + Ads** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | When you do SEO audits or run Google/Meta Ads |
 
 Every skill and agent in this stack credits its original author. If a piece comes from somewhere else, the link goes there.
 
@@ -312,7 +319,7 @@ The three options below are the ones first-time visitors usually weigh. They ove
 
 A note on what each column is:
 
-- **Solo Stack** is this repo. A 6-component install with the workflow, cookbook, and case studies wrapped around it.
+- **Solo Stack** is this repo. A 4-core + 2-opt-in component install with the workflow, cookbook, and case studies wrapped around it.
 - **Everything Claude Code** is the upstream skills + agents library this repo depends on. Built and maintained by [@affaan-m](https://github.com/affaan-m).
 - **Starter templates** is the bucket for `create-next-app`, vanilla Vite + Tailwind, T3 stack, and similar single-framework scaffolds.
 
@@ -320,7 +327,7 @@ A note on what each column is:
 |-----------|------------|------------------------|-------------------|
 | Audience | Solo founder running 2+ products at once | Engineers and AI dev teams | Web app newcomers and quick prototypers |
 | Tone | Operator-first — the workflow comes before the code | Engineer-first — depth across language ecosystems | Framework-first — Next.js / Vite / etc. set the shape |
-| Stack scope | Curated 6-component set with one opinionated install path | 182 skills + 48 agents across 12+ language ecosystems | Single framework + auth/db starter |
+| Stack scope | Curated 4-core + 2-opt-in components with one opinionated install path | 182 skills + 48 agents across 12+ language ecosystems | Single framework + auth/db starter |
 | Multi-harness | Claude Code only | Claude Code, Cursor, Codex, OpenCode, Gemini, Antigravity | Framework-specific |
 | Real shipped proof | 4 anonymised case studies from one operator's products | Author's own product (`zenith.chat`) and template configs | None — meant as a starting point |
 | Custom contributions | Workflows, cookbook of 12 recipes, 6 hooks, 6 original skills | Wide skills + agents catalogue, two npm packages | Scaffold + boilerplate |

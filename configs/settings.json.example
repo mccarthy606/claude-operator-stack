@@ -12,10 +12,12 @@
     "MAX_THINKING_TOKENS": "16000"
   },
 
+  "_enabledPlugins_note": "The stack ships 1 required plugin (Frontend-Design) and 2 opt-in plugins (Everything Claude Code, Toprank). The required plugin is enabled by default. Opt-ins are commented out via _disabled keys — flip them to true after running the matching '/plugin marketplace add' + '/plugin install' commands inside Claude Code.",
+
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "toprank@nowork-studio": true,
-    "everything-claude-code@everything-claude-code": true
+    "_disabled_everything-claude-code@everything-claude-code": "set to true after /plugin install everything-claude-code@everything-claude-code (broad skill + agent catalog)",
+    "_disabled_toprank@nowork-studio": "set to true after /plugin install toprank@nowork-studio (SEO + paid ads skill cluster)"
   },
 
   "_hooks_note": "Hooks are intentionally omitted from this template. ECC ships a comprehensive hook suite that auto-loads when its plugin is enabled. Add your own custom hooks under 'hooks' here only when you want to layer on top of ECC's defaults.",

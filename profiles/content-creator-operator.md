@@ -12,18 +12,16 @@ You arrived at this stack because you saw the pattern of "ship in public, post a
 
 ## Install priority
 
-The full stack has six layers (see [stack/](../stack/)). For this profile, install in this order — Obsidian goes earlier than usual because it doubles as the content backlog.
+The stack ships as 4 core components (always installed) and 2 opt-in components. See [stack/](../stack/). For this profile, Obsidian doubles as the content backlog from day one.
 
-| Order | Component | Why for this profile |
-|-------|-----------|----------------------|
-| 1 | **Claude Code** | The runtime. |
-| 2 | **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | Doubles as content backlog (`~/Brain/Content/`) and project memory (`~/Brain/Projects/`). Single source of truth for both engines. |
-| 3 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill backbone. The `crosspost`, `humanizer`, `content-engine`, and `brand-voice` skills are why you are here. |
-| 4 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub for product, scrapling for content research, x-api for posting, scheduled-tasks for cadence. |
-| 5 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Run across `~/Brain/Content/` and `~/Brain/Projects/` — the knowledge graph that surfaces overlap between content topics and product threads is the use case for this profile. |
-| 6 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | For when the product needs a landing page or a launch surface that does not look like every other indie SaaS. |
-
-Skip Toprank unless you also run paid ads — most creators do not need it for the audience-funded path.
+| Order | Component | Status | Why for this profile |
+|-------|-----------|--------|----------------------|
+| 1 | **Claude Code** | **Required** | The runtime. |
+| 2 | **Obsidian** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | **Required** | Doubles as content backlog (`~/Brain/Content/`) and project memory (`~/Brain/Projects/`). Single source of truth for both engines. |
+| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | **Required** | Run across `~/Brain/Content/` and `~/Brain/Projects/` — the knowledge graph that surfaces overlap between content topics and product threads is the use case for this profile. |
+| 4 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | **Required** | For when the product needs a landing page or a launch surface that does not look like every other indie SaaS. |
+| 5 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | **Opt-in (recommend)** | The skill backbone — `crosspost`, `humanizer`, `content-engine`, and `brand-voice` are the skills that make this profile work. Worth installing on day one for the content half of the operation. |
+| 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | **Opt-in (month 2-3)** | Skip until content-driven SEO becomes a real channel — usually month 2 or 3, once the audience is real and a long-tail SEO play starts to pay back. Audience-funded paths usually never need it. |
 
 ## Workflows to read first
 
@@ -64,7 +62,6 @@ For the content-engine half, no scaffold fits — the Obsidian vault structure (
 
 The stack has parts that do not earn their keep for this profile:
 
-- **Toprank** ([stack/toprank.md](../stack/toprank.md)) — paid distribution rarely matches what an organic content engine can do. Skip unless you are also running a paid creator-business funnel.
 - **The full GSD skill family** (see [stack/ecc-skill-index.md](../stack/ecc-skill-index.md)) — adopt selectively. `gsd-new-project` is useful at the start of a product. The rest is engineer-shaped overhead that fights with the content rhythm.
 - **Most C-suite advisor skills** — interesting framing, irrelevant for the audience-and-product two-engine setup.
 - **Custom hook authoring beyond the three above** — the temptation is to build a hook for every content step. Use the shipped scheduled-tasks MCP and the `crosspost` skill instead.
@@ -83,6 +80,6 @@ The stack has parts that do not earn their keep for this profile:
 
 A 30-60 minute first session should produce:
 
-1. Claude Code installed, ECC marketplace added, the `crosspost` and `humanizer` skills test-invoked once.
-2. Obsidian installed, the `~/Brain/` vault structure created (Content, Projects, Knowledge folders), the [obsidian-integration rule](../configs/rules/obsidian-integration.md) wired in.
+1. Claude Code installed, Frontend-Design plugin enabled, ECC opt-in added (the `crosspost` and `humanizer` skills test-invoked once to confirm the skill base is wired). Toprank stays off until month 2-3.
+2. Obsidian installed, the `~/Brain/` vault structure created (Content, Projects, Knowledge folders), graphify wired in across both `~/Brain/Content/` and `~/Brain/Projects/`, and the [obsidian-integration rule](../configs/rules/obsidian-integration.md) wired in.
 3. One content brief drafted in `~/Brain/Content/` for the next video, and one project note in `~/Brain/Projects/` for the active product.

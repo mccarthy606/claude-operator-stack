@@ -7,6 +7,21 @@
 
 Toprank is the SEO and paid-ads layer. Without it, I would be writing GSC analyzers, broken-link checkers, and Google Ads loaders by hand; with it, the loop is one slash command per audit.
 
+## Status: opt-in
+
+Toprank is **opt-in** in this stack. Add it when:
+
+- You do SEO audits regularly (technical SEO, on-page, schema, broken links)
+- You run paid Google Ads, Meta Ads, or both
+- You want GEO (generative engine optimization) — surfacing in ChatGPT, Perplexity, Gemini, AI Overviews
+
+Skip Toprank when:
+
+- You're pre-product and not running ads or doing SEO yet
+- Your traffic strategy is community-driven (HN, X, word of mouth) rather than search
+
+The plugin's preamble guides you through OAuth on first use; nothing breaks if it's not installed.
+
 ## What I use from Toprank
 
 ### SEO

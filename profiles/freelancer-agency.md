@@ -12,16 +12,16 @@ You arrived at this stack because you saw what one operator can ship in four mon
 
 ## Install priority
 
-The full stack has six layers (see [stack/](../stack/)). For this profile, install in this order — the per-client override discipline starts on day one, not later.
+The stack ships as 4 core components (always installed) and 2 opt-in components. See [stack/](../stack/). For this profile, the per-client override discipline starts on day one, not later.
 
-| Order | Component | Why for this profile |
-|-------|-----------|----------------------|
-| 1 | **Claude Code** | The runtime, installed once globally. |
-| 2 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill and agent backbone, with the GSD family for client-shaped delivery. |
-| 3 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub is non-negotiable. Add Linear, Jira, or Supabase per the client mix. |
-| 4 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Run per client folder so a knowledge graph of Client A stays scoped to Client A. The cross-client query is opt-in, not default. |
-| 5 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | Only if you do UI work. The visible polish lever clients pay for. |
-| 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | Only if SEO and ads are part of your delivery scope. |
+| Order | Component | Status | Why for this profile |
+|-------|-----------|--------|----------------------|
+| 1 | **Claude Code** | **Required** | The runtime, installed once globally. |
+| 2 | **Obsidian** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | **Required** | Even if client context lives in Linear or Notion, your private operator layer (engagement scope notes, billing reminders, decisions per client) lives here. |
+| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | **Required** | Run per client folder so a knowledge graph of Client A stays scoped to Client A. The cross-client query is opt-in, not default. |
+| 4 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | **Required** | The visible polish lever clients pay for when UI work is in scope. Drop only if you exclusively do backend or infra work. |
+| 5 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | **Opt-in (recommend strongly)** | Per-client repos benefit from a shared skill baseline — the GSD family, code review skills, and chief-of-staff give every engagement the same delivery shape. Worth enabling globally and overriding at the per-client `.claude/settings.json` level when a client wants stricter limits. |
+| 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | **Opt-in (per client)** | Some clients want SEO and ads in scope, others do not. Enable in the client repos that need it; leave it off in the rest. |
 
 Per-client `~/.claude/` overrides are documented at the end of [stack/ecc.md](../stack/ecc.md) — read that section before installing anything. The pattern: one global config, one per-client `.claude/settings.json` inside the client repo that narrows or extends it.
 
@@ -65,10 +65,9 @@ For client work that does not match either scaffold, see [scaffolds/README.md](.
 
 What this profile drops:
 
-- **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) — only if your client context already lives somewhere shared. If clients live in Linear or Notion, Obsidian becomes a duplicate brain. Add it for your private operator layer if you want, not as the project source of truth.
 - **content-pipeline workflow** — only relevant if your engagements include content delivery. Most do not.
 - **Custom hooks per client** — tempting, becomes maintenance debt. Use the shipped six and override at the `settings.json` level when needed.
-- **Frontend-Design** if you only do backend or infra work — visible polish is irrelevant if the client never sees a UI.
+- **Frontend-Design** if you only do backend or infra work — drop the core requirement here; visible polish is irrelevant if the client never sees a UI.
 - **The `crosspost` skill family** unless content is in scope.
 
 ## A typical week for this profile
@@ -82,6 +81,6 @@ What this profile drops:
 
 A 30-60 minute first session should produce:
 
-1. Claude Code installed globally, ECC and the four hooks above wired into `~/.claude/settings.json`.
-2. One client repo cloned under `~/Projects/clients/<name>/`, with a `.claude/settings.json` that overrides only what that client needs (e.g., a different commit format, a project-specific permitted-tool list).
+1. Claude Code installed globally, Obsidian + `~/Brain/` set up, graphify wired in, Frontend-Design enabled. ECC opt-in added globally so every client repo inherits the same skill baseline. Toprank stays off until a client engagement asks for SEO. The four hooks above wired into `~/.claude/settings.json`.
+2. One client repo cloned under `~/Projects/clients/<name>/`, with a `.claude/settings.json` that overrides only what that client needs (e.g., a different commit format, a project-specific permitted-tool list, Toprank enabled if SEO is in scope).
 3. A one-page CLAUDE.md inside the client repo describing the engagement scope, the client's stack, the audit and reporting expectations.

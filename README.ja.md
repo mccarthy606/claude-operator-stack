@@ -26,11 +26,15 @@
 
 ## スタック概要
 
-- **Skills + Agents:** [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) — [@affaan-m](https://github.com/affaan-m)
-- **SEO + 広告:** [Toprank](https://github.com/nowork-studio/toprank) — nowork-studio
-- **UI 生成:** [Frontend-Design](https://github.com/anthropics/claude-plugins-official) — Anthropic
-- **メモリ / グラフ:** graphify (自前の知識グラフ層) + Obsidian Vault
-- **オーケストレーション:** [Claude Code](https://www.anthropic.com/claude-code) — Anthropic
+**コア（常に入れる）:**
+- Claude Code（ランタイム）
+- Obsidian（`~/Brain` vault）
+- graphify（ナレッジグラフ層）
+- Frontend-Design（独特な UI 生成）
+
+**オプション:**
+- Everything Claude Code（skills + agents — 広いカタログが必要になったら追加）
+- Toprank（SEO + 広告 — SEO や有料広告をやる場合に追加）
 
 ## クイックスタート
 

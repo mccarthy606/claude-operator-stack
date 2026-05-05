@@ -12,16 +12,16 @@ You arrived at this stack because the "vibe coding" videos make it look easy and
 
 ## Install priority
 
-The full stack has six layers (see [stack/](../stack/)). For this profile, install in this order — the memory layer goes early because without it Claude has no continuity across sessions, which is the difference between an engineer and a chat box.
+The stack ships as 4 core components (always installed) and 2 opt-in components. See [stack/](../stack/). For this profile, the memory layer goes early because without it Claude has no continuity across sessions, which is the difference between an engineer and a chat box.
 
-| Order | Component | Why for this profile |
-|-------|-----------|----------------------|
-| 1 | **Claude Code** | The runtime. |
-| 2 | **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | Your project memory. Where you write goals, requirements, decisions in plain language. Claude reads this on every session. |
-| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Knowledge-graph layer over your folders. Sits underneath Obsidian — when you have multiple projects, point it at the parent directory and ask cross-project questions in plain language. Skip on day one if you only have one project. |
-| 4 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill and agent backbone. The `chief-of-staff`, `gsd-*`, and review skills are how you delegate without losing oversight. |
-| 5 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub, Supabase, Vercel — the integrations that turn "make a change" into "deployed change." |
-| 6 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | Generated UI that does not look like a template. The visible-quality lever you can pull without designing. |
+| Order | Component | Status | Why for this profile |
+|-------|-----------|--------|----------------------|
+| 1 | **Claude Code** | **Required** | The runtime. |
+| 2 | **Obsidian** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | **Required** | Your project memory. Where you write goals, requirements, decisions in plain language. Claude reads this on every session. |
+| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | **Required** | Knowledge-graph layer over your folders. Sits underneath Obsidian — when you have multiple projects, point it at the parent directory and ask cross-project questions in plain language. |
+| 4 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | **Required** | Generated UI that does not look like a template. The visible-quality lever you can pull without designing. |
+| 5 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | **Opt-in (recommend)** | The skill catalog matters most when you cannot write code from scratch — `chief-of-staff`, `gsd-*`, and review skills are how you delegate without losing oversight. Install when you are ready to lean on those flows; the 4 core work without it. |
+| 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | **Opt-in (skip day 1)** | Paid ads and SEO are real surfaces, but you should not run them yourself in the first 90 days. Hire a freelancer or skip until the product is real. |
 
 ## Workflows to read first
 
@@ -61,7 +61,6 @@ If you are building WhatsApp-first, use [scaffolds/whatsapp-saas](../scaffolds/w
 
 The stack has parts that do not earn their keep for this profile:
 
-- **Toprank** ([stack/toprank.md](../stack/toprank.md)) — paid ads and SEO are real surfaces, but you should not run them yourself in the first 90 days. Hire a freelancer or skip until the product is real.
 - **content-pipeline workflow** — content is its own job. Skip unless content is your distribution channel.
 - **Custom hook authoring** — installing hooks is fine. Writing your own is engineering work. Stay with the six shipped here.
 - **The full GSD skill family** (see [stack/ecc-skill-index.md](../stack/ecc-skill-index.md)) — adopt selectively. `gsd-new-project` and `gsd-progress` are the two worth your time. The rest is engineer-shaped overhead.
@@ -79,6 +78,6 @@ The stack has parts that do not earn their keep for this profile:
 
 A 30-60 minute first session should produce:
 
-1. Claude Code installed, ECC marketplace added.
-2. Obsidian installed, the `~/Brain/` vault structure created (Projects, Knowledge, Daily folders), and the [obsidian-integration rule](../configs/rules/obsidian-integration.md) wired into `~/.claude/`.
+1. Claude Code installed. Frontend-Design plugin enabled. ECC opt-in added on day one if you want the chief-of-staff and review skills available before you delegate your first task.
+2. Obsidian installed, the `~/Brain/` vault structure created (Projects, Knowledge, Daily folders), graphify wired in, and the [obsidian-integration rule](../configs/rules/obsidian-integration.md) wired into `~/.claude/`.
 3. One project note created in `~/Brain/Projects/` describing the product you are working on right now — goals, stack, current open task. Do this in plain language, not technical jargon.

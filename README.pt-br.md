@@ -26,11 +26,15 @@ Um toolkit curado + playbook do operador para founders solo que querem lançar m
 
 ## Stack (visão geral)
 
-- **Skills + Agents:** [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) por [@affaan-m](https://github.com/affaan-m)
-- **SEO + Ads:** [Toprank](https://github.com/nowork-studio/toprank) por nowork-studio
-- **Geração de UI:** [Frontend-Design](https://github.com/anthropics/claude-plugins-official) por Anthropic
-- **Memória / Grafo:** graphify (camada própria de grafo de conhecimento) + Obsidian Vault
-- **Orquestração:** [Claude Code](https://www.anthropic.com/claude-code) por Anthropic
+**Núcleo (sempre):**
+- Claude Code (runtime)
+- Obsidian (vault `~/Brain`)
+- graphify (camada de grafo de conhecimento)
+- Frontend-Design (geração de UI distintiva)
+
+**Opcional:**
+- Everything Claude Code (skills + agents — adicione quando quiser amplo catálogo)
+- Toprank (SEO + Ads — adicione se faz SEO ou anúncios pagos)
 
 ## Quick Start
 

@@ -1,24 +1,29 @@
 # Claude Code from Zero
 
 > **Time:** ~1h
-> **Stack:** Claude Code CLI, ECC, Toprank, Frontend-Design, graphify, MCPs
+> **Stack:** 4 core (Claude Code CLI, Obsidian, graphify, Frontend-Design) + 2 opt-in (Everything Claude Code, Toprank), MCPs
 > **Used in:** every project in the [stack](../stack/), referenced by all other recipes
 
 ## The problem
 
 You have just opened a fresh project directory. Maybe a new product, maybe a sandbox for an experiment, maybe a contractor handed you a repo. You want Claude Code to be useful in this directory within the first session, not after a week of trial-and-error config drift.
 
-The default Claude Code install is a chat box. To get from that to "operator-grade orchestrator," you need a project-level `CLAUDE.md`, a coherent `~/.claude/` setup, the ECC + Toprank + Frontend-Design skill base, and a small curated MCP loadout. This recipe is the install path.
+The default Claude Code install is a chat box. To get from that to "operator-grade orchestrator," you need a project-level `CLAUDE.md`, a coherent `~/.claude/` setup, the 4 core components, optionally the 2 opt-in marketplaces, and a small curated MCP loadout. This recipe is the install path.
 
 ## Solution overview
 
+The stack splits into 4 core components (always installed) and 2 opt-in marketplaces (install when the use case earns it):
+
+- **Core:** Claude Code, Obsidian, graphify, Frontend-Design
+- **Opt-in:** Everything Claude Code (broad skill catalog), Toprank (SEO + paid ads)
+
 Three layers, in order. First the global `~/.claude/` config (only done once per machine — skip if already set up). Second the project's `CLAUDE.md` (always per-project). Third the per-session priming move.
 
-Skip any layer and you will pay for it. Do all three and Claude Code reads the project on session start, knows the stack, knows the conventions, and knows which skills to reach for.
+Skip any core layer and you will pay for it. Do all four and Claude Code reads the project on session start, knows the stack, knows the conventions, and knows which skills to reach for. The two opt-in marketplaces are real layers but only earn their keep once specific use cases show up.
 
 ## Step-by-step
 
-### 1. Install the CLI
+### 1. Install Claude Code (required)
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -27,33 +32,67 @@ claude --version
 
 You need Node 18+. Verify the binary is on `PATH`. The first invocation will prompt for an Anthropic API key or browser login.
 
-### 2. Install the global skill base
+### 2. Install Obsidian + create `~/Brain` (required)
 
-The three pieces every operator project benefits from:
+Obsidian is the cross-session memory layer. Without it Claude has no continuity across sessions.
 
 ```bash
-# Everything Claude Code (skill index, slash commands, agents)
-git clone https://github.com/affaan-m/everything-claude-code.git ~/.claude/ECC
-bash ~/.claude/ECC/install.sh
-
-# Toprank (curated content + SEO skills)
-git clone https://github.com/toprankhq/toprank ~/.claude/toprank
-
-# Frontend-Design (production-grade frontend skill)
-git clone https://github.com/anthropics/skills ~/.claude/anthropic-skills
+# Install Obsidian: https://obsidian.md/download
+# Then create the vault skeleton:
+mkdir -p ~/Brain/{Projects,Knowledge,Daily,Content,Templates,Archive}
 ```
 
-Verify that skills are discoverable from a Claude Code session by running `/help` and confirming the slash commands show up.
+Open Obsidian, point it at `~/Brain`, and confirm you can create a note. Wire the [obsidian-integration rule](../configs/rules/obsidian-integration.md) into `~/.claude/rules/` so Claude reads `~/Brain/Projects/<name>.md` on session start.
 
-### 3. Skeleton `~/.claude/CLAUDE.md`
+### 3. Install graphify (required)
 
-This file is global instructions for every project on the machine. Keep it short and operator-flavored. A reasonable skeleton:
+graphify is the cross-project knowledge-graph layer. See [stack/graphify.md](../stack/graphify.md) for the full setup. Once installed, run `/graphify` once at the root of any project to build the initial graph.
+
+### 4. Install Frontend-Design (required)
+
+Frontend-Design ships UI generation that does not look like every other shadcn template. It is part of the official Anthropic plugin marketplace.
+
+Inside Claude Code:
+
+```text
+/plugin marketplace add anthropics/claude-plugins-official
+/plugin install frontend-design@claude-plugins-official
+```
+
+Verify the skill is loaded with `/help`.
+
+### 5. Install Everything Claude Code (opt-in)
+
+ECC is the broad skill + agent catalog. Install when you want the GSD family, the chief-of-staff orchestration, code review skills, and the marketing skill cluster available globally. Skip if you are not sure you want the full catalog yet — you can come back to it.
+
+```text
+/plugin marketplace add affaan-m/everything-claude-code
+/plugin install everything-claude-code@everything-claude-code
+```
+
+Verify the slash commands show up in `/help`.
+
+### 6. Install Toprank (opt-in)
+
+Toprank ships curated content + SEO + paid-ads skills. Skip if you do not run SEO or paid traffic — most operators do not need this on day one.
+
+```text
+/plugin marketplace add nowork-studio/toprank
+/plugin install toprank@nowork-studio
+```
+
+### 7. Skeleton `~/.claude/CLAUDE.md`
+
+This file is global instructions for every project on the machine. Keep it short and operator-flavored. The skeleton below assumes only the 4 core components — it works standalone whether you installed the opt-in marketplaces or not.
 
 ```markdown
 ## Memory
 - ~/Brain Obsidian vault is canonical project memory
 - Before non-trivial tasks, check ~/Brain/Projects/ for context
 - Knowledge graph: trigger `/graphify` in any project root to build/refresh the graph; use `/graphify query "<concept>"` mid-session for cross-file context
+
+## UI work
+- Use the Frontend-Design skill for any production UI surface — avoid template-default shadcn output
 
 ## Voice
 - Operator-first, terse, opinionated
@@ -66,7 +105,9 @@ This file is global instructions for every project on the machine. Keep it short
 - Never push to main without local verification
 ```
 
-### 4. The MCP loadout
+If you installed Everything Claude Code, you can also reference its skills (e.g., `/gsd-progress`, `chief-of-staff`) in this file. If you skipped ECC, the skeleton above is complete on its own.
+
+### 8. The MCP loadout
 
 The minimum useful set for an operator project, configured in `~/.claude/mcp.json`:
 
@@ -80,7 +121,7 @@ The minimum useful set for an operator project, configured in `~/.claude/mcp.jso
 
 Install only what each project actually needs. Do not enable a heavy MCP in a project that does not use it — the tool list grows and the model picks worse.
 
-### 5. Per-project `CLAUDE.md`
+### 9. Per-project `CLAUDE.md`
 
 Inside the new project root, create `CLAUDE.md`:
 
@@ -108,19 +149,19 @@ Inside the new project root, create `CLAUDE.md`:
 - <whatever you want Claude to skip — auth refactor, design polish, etc.>
 ```
 
-### 6. First-session checklist
+### 10. First-session checklist
 
 When you open Claude Code in the new project the first time:
 
 1. Confirm the project `CLAUDE.md` is read (it will appear in the system context)
-2. Run `/gsd-progress` if using the GSD skills, or just `ls .planning/` if not
+2. If you installed ECC, run `/gsd-progress`. Otherwise just `ls .planning/` (or skip this step if you do not use a planning directory).
 3. Ask Claude to summarize the repo structure as a sanity check before any edits
 4. Verify the relevant MCP tools are loaded (`/mcp` lists them)
-5. If you want a knowledge graph for the project, run `/graphify` once at the root — output lands in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<project>/`. Rebuild incrementally with `--update`.
+5. Run `/graphify` once at the root to build the project knowledge graph — output lands in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<project>/`. Rebuild incrementally with `--update`.
 
-### Knowledge graph (optional but recommended)
+### Knowledge graph queries
 
-Trigger: `/graphify`. Run once in your project root to build the initial graph; use `/graphify query "<concept>"` mid-session to pull cross-file context.
+Trigger: `/graphify`. Already installed in step 3 — use `/graphify query "<concept>"` mid-session to pull cross-file context.
 
 Output appears in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<project>/`. The graph rebuilds incrementally with `--update` and live with `--watch`.
 
@@ -128,8 +169,8 @@ Output appears in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<proje
 
 - **Skipping the per-project `CLAUDE.md`.** Without it, every session starts from zero and the operator-first voice does not apply. The global file is not a substitute.
 - **Enabling every MCP "just in case."** Each MCP adds tools to the model's choice space. A bloated MCP list makes the model pick worse. Enable per-project, not globally.
-- **Cloning ECC and Toprank into the project repo.** They go in `~/.claude/`, not the project. Cloning them in-repo bloats the working tree and confuses git.
-- **Forgetting to verify skills are discoverable.** If `/help` does not list the ECC slash commands, the install path failed. Re-run `bash ~/.claude/ECC/install.sh` and check for errors.
+- **Installing every opt-in on day one.** ECC and Toprank are real layers but only earn their keep once you actually need the catalog or paid-distribution skills. Start with the 4 core, add opt-ins when the use case shows up.
+- **Forgetting to verify skills are discoverable.** If `/help` does not list the Frontend-Design slash commands (or the ECC ones if you installed it), the marketplace add or plugin install step failed. Re-run the `/plugin` commands and check for errors.
 - **Editing the global `CLAUDE.md` per-project.** That file is global. Per-project goes in the project root. Mixing them up means every project gets the last project's conventions.
 
 ## References

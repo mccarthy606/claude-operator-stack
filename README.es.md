@@ -48,14 +48,21 @@ Apunta a quienes llevan 2+ productos en simultáneo, fundadores sin background C
 
 ## El Stack
 
+**Núcleo (instalar siempre):**
+
 | Capa | Componente | Autor | Qué hace por mí |
 |------|-----------|-------|-----------------|
-| **Skills + Agents** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | 182 skills, 48 agents — base para cualquier tarea |
-| **SEO + Ads** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Google Ads, Meta Ads, GEO, chequeo de links rotos |
-| **Generación de UI** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | UI distintiva, no template |
-| **Grafo de conocimiento** | graphify | local | Carpeta de archivos → grafo navegable con detección de comunidades |
-| **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` como contexto de proyectos e identidad |
 | **Orquestación** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | El runtime |
+| **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` como contexto de proyectos e identidad |
+| **Grafo de conocimiento** | graphify | local | Carpeta de archivos → grafo navegable con detección de comunidades |
+| **Generación de UI** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | UI distintiva, no template |
+
+**Opcional (instalar según use case):**
+
+| Capa | Componente | Autor | Cuándo agregar |
+|------|-----------|-------|----------------|
+| **Skills + Agents** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | Si querés un catálogo amplio de skills + agents (182 skills, 48 agents) |
+| **SEO + Ads** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Si hacés auditorías SEO o corrés Google/Meta Ads |
 
 Cada skill y agent en este stack acredita a su autor original. Si una pieza viene de otro lado, ahí lleva el link.
 
@@ -190,7 +197,7 @@ Las tres opciones de abajo son las que un visitante nuevo suele comparar. Se pis
 
 Qué es cada columna:
 
-- **Solo Stack** es este repo. Una instalación de 6 componentes con el workflow, el cookbook y los case studies envueltos alrededor.
+- **Solo Stack** es este repo. Una instalación de 4 componentes núcleo + 2 opcionales con el workflow, el cookbook y los case studies envueltos alrededor.
 - **Everything Claude Code** es la librería upstream de skills + agents de la que depende este repo. La construye y mantiene [@affaan-m](https://github.com/affaan-m).
 - **Plantillas starter** es el balde para `create-next-app`, Vite + Tailwind vainilla, T3 stack y demás scaffolds de un solo framework.
 
@@ -198,7 +205,7 @@ Qué es cada columna:
 |-----------|------------|------------------------|--------------------|
 | Audiencia | Fundador solo con 2+ productos al mismo tiempo | Ingenieros y equipos de AI dev | Quienes recién arrancan con web apps y prototipos rápidos |
 | Voz | Operator-first — el workflow antes que el código | Engineer-first — profundidad por ecosistema | Framework-first — el framework define la forma |
-| Alcance del stack | Set curado de 6 componentes con una sola ruta de instalación opinada | 182 skills + 48 agents en 12+ ecosistemas de lenguaje | Un framework + starter de auth/db |
+| Alcance del stack | Set curado de 4-núcleo + 2-opcionales con una sola ruta de instalación opinada | 182 skills + 48 agents en 12+ ecosistemas de lenguaje | Un framework + starter de auth/db |
 | Soporte multi-runtime | Solo Claude Code | Claude Code, Cursor, Codex, OpenCode, Gemini, Antigravity | Atado al framework |
 | Productos realmente lanzados | 4 case studies anonimizados de productos de un operador | Producto propio del autor (`zenith.chat`) y configs de plantilla | Ninguno — está pensado como punto de partida |
 | Aportes propios | Workflows, cookbook con 12 recetas, 6 hooks, 6 skills propias | Catálogo amplio de skills + agents, dos paquetes npm | Scaffold + boilerplate |

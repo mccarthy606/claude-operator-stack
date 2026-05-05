@@ -48,14 +48,21 @@
 
 ## Стек
 
+**Ядро (ставить всегда):**
+
 | Слой | Компонент | Автор | Что делает для меня |
 |------|-----------|-------|---------------------|
-| **Скилы + агенты** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | 182 скила, 48 агентов — основа для любой задачи |
-| **SEO + реклама** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Google Ads, Meta Ads, GEO, проверка битых ссылок |
-| **Генерация UI** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | Производство непохожих на шаблоны UI |
-| **Граф знаний** | graphify | local | Папка файлов → навигируемый граф знаний с детекцией сообществ |
-| **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` как контекст проектов и личности |
 | **Оркестрация** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | Среда выполнения |
+| **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` как контекст проектов и личности |
+| **Граф знаний** | graphify | local | Папка файлов → навигируемый граф знаний с детекцией сообществ |
+| **Генерация UI** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | Производство непохожих на шаблоны UI |
+
+**Опционально (ставить под use case):**
+
+| Слой | Компонент | Автор | Когда добавлять |
+|------|-----------|-------|-----------------|
+| **Скилы + агенты** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | Если нужен большой каталог skills + agents (182 скила, 48 агентов) |
+| **SEO + реклама** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Если делаешь SEO-аудиты или ведёшь Google/Meta Ads |
 
 Каждый скил и агент в стеке указывает оригинального автора. Если кусок откуда-то, ссылка ведёт туда.
 
@@ -190,7 +197,7 @@ YouTube, Instagram и drive2 на три бренда с большей част
 
 Что такое каждая колонка:
 
-- **Solo Stack** — это данный репозиторий. Установка из 6 компонентов плюс workflow, cookbook и case-studies, обёрнутые вокруг неё.
+- **Solo Stack** — это данный репозиторий. Установка из 4 ядерных + 2 опциональных компонентов плюс workflow, cookbook и case-studies, обёрнутые вокруг неё.
 - **Everything Claude Code** — апстрим-библиотека skills и agents, на которой держится этот репозиторий. Делает и поддерживает [@affaan-m](https://github.com/affaan-m).
 - **Стартовые шаблоны** — это ведро для `create-next-app`, ванильного Vite + Tailwind, T3 stack и других односреднефреймворковых скелетов.
 
@@ -198,7 +205,7 @@ YouTube, Instagram и drive2 на три бренда с большей част
 |----------|------------|------------------------|-------------------|
 | Аудитория | Соло-фаундер, ведущий 2+ продукта одновременно | Инженеры и AI dev-команды | Новички в веб-разработке и быстрые прототипы |
 | Голос | Operator-first — workflow идёт перед кодом | Engineer-first — глубина по языковым экосистемам | Framework-first — форму задаёт Next.js / Vite / и т. д. |
-| Объём стека | Подобранный набор из 6 компонентов с одним установочным путём | 182 skills + 48 agents в 12+ языковых экосистемах | Один фреймворк + стартер для auth/db |
+| Объём стека | Подобранный набор из 4-ядро + 2-опционально с одним установочным путём | 182 skills + 48 agents в 12+ языковых экосистемах | Один фреймворк + стартер для auth/db |
 | Поддержка нескольких сред | Только Claude Code | Claude Code, Cursor, Codex, OpenCode, Gemini, Antigravity | Привязано к фреймворку |
 | Реально запущенное | 4 анонимизированных кейса из продуктов одного оператора | Свой продукт автора (`zenith.chat`) и шаблонные конфиги | Нет — это стартовая точка |
 | Что добавлено своего | Workflows, cookbook на 12 рецептов, 6 хуков, 6 собственных skills | Большой каталог skills + agents, два npm-пакета | Скелет + boilerplate |

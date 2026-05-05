@@ -6,10 +6,12 @@ Sanitized configuration examples. Nothing here contains real secrets — every c
 
 | File | Destination | Notes |
 |------|-------------|-------|
-| `settings.json.example` | `~/.claude/settings.json` | Plugin enablement + minimal hook scaffolding. Audit and trim. |
+| `settings.json.example` | `~/.claude/settings.json` | Plugin enablement (1 required: Frontend-Design; 2 opt-in: Everything Claude Code, Toprank) + minimal hook scaffolding. Audit and trim. |
 | `mcp-servers.json.example` | `~/.claude/mcp-configs/mcp-servers.json` | The MCP servers I run. Comment out what you don't need. |
 | `rules/obsidian-integration.md` | `~/.claude/rules/obsidian-integration.md` | Tells Claude to read `~/Brain/Projects/<name>.md` at session start. |
 | `hooks/` | `~/.claude/hooks/` | Custom hook scripts. Audit before installing. |
+
+The `enabledPlugins` block in `settings.json.example` follows the 4-core / 2-opt-in shape of the stack. Frontend-Design is enabled by default. Everything Claude Code and Toprank are commented out (via `_disabled_*` keys) — flip them on after running the matching `/plugin marketplace add` + `/plugin install` commands inside Claude Code.
 
 ## Setup pattern
 

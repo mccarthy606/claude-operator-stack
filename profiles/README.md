@@ -1,8 +1,8 @@
 # Operator profiles
 
-The full stack contains 6 layers, 12 cookbook recipes, 6 hooks, 2 scaffolds, 5 workflows, and ~30 indexed ECC skills. That is too much to install at once.
+The full stack contains 4 core components (Claude Code, Obsidian, graphify, Frontend-Design) plus 2 opt-in components (Everything Claude Code, Toprank), 12 cookbook recipes, 6 hooks, 2 scaffolds, 5 workflows, and ~30 indexed ECC skills. That is too much to absorb at once, and the opt-in pieces only earn their keep for some operators.
 
-These profiles are opinionated install paths. Pick the one closest to how you describe yourself, follow it for the first week, then mix in pieces from other profiles as your operation grows.
+These profiles are opinionated install paths. Pick the one closest to how you describe yourself, follow it for the first week, then mix in pieces from other profiles as your operation grows. Each profile flags which of the 2 opt-in components to install on day one and which to defer.
 
 ## The 4 profiles
 

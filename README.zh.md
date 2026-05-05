@@ -26,11 +26,15 @@
 
 ## 技术栈概述
 
-- **Skills + Agents：** [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) — [@affaan-m](https://github.com/affaan-m)
-- **SEO + 广告：** [Toprank](https://github.com/nowork-studio/toprank) — nowork-studio
-- **UI 生成：** [Frontend-Design](https://github.com/anthropics/claude-plugins-official) — Anthropic
-- **记忆 / 图谱:** graphify（自建知识图谱层）+ Obsidian Vault
-- **编排：** [Claude Code](https://www.anthropic.com/claude-code) — Anthropic
+**核心（必装）:**
+- Claude Code（运行时）
+- Obsidian（`~/Brain` vault）
+- graphify（知识图谱层）
+- Frontend-Design（独特 UI 生成）
+
+**可选:**
+- Everything Claude Code（skills + agents — 想要广泛目录时添加）
+- Toprank（SEO + 广告 — 做 SEO 或付费广告时添加）
 
 ## 快速开始
 
