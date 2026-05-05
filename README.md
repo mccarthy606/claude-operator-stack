@@ -136,6 +136,8 @@ claude-operator-stack/
 │   ├── whatsapp-b2b-saas.md
 │   └── youtube-pipeline.md
 │
+├── profiles/                    ← opinionated install paths by operator archetype
+│
 ├── scaffolds/                   ← copy-and-run starting points (web-saas, whatsapp-saas)
 │
 ├── configs/                     ← sanitized configs you can copy
