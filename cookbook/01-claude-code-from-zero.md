@@ -8,18 +8,18 @@
 
 You have just opened a fresh project directory. Maybe a new product, maybe a sandbox for an experiment, maybe a contractor handed you a repo. You want Claude Code to be useful in this directory within the first session, not after a week of trial-and-error config drift.
 
-The default Claude Code install is a chat box. To get from that to "operator-grade orchestrator," you need a project-level `CLAUDE.md`, a coherent `~/.claude/` setup, the 4 core components, optionally the 2 opt-in marketplaces, and a small curated MCP loadout. This recipe is the install path.
+The default Claude Code install is a chat box. To get from that to "operator-grade orchestrator," you need a project-level `CLAUDE.md`, a coherent `~/.claude/` setup, the 4 core components (graphify is recommended where you have access — see step 3), optionally the 2 opt-in marketplaces, and a small curated MCP loadout. This recipe is the install path.
 
 ## Solution overview
 
-The stack splits into 4 core components (always installed) and 2 opt-in marketplaces (install when the use case earns it):
+The stack splits into 4 core components (always installed where available) and 2 opt-in marketplaces (install when the use case earns it):
 
-- **Core:** Claude Code, Obsidian, graphify, Frontend-Design
+- **Core:** Claude Code, Obsidian, graphify (recommended; operator-private until v1.1), Frontend-Design
 - **Opt-in:** Everything Claude Code (broad skill catalog), Toprank (SEO + paid ads)
 
 Three layers, in order. First the global `~/.claude/` config (only done once per machine — skip if already set up). Second the project's `CLAUDE.md` (always per-project). Third the per-session priming move.
 
-Skip any core layer and you will pay for it. Do all four and Claude Code reads the project on session start, knows the stack, knows the conventions, and knows which skills to reach for. The two opt-in marketplaces are real layers but only earn their keep once specific use cases show up.
+Skip any of the always-installed core layers and you will pay for it. graphify is the one core piece that is currently operator-private — the cookbook documents it as the interface contract and readers who do not have it can substitute another knowledge-graph layer or proceed without one. Do the four available core layers and Claude Code reads the project on session start, knows the stack, knows the conventions, and knows which skills to reach for. The two opt-in marketplaces are real layers but only earn their keep once specific use cases show up.
 
 ## Step-by-step
 
@@ -44,9 +44,9 @@ mkdir -p ~/Brain/{Projects,Knowledge,Daily,Content,Templates,Archive}
 
 Open Obsidian, point it at `~/Brain`, and confirm you can create a note. Wire the [obsidian-integration rule](../configs/rules/obsidian-integration.md) into `~/.claude/rules/` so Claude reads `~/Brain/Projects/<name>.md` on session start.
 
-### 3. Install graphify (required)
+### 3. Install graphify (recommended)
 
-graphify is the cross-project knowledge-graph layer. See [stack/graphify.md](../stack/graphify.md) for the full setup. Once installed, run `/graphify` once at the root of any project to build the initial graph.
+graphify is the cross-project knowledge-graph layer. It is operator-private at the time of this README — public release is planned for v1.1. Skip this step if you do not have local access; the cookbook's `/graphify` references will be inactive but the rest of the stack works without it. See [stack/graphify.md](../stack/graphify.md) for the interface contract and the full setup once you have it installed. Once installed, run `/graphify` once at the root of any project to build the initial graph.
 
 ### 4. Install Frontend-Design (required)
 
@@ -179,4 +179,4 @@ Output appears in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<proje
 - [Everything Claude Code](https://github.com/affaan-m/everything-claude-code)
 - [stack/ecc.md](../stack/ecc.md) — the ECC reference in this stack
 - [stack/mcp-servers.md](../stack/mcp-servers.md) — full MCP reference
-- [workflows/parallel-projects.md](../workflows/parallel-projects.md) — how this setup compounds when you run several projects
+- [workflows/parallel-projects.md](../workflows/parallel-projects.md) — how this setup scales when you run several projects in parallel

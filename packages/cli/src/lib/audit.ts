@@ -11,7 +11,7 @@
  *   - kind=plugin   × key false/absent → missing
  *   - kind=file     × exists           → present
  *   - kind=file     × missing          → missing
- *   - kind=optional × *                → skipped
+ *   - kind=external × *                → skipped (advisory; not wired by the installer)
  */
 import type { AuditReport, AuditRow, StackComponent } from "../types.js";
 
@@ -67,13 +67,13 @@ function rowFor(
           : `copy from configs/${component.relPath.startsWith("rules/") ? "rules/" : ""}`,
       };
     }
-    case "optional":
+    case "external":
       return {
         id: component.id,
         name: component.name,
         status: "skipped",
         source: "opt-in",
-        notes: component.note,
+        notes: component.note ?? component.installCommand,
       };
   }
 }

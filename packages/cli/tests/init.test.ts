@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { runInit } from "../src/commands/init.js";
+import { runInit, WizardAbortedError } from "../src/commands/init.js";
 import type { ClaudeProbe, PromptFn } from "../src/types.js";
 
 function silenceStdout() {
@@ -167,7 +167,7 @@ describe("runInit — orchestration smoke tests", () => {
     expect(code).toBe(0);
     expect(fs.existsSync(claudeDir)).toBe(false);
     // marketplaces, continue, copyHooks, vaultPath = 4 prompt calls
-    expect((promptFn as unknown as { mock: { calls: unknown[] } }).mock.calls.length).toBe(4);
+    expect(vi.mocked(promptFn).mock.calls.length).toBe(4);
   });
 
   it("interactive abort at continue prompt returns exit 1", async () => {
@@ -241,5 +241,64 @@ describe("runInit — orchestration smoke tests", () => {
     });
     expect(code).toBe(0);
     expect(fs.existsSync(path.join(claudeDir, "hooks", "statusline.js"))).toBe(true);
+  });
+
+  it("Ctrl-C at marketplace prompt → onCancel throws → exit 130 (no sidecar writes yet)", async () => {
+    silenceStdout();
+    silenceStderr();
+    const repoRoot = path.join(tmp, "repo");
+    const claudeDir = path.join(tmp, "claude");
+    fakeRepoRoot(repoRoot);
+
+    const probe: ClaudeProbe = () => ({ found: true, version: "1.2.3" });
+    // Simulate the prompts library calling our onCancel hook on Ctrl-C: invoke
+    // it directly so the WizardAbortedError propagates up just like at runtime.
+    const promptFn: PromptFn = vi.fn(async (_qs, options) => {
+      options?.onCancel?.();
+      return {};
+    });
+
+    const code = await runInit({
+      claudeDirOverride: claudeDir,
+      repoRoot,
+      claudeProbe: probe,
+      promptFn,
+    });
+    expect(code).toBe(130);
+    // No sidecar writes happened before abort — the abort fired at the very first prompt.
+    expect(fs.existsSync(claudeDir)).toBe(false);
+  });
+
+  it("--yes forwards env override to expandHome (vault path resolves against stub HOME)", async () => {
+    const stdout = silenceStdout();
+    silenceStderr();
+    const repoRoot = path.join(tmp, "repo");
+    const claudeDir = path.join(tmp, "claude");
+    const fakeHome = path.join(tmp, "fake-home");
+    fakeRepoRoot(repoRoot);
+
+    const probe: ClaudeProbe = () => ({ found: true, version: "1.2.3" });
+    const promptFn: PromptFn = vi.fn(async () => ({}));
+
+    const code = await runInit({
+      claudeDirOverride: claudeDir,
+      repoRoot,
+      claudeProbe: probe,
+      promptFn,
+      yes: true,
+      dryRun: true,
+      env: { HOME: fakeHome } as NodeJS.ProcessEnv,
+    });
+    expect(code).toBe(0);
+    // The vault path should have resolved against the stub HOME, not the user's real HOME.
+    const out = stdout.mock.calls.map((c) => String(c[0])).join("");
+    expect(out).toContain(path.join(fakeHome, "Brain"));
+  });
+
+  it("WizardAbortedError is exported and instances are detectable", () => {
+    const e = new WizardAbortedError();
+    expect(e).toBeInstanceOf(WizardAbortedError);
+    expect(e).toBeInstanceOf(Error);
+    expect(e.name).toBe("WizardAbortedError");
   });
 });

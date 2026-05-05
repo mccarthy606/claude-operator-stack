@@ -1,8 +1,8 @@
 # graphify
 
-**Original repo / install path:** <!-- TODO upstream URL -->
-**Author:** local (operator-built layer — not in any public marketplace yet)
-**License:** see upstream
+**Original repo / install path:** operator-private at the time of this README — public release planned for v1.1. Until then, the 4-core install proceeds without it; this stack documents the *interface* graphify provides so you can swap an alternative knowledge-graph layer in its place.
+**Author:** operator-built layer (not yet on any public marketplace)
+**License:** MIT once published
 
 graphify is the **knowledge-graph memory tier** of this stack. Where Obsidian is the operator-curated brain, graphify is the **agent-traversable graph** — Claude reads it, Claude writes to it, with explicit + inferred edges and community-detected clusters.
 
@@ -41,7 +41,7 @@ Vault prose stays human-shaped. Graph extraction sits next to it and answers que
 
 ## What ships in this stack
 
-The CLAUDE.md skeleton documents the trigger; mcp-servers.json.example carries the legacy memory MCP entry that is being phased out in favor of graphify's optional MCP server. graphify itself is installed separately — see the trigger documentation for the install command.
+The CLAUDE.md skeleton documents the trigger; mcp-servers.json.example carries the legacy memory MCP entry that is being phased out in favor of graphify's optional MCP server. graphify itself is installed separately — operator-private at the time of this README, public release planned for v1.1. Until then, treat this doc as the interface contract: a knowledge-graph layer the cookbook references via `/graphify`. Readers who want the same shape today can swap in any alternative graph-extraction tool that exposes a similar query interface.
 
 ## When to use graphify vs Obsidian
 
@@ -59,7 +59,7 @@ Two layers, separate jobs. Obsidian is the brain the operator writes; graphify i
 
 ## Setup
 
-1. Install graphify (see upstream — <!-- TODO upstream URL -->)
+1. Install graphify — operator-private at the time of this README; public release planned for v1.1. Readers without local access can skip this step and substitute any knowledge-graph tool exposing a similar query surface (the cookbook's `/graphify` calls become inactive without it).
 2. Run `/graphify` in any project directory to build the first graph
 3. Optional: `/graphify <path> --mcp` to expose the MCP server for in-session queries
 4. Optional: `/graphify <path> --watch` for live updates while you edit

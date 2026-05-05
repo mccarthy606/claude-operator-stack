@@ -6,6 +6,7 @@
     "lib": ["ES2022"],
     "types": ["node"],
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
@@ -17,7 +18,6 @@
     "declaration": false,
     "outDir": "dist",
     "isolatedModules": true,
-    "verbatimModuleSyntax": false,
     "allowImportingTsExtensions": false
   },
   "include": ["src/**/*", "tests/**/*", "tsup.config.ts", "vitest.config.ts"],

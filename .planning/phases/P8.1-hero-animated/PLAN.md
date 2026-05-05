@@ -20,6 +20,8 @@ estimated_effort: 3-4h
 
 # PLAN: P8.1 — Animated hero visual
 
+> Paths prefixed with `<repo>` are relative to the repo root (e.g. `<repo>/assets/hero.svg` → `./assets/hero.svg` from this checkout). Absolute operator paths were scrubbed to relative form per security review v2 M1.
+
 ## Objective
 
 Replace the current static-with-blinking-cursor `assets/hero.svg` with a richer animated SVG that depicts the **operator-loop in motion** — directory open → Claude reads project note → ship → next project — and reads as a 5-10 second screencap of a solo founder's workflow without exposing real vault contents. The new SVG must inline-render and loop natively on github.com (light + dark theme), stay ≤500KB (target ≤50KB), and replace the existing file in-place to avoid touching the 7 README references unnecessarily — except to optionally refresh alt text.
@@ -171,9 +173,9 @@ Numbered, sequential, no mid-phase user input required. Each step has an explici
 
 4. **Local browser sanity-check** — three browsers, three commands:
    ```bash
-   open -a "Google Chrome" /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg
-   open -a "Safari" /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg
-   open -a "Firefox" /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg
+   open -a "Google Chrome" <repo>/assets/hero.svg
+   open -a "Safari" <repo>/assets/hero.svg
+   open -a "Firefox" <repo>/assets/hero.svg
    ```
    Visually confirm: animation runs, loops at ~10s, no console errors, no clipped elements. If Firefox is not installed, fallback: use `osascript` to confirm only Chrome + Safari and document the Firefox-untested status in CHANGELOG. Done: at least Chrome + Safari render the animation cleanly with no visible glitches.
 
@@ -181,8 +183,8 @@ Numbered, sequential, no mid-phase user input required. Each step has an explici
 
 6. **Verify file size ≤500KB** (target ≤50KB given vector-only content):
    ```bash
-   ls -la /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg
-   wc -c /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg
+   ls -la <repo>/assets/hero.svg
+   wc -c <repo>/assets/hero.svg
    ```
    Done: byte count well under 500KB. If somehow over (won't happen for inline-CSS SVG), simplify: drop the staggered fade-in delays, collapse the directory tree to 2 lines instead of 3.
 
@@ -190,14 +192,14 @@ Numbered, sequential, no mid-phase user input required. Each step has an explici
 
 8. **Verify all 6 translated READMEs** still point at `assets/hero.svg`. Since this is an in-place replacement, **no edits required** — the `<img src="assets/hero.svg" …>` tags continue to resolve. Confirm with:
    ```bash
-   cd /Users/mccarthy606/Projects/claude-operator-stack && \
+   cd <repo> && \
      grep -n 'src="assets/hero\.' README.md README.ru.md README.es.md README.pt-br.md README.tr.md README.zh.md README.ja.md
    ```
    Expected: 7 matches, all pointing at `assets/hero.svg`. Done: no README needs an `<img>` edit.
 
 9. **Sanitisation grep** — verify the new SVG ships only generic project names:
    ```bash
-   cd /Users/mccarthy606/Projects/claude-operator-stack && \
+   cd <repo> && \
      grep -E '(brain-vault|mccarthy|dimana503|McCarthy|dmitry|Dmitry)' assets/hero.svg && \
      echo 'FAIL: real identifier leaked' || echo 'PASS: no real identifiers'
    ```
@@ -208,8 +210,8 @@ Numbered, sequential, no mid-phase user input required. Each step has an explici
 
 11. **Final visual diff** before commit:
     ```bash
-    cd /Users/mccarthy606/Projects/claude-operator-stack && git diff --stat assets/hero.svg CHANGELOG.md
-    cd /Users/mccarthy606/Projects/claude-operator-stack && git status
+    cd <repo> && git diff --stat assets/hero.svg CHANGELOG.md
+    cd <repo> && git status
     ```
     Done: only `assets/hero.svg` and `CHANGELOG.md` show as modified. No README changes (good — confirms in-place replacement worked). No other files staged.
 
@@ -239,42 +241,42 @@ Numbered, sequential, no mid-phase user input required. Each step has an explici
 
 ```bash
 # Criterion 1: new SVG exists, is animated (contains <animate> or @keyframes)
-test -f /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg && \
-  grep -E -l '(@keyframes|<animate|<animateTransform)' /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg && \
+test -f <repo>/assets/hero.svg && \
+  grep -E -l '(@keyframes|<animate|<animateTransform)' <repo>/assets/hero.svg && \
   echo 'PASS: animated SVG present' || echo 'FAIL'
 
 # Criterion 2: README.md still references assets/hero.svg
-grep -c 'src="assets/hero\.svg"' /Users/mccarthy606/Projects/claude-operator-stack/README.md
+grep -c 'src="assets/hero\.svg"' <repo>/README.md
 # Expected: 1
 
 # Criterion 3a: loop length — find the longest animation-duration / dur attribute
-grep -oE '(animation-duration|dur)[: =]+"?[0-9.]+s' /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg | sort -u
+grep -oE '(animation-duration|dur)[: =]+"?[0-9.]+s' <repo>/assets/hero.svg | sort -u
 # Expected: longest value ≤ 15s (target: 10s)
 
 # Criterion 3b: file size ≤ 500KB
-SIZE=$(wc -c < /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg) && \
+SIZE=$(wc -c < <repo>/assets/hero.svg) && \
   [ "$SIZE" -le 512000 ] && echo "PASS: ${SIZE} bytes" || echo "FAIL: ${SIZE} bytes"
 
 # Criterion 4: dual-theme — SVG has its own background fill (not relying on page bg)
-grep -E 'fill="(url\(#bg\)|#[0-9a-fA-F]{6})"' /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg | head -3
+grep -E 'fill="(url\(#bg\)|#[0-9a-fA-F]{6})"' <repo>/assets/hero.svg | head -3
 # Expected: at least one <rect width="1280" height="360" fill="url(#bg)"/> or equivalent
 
 # Criterion 5: privacy — no operator identifiers
 grep -E '(brain-vault|mccarthy|dimana503|McCarthy|dmitry|Dmitry|/Users/)' \
-  /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg && \
+  <repo>/assets/hero.svg && \
   echo 'FAIL: real identifier leaked' || echo 'PASS: no leaks'
 
 # Criterion 6: all 7 READMEs reference assets/hero.svg
-cd /Users/mccarthy606/Projects/claude-operator-stack && \
+cd <repo> && \
   grep -l 'src="assets/hero\.svg"' README.md README.ru.md README.es.md README.pt-br.md README.tr.md README.zh.md README.ja.md | wc -l
 # Expected: 7
 
 # Criterion 7: prefers-reduced-motion handler present
-grep -E 'prefers-reduced-motion' /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg && \
+grep -E 'prefers-reduced-motion' <repo>/assets/hero.svg && \
   echo 'PASS: reduced-motion handled' || echo 'FAIL: no reduced-motion media query'
 
 # Bonus: count beats — directory tree should mention 3 generic projects
-grep -cE '(marketplace|saas-kit|pipeline)\.md' /Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg
+grep -cE '(marketplace|saas-kit|pipeline)\.md' <repo>/assets/hero.svg
 # Expected: ≥ 3
 ```
 
@@ -322,17 +324,17 @@ Total: **3-4h** focus session, single-shot, no mid-phase user input.
 ## 10. Files affected — exact paths
 
 **Modified (in-place):**
-- `/Users/mccarthy606/Projects/claude-operator-stack/assets/hero.svg` — replaced with animated version, same path, same `viewBox`, same brand palette.
-- `/Users/mccarthy606/Projects/claude-operator-stack/CHANGELOG.md` — one new line under the unreleased section noting the hero animation.
+- `<repo>/assets/hero.svg` — replaced with animated version, same path, same `viewBox`, same brand palette.
+- `<repo>/CHANGELOG.md` — one new line under the unreleased section noting the hero animation.
 
 **Verified-but-NOT-modified** (in-place asset replacement means these don't change):
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.md` (line 3)
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.ru.md` (line 3)
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.es.md` (line 3)
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.pt-br.md` (line 3)
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.tr.md` (line 3)
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.zh.md` (line 3)
-- `/Users/mccarthy606/Projects/claude-operator-stack/README.ja.md` (line 3)
+- `<repo>/README.md` (line 3)
+- `<repo>/README.ru.md` (line 3)
+- `<repo>/README.es.md` (line 3)
+- `<repo>/README.pt-br.md` (line 3)
+- `<repo>/README.tr.md` (line 3)
+- `<repo>/README.zh.md` (line 3)
+- `<repo>/README.ja.md` (line 3)
 
 **Explicitly not touched (per phase constraints):**
 - `install.sh`, `package.json`, any TypeScript or Python file.

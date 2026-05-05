@@ -44,7 +44,7 @@ describe("runVerify", () => {
     expect(code).toBe(2);
   });
 
-  it("complete settings + present files returns 0 (no missing)", () => {
+  it("complete settings returns 0 (3 plugins wired; externals advisory)", () => {
     fs.writeFileSync(
       path.join(tmp, "settings.json"),
       JSON.stringify({
@@ -55,17 +55,10 @@ describe("runVerify", () => {
         },
       })
     );
-    fs.mkdirSync(path.join(tmp, "mcp-configs"), { recursive: true });
-    fs.writeFileSync(path.join(tmp, "mcp-configs", "mcp-servers.json"), "{}");
-    fs.mkdirSync(path.join(tmp, "rules"), { recursive: true });
-    fs.writeFileSync(
-      path.join(tmp, "rules", "obsidian-integration.md"),
-      "# rule"
-    );
 
     const code = runVerify({ claudeDirOverride: tmp });
     expect(code).toBe(0);
-    expect(captured.join("")).toContain("5 wired");
+    expect(captured.join("")).toContain("3 wired");
   });
 
   it("settings present but missing plugins returns 10 (advisory)", () => {

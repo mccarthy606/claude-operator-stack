@@ -94,7 +94,7 @@
 
 > Выбери один путь установки. Не запускай `curl | bash` поверх ручного клона — они конфликтуют.
 
-Клон, аудит, запуск:
+### Через bash (рекомендуется — клонировать, аудитировать, запустить)
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
@@ -113,9 +113,24 @@ less install.sh           # сначала прочитай
 
 В `~/.claude/` ничего не пишется без явного подтверждения. Установщик поддерживает флаги `--dry-run` и `--yes`.
 
+### Через npm (node-native путь)
+
+> **Будет доступно после публикации пакета в Phase 9.** До публичного запуска npm registry возвращает 404. Используй bash-путь выше, пока пакет не опубликован.
+
+```bash
+npx claude-operator-stack init --dry-run    # превью
+npx claude-operator-stack init              # применить
+npx claude-operator-stack verify            # аудит существующей установки
+npx claude-operator-stack list-stack        # показать установленные компоненты
+```
+
+Тот же результат, что и `install.sh`, но другая эргономика. Визард ведёт через выбор marketplaces, копирует sanitized конфиги как sidecar-файлы (`*.from-operator-stack`) и печатает команды `/plugin`, которые ты запустишь внутри Claude Code.
+
 ---
 
 ## Что внутри
+
+> Структура репозитория на v0.1 — обновление до v1.0 (cookbook, scaffolds, profiles, skills, packages) в [issue #8](https://github.com/mccarthy606/claude-operator-stack/issues/8). Полное актуальное дерево — в [англоязычном README](README.md#whats-inside).
 
 ```
 claude-operator-stack/

@@ -18,7 +18,7 @@ The stack ships as 4 core components (always installed) and 2 opt-in components 
 |-------|-----------|--------|----------------------|
 | 1 | **Claude Code** | **Required** | The runtime. Everything else loads on top. |
 | 2 | **Obsidian** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | **Required** | Where your projects live — `~/Brain/Projects/<name>.md` is the cross-session memory that fixes "by Thursday I forgot what I decided on Product B." |
-| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | **Required** | Knowledge-graph queries across all your project folders. Compounds with Obsidian. |
+| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | **Recommended** (operator-private until v1.1) | Knowledge-graph queries across all your project folders. Compounds with Obsidian. Skip if you do not have access — the cookbook's `/graphify` calls become inactive, but Obsidian still gives you the cross-session memory layer. |
 | 4 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | **Required** | UI generation that does not look like every other shadcn template. |
 | 5 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | **Opt-in (recommend)** | Broad skill + agent catalog. Worth installing on day one when you ship multiple products — the GSD family, code review skills, and chief-of-staff pay back fast at three-product cadence. |
 | 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | **Opt-in (skip day 1)** | Add when you start running paid traffic experiments on a product that has cleared its first paying-user threshold. Skip until then. |

@@ -6,7 +6,7 @@ Wizard installer for the [Claude Operator Stack][repo] — a curated stack of sk
 npx claude-operator-stack init --dry-run    # preview
 npx claude-operator-stack init              # apply
 npx claude-operator-stack verify            # audit ~/.claude/
-npx claude-operator-stack list-stack        # show the six components
+npx claude-operator-stack list-stack        # show the 4 core + 2 opt-in components
 ```
 
 This CLI is the node-native sibling of [`install.sh`][install] in the parent repo. It targets the same files (`~/.claude/settings.json`, `~/.claude/mcp-configs/mcp-servers.json`, `~/.claude/rules/obsidian-integration.md`) and obeys the same safety rule:
@@ -55,7 +55,7 @@ Exit codes: `0` all wired · `1` `settings.json` not found · `2` `settings.json
 
 ### `list-stack`
 
-Static printout of the six components in the stack — name, layer, author, repo. Useful as a sanity check before you run `init`.
+Static printout of the stack components, grouped by tier (4 core, then 2 opt-in) — name, layer, author, repo. Mirrors the README + stack/README.md framing. Useful as a sanity check before you run `init`.
 
 ```text
 Usage: claude-operator-stack list-stack [options]
@@ -91,7 +91,7 @@ node packages/cli/dist/cli.js --help
 node packages/cli/dist/cli.js init --dry-run --claude-dir /tmp/cos-test
 ```
 
-The package is built with `tsup` to a single ESM file with a `#!/usr/bin/env node` shebang preserved on the bin file. Node 20 or newer is required.
+The package is built with `tsup` to a bundled ESM module (`dist/cli.js`, ~24 KB) with a `#!/usr/bin/env node` shebang on the bin file, plus three small runtime dependencies pulled by `npm install`: `commander`, `prompts`, and `picocolors`. Node-built-in imports keep their `node:` prefix in the bundled artefact. Configs ship inside the tarball under `configs/` so `init` is self-sufficient — no monorepo or network access required at runtime. Node 20 or newer is required.
 
 ## License
 

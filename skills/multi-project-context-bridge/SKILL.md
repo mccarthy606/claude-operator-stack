@@ -27,6 +27,9 @@ The operator runs 7 projects in parallel. Each session is loaded in one project'
 
 ## How It Works
 
+<!-- gitignore-verification step added per security review v2 L3 -->
+
+0. **Verify `.anonymisation-map.local` is gitignored before reading it.** If the file exists at the source project's repo root, run `git check-ignore .anonymisation-map.local` (or grep `.gitignore` for the filename) and confirm it is excluded from version control. Refuse to read the file if it is not gitignored — the alias map is the most sensitive artefact in the anonymisation discipline; a single accidental commit leaks every real identifier the operator has aliased. Surface the missing-gitignore-entry to the operator and stop until they fix it.
 1. Confirm source and target.
    - If the source is missing, list the operator's `~/Brain/Projects/*.md` filenames as candidates and ask.
    - If source equals target, stop and report — bridging within the same project is not a use case for this skill.

@@ -98,18 +98,7 @@ Sets up the stack on a fresh machine. macOS and Linux supported; Windows via WSL
 
 > Pick one install path. Don't run both back-to-back on a fresh `~/.claude/` — they target the same files and the second run will create duplicate sidecars.
 
-### Via npm (node-native path)
-
-```bash
-npx claude-operator-stack init --dry-run    # preview
-npx claude-operator-stack init              # apply
-npx claude-operator-stack verify            # audit your existing setup
-npx claude-operator-stack list-stack        # show the six components
-```
-
-Same outcome as `install.sh`, different ergonomics. The wizard prompts you through marketplace selection, copies sanitized configs as sidecar files (`*.from-operator-stack`), and prints the manual `/plugin` commands you'll run inside Claude Code.
-
-### Via bash (audit-and-run path)
+### Via bash (recommended — clone, audit, run)
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
@@ -127,6 +116,19 @@ The installer will:
 4. Print the next-step checklist for adding your own API keys
 
 Nothing is committed to your `~/.claude/` without explicit confirmation. The installer supports `--dry-run` and `--yes` flags.
+
+### Via npm (node-native path)
+
+> **Available after the package is published in Phase 9.** The npm registry returns 404 until the public-launch flip ships `npm publish`. Use the bash path above until then.
+
+```bash
+npx claude-operator-stack init --dry-run    # preview
+npx claude-operator-stack init              # apply
+npx claude-operator-stack verify            # audit your existing setup
+npx claude-operator-stack list-stack        # show the wired components
+```
+
+Same outcome as `install.sh`, different ergonomics. The wizard prompts you through marketplace selection, copies sanitized configs as sidecar files (`*.from-operator-stack`), and prints the manual `/plugin` commands you'll run inside Claude Code.
 
 <div align="center">
 <img src="assets/screenshots/install-dryrun.svg" alt="install.sh --dry-run output" width="100%"/>
@@ -267,7 +269,7 @@ Six original `SKILL.md` packages targeting solo-founder use-cases ECC's 182-skil
 | Skill | Use case |
 |-------|----------|
 | [`solo-billing-monitor`](skills/solo-billing-monitor/SKILL.md) | Weekly cost rollup across cloud + AI APIs |
-| [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) | Bridge graphify decisions across projects with anonymisation |
+| [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) | Bridge cross-project decisions via graphify queries with anonymisation |
 | [`obsidian-sync-helper`](skills/obsidian-sync-helper/SKILL.md) | Verify Brain notes vs git state |
 | [`case-study-anonymiser`](skills/case-study-anonymiser/SKILL.md) | Apply the redaction playbook to a draft case study |
 | [`weekly-monday-review`](skills/weekly-monday-review/SKILL.md) | Monday review → 2-of-N focus pick |
@@ -362,7 +364,7 @@ If your work is in here and not credited, open an issue and I'll fix it the same
 
 ## Status
 
-Young repo. v1.0 adds the cookbook (12 recipes), scaffolds (web + WhatsApp), profiles (4 archetypes), 6 hooks, the ECC skill index, and screenshots. Earlier v0.2 added the hero banner, Mermaid diagrams, 7-language nav, and full RU/ES translations (RU/ES coverage of the v1.0 additions is tracked as an open issue). Case studies get filled in as products ship. CHANGELOG tracks the rest.
+Young repo. v1.0 added the cookbook (12 recipes), scaffolds (web + WhatsApp), profiles (4 archetypes), 6 hooks, the ECC skill index, and screenshots. The post-v1.0 wave (`[Unreleased]`) adds 6 original SKILL.md packages, an npm CLI sibling to install.sh, an animated SVG hero, and a stack reframe to 4 core + 2 opt-in components alongside the OMEGA → graphify knowledge-graph migration. Earlier v0.2 added the hero banner, Mermaid diagrams, 7-language nav, and full RU/ES translations (RU/ES coverage of the v1.0 + post-v1.0 content is tracked as an open issue). Case studies get filled in as products ship. CHANGELOG tracks the rest.
 
 Issues, PRs, and forks welcome. The stack is designed to be customized: copy what fits, drop what doesn't.
 

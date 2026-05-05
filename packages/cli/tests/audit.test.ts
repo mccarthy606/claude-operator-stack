@@ -49,47 +49,18 @@ describe("audit() — pure logic, full branch coverage", () => {
     );
   });
 
-  it("complete settings + all files present — fully wired", () => {
+  it("complete settings — three plugins wired; three external rows always skipped", () => {
     const report = audit({
       stack: STACK,
       settings: settingsComplete as Record<string, unknown>,
       fileExists: ALWAYS_EXISTS,
     });
-    expect(report.summary.wired).toBe(5);
+    expect(report.summary.wired).toBe(3);
     expect(report.summary.missing).toBe(0);
-    expect(report.summary.skipped).toBe(1);
+    expect(report.summary.skipped).toBe(3);
   });
 
-  it("file kind: present when fileExists returns true", () => {
-    const report = audit({
-      stack: STACK,
-      settings: settingsEmpty as Record<string, unknown>,
-      fileExists: ALWAYS_EXISTS,
-    });
-    const fileRows = report.rows.filter((r) => r.source === "filesystem");
-    expect(fileRows.length).toBe(2);
-    for (const f of fileRows) {
-      expect(f.status).toBe("present");
-      expect(f.notes).toBe("file present");
-    }
-  });
-
-  it("file kind: missing when fileExists returns false; rule notes hint at configs/rules/", () => {
-    const report = audit({
-      stack: STACK,
-      settings: settingsEmpty as Record<string, unknown>,
-      fileExists: NEVER_EXISTS,
-    });
-    const fileRows = report.rows.filter((r) => r.source === "filesystem");
-    expect(fileRows.length).toBe(2);
-    for (const f of fileRows) {
-      expect(f.status).toBe("missing");
-    }
-    const ruleRow = fileRows.find((r) => r.id === "obsidian-rule");
-    expect(ruleRow?.notes).toContain("rules/");
-  });
-
-  it("optional kind always returns 'skipped' regardless of inputs", () => {
+  it("external kind always returns 'skipped' regardless of inputs", () => {
     const reportNull = audit({
       stack: STACK,
       settings: null,
@@ -100,8 +71,23 @@ describe("audit() — pure logic, full branch coverage", () => {
       settings: settingsComplete as Record<string, unknown>,
       fileExists: ALWAYS_EXISTS,
     });
-    expect(reportNull.rows.find((r) => r.id === "operator-hooks")?.status).toBe("skipped");
-    expect(reportFull.rows.find((r) => r.id === "operator-hooks")?.status).toBe("skipped");
+    const externalIds = ["claude-code", "obsidian", "graphify"];
+    for (const id of externalIds) {
+      expect(reportNull.rows.find((r) => r.id === id)?.status).toBe("skipped");
+      expect(reportFull.rows.find((r) => r.id === id)?.status).toBe("skipped");
+    }
+  });
+
+  it("external row notes carry the install command or note text", () => {
+    const report = audit({
+      stack: STACK,
+      settings: null,
+      fileExists: NEVER_EXISTS,
+    });
+    const claudeCode = report.rows.find((r) => r.id === "claude-code");
+    expect(claudeCode?.source).toBe("opt-in");
+    expect(typeof claudeCode?.notes).toBe("string");
+    expect((claudeCode?.notes ?? "").length).toBeGreaterThan(0);
   });
 
   it("malformed enabledPlugins (array, primitive) is treated as missing — defensive parsing", () => {

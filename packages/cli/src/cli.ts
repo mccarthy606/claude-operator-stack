@@ -75,11 +75,18 @@ async function main(argv: readonly string[]): Promise<void> {
   await program.parseAsync(argv as string[]);
 }
 
-// Run only when invoked as a binary, not when imported by tests.
-const invokedDirectly = import.meta.url === `file://${process.argv[1]}`;
-if (invokedDirectly) {
+// Bin entrypoint. `cli.ts` is referenced from `package.json` `bin`; no other
+// module in the package imports from this file (commands import from
+// `./commands/*`). Running `main` unconditionally is safe — and survives every
+// install path: bare `node dist/cli.js`, `npm install -g`'s symlinked bin
+// shim, `npx`, and macOS `/tmp` symlink resolution. Tests call `buildProgram`
+// directly and never reach this top-level call site (vitest imports modules,
+// it doesn't execute `cli.ts` as a script).
+//
+// Set `COS_CLI_SKIP_MAIN=1` to opt out (kept for any future test harness that
+// imports this module directly without going through commander).
+if (process.env.COS_CLI_SKIP_MAIN !== "1") {
   main(process.argv).catch((err: unknown) => {
-    // eslint-disable-next-line no-console
     console.error(err);
     process.exit(1);
   });

@@ -9,36 +9,54 @@
  * cross-referenced against `stack/README.md` (the human-facing single source
  * of truth). `tests/stack.test.ts` snapshot-asserts shape and length so drift
  * is loud.
+ *
+ * `tier` mirrors the README's 4-core / 2-opt-in framing. Components with
+ * `tier: "core"` are documented as always-installed; `tier: "opt-in"` ones
+ * earn their keep only when a specific use case shows up.
  */
+export type StackTier = "core" | "opt-in";
+
 export type StackComponent =
   | {
       readonly id: string;
       readonly name: string;
       readonly layer: string;
+      readonly tier: StackTier;
       readonly author: string;
       readonly repo: string;
       readonly kind: "plugin";
       /** Key under `settings.enabledPlugins` we expect to see set to `true`. */
       readonly pluginKey: string;
+      /** Where the README/profiles say to add this opt-in component. */
+      readonly optionalCondition?: string;
+      /** Manual install command, when one is documented (e.g. `npm install -g …`). */
+      readonly installCommand?: string;
     }
   | {
       readonly id: string;
       readonly name: string;
       readonly layer: string;
+      readonly tier: StackTier;
       readonly author: string;
       readonly repo: string;
       readonly kind: "file";
       /** Path relative to `~/.claude/` we check for presence. */
       readonly relPath: string;
+      readonly optionalCondition?: string;
+      readonly installCommand?: string;
     }
   | {
       readonly id: string;
       readonly name: string;
       readonly layer: string;
+      readonly tier: StackTier;
       readonly author: string;
       readonly repo: string;
-      readonly kind: "optional";
-      readonly note: string;
+      readonly kind: "external";
+      /** Manual install or download URL — the component is not wired by the installer. */
+      readonly installCommand: string;
+      readonly optionalCondition?: string;
+      readonly note?: string;
     };
 
 /**

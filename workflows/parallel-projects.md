@@ -55,7 +55,7 @@ Every Monday, 30 minutes:
 3. Decide which 2 projects get focus this week
 4. Mark the others "paused — touching on Friday only"
 
-Without this filter, all 7 projects compete every day. With the filter, 2 win the week and the others get a 30-minute Friday touchpoint.
+The filter is what stops all 7 projects from competing every day. Two get focused work; the other five slot into a 30-minute Friday touchpoint.
 
 The decision criterion: which project's next milestone moves the needle most for revenue or evidence — not "which is most fun" or "which is loudest in my head."
 

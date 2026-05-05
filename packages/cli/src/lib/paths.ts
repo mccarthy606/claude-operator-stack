@@ -7,7 +7,6 @@
 import * as os from "node:os";
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
-import * as fs from "node:fs";
 
 export type PathOptions = {
   /** Override for `~/.claude/` resolution. Used by `--claude-dir` and tests. */
@@ -41,30 +40,41 @@ export function resolveClaudeDir(opts: PathOptions = {}): string {
 }
 
 /**
- * Walk up from this module's URL until we find a `package.json` with a
- * `workspaces` array — that's the monorepo root, which is also where
- * `configs/` lives.
+ * Resolve the package root (the directory that contains `configs/`).
+ *
+ * The CLI ships its own `configs/` snapshot inside the npm tarball — the build
+ * pipeline (`tsup` `onSuccess`) copies the relevant repo-root templates into
+ * `packages/cli/configs/` before publish, and `package.json` `files` includes
+ * `configs/` so the directory survives `npm pack`.
+ *
+ * At runtime this function points at that bundled directory regardless of how
+ * the bin was invoked — symlink (npm install -g), npx shim, direct
+ * `node dist/cli.js`, or `tsx src/cli.ts` during local dev. No filesystem walk,
+ * no dependence on the user's monorepo state.
+ *
+ * Layouts:
+ *   • Built artefact:    `<pkg>/dist/cli.js`  → returns `<pkg>` (configs at `<pkg>/configs`)
+ *   • Local dev (tsx):   `<pkg>/src/lib/paths.ts` → returns `<pkg>` via two-up
+ *
+ * The `startFromUrl` parameter exists purely for tests so they can inject a
+ * fake module URL.
  */
 export function resolveRepoRoot(startFromUrl: string = import.meta.url): string {
-  let dir = path.dirname(fileURLToPath(startFromUrl));
-  // Hard cap on walks so a misplaced binary never spins forever.
-  for (let i = 0; i < 12; i++) {
-    const candidate = path.join(dir, "package.json");
-    if (fs.existsSync(candidate)) {
-      try {
-        const pkg = JSON.parse(fs.readFileSync(candidate, "utf8")) as Record<string, unknown>;
-        if (Array.isArray(pkg.workspaces)) return dir;
-      } catch {
-        // ignore parse errors — keep walking
-      }
-    }
-    const parent = path.dirname(dir);
-    if (parent === dir) break;
-    dir = parent;
+  const here = path.dirname(fileURLToPath(startFromUrl));
+  // `here` is one of:
+  //   <pkg>/dist               (bundled cli.js sits at <pkg>/dist/cli.js)
+  //   <pkg>/src/lib            (paths.ts in source tree)
+  //   <test-fake-root>/...     (test injection — return as-is, the test owns it)
+  const baseName = path.basename(here);
+  if (baseName === "dist") {
+    return path.dirname(here);
   }
-  // Fallback: the directory we started from. The caller treats missing source
-  // files as a soft warning, so we never hard-fail here.
-  return path.dirname(fileURLToPath(startFromUrl));
+  if (baseName === "lib" && path.basename(path.dirname(here)) === "src") {
+    return path.dirname(path.dirname(here));
+  }
+  // Fallback: the directory we started from. Tests that inject a custom URL
+  // hit this branch and treat the start dir itself as the package root.
+  return here;
 }
 
 /** `${dst}.from-operator-stack` — central so the suffix only appears once. */

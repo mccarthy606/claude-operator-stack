@@ -94,7 +94,7 @@ Levanta el stack en una máquina nueva. macOS y Linux soportados; Windows vía W
 
 > Elegí un solo camino de install. No corras `curl | bash` encima de un clone manual: entran en conflicto.
 
-Clonar, auditar, correr:
+### Vía bash (recomendado — clonar, auditar, correr)
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
@@ -113,9 +113,24 @@ El instalador va a:
 
 Nada se commitea a tu `~/.claude/` sin confirmación explícita. El instalador soporta los flags `--dry-run` y `--yes`.
 
+### Vía npm (camino node-native)
+
+> **Disponible después de que el paquete se publique en Phase 9.** El registry npm devuelve 404 hasta el flip de visibilidad pública. Usá el camino bash de arriba mientras tanto.
+
+```bash
+npx claude-operator-stack init --dry-run    # preview
+npx claude-operator-stack init              # aplicar
+npx claude-operator-stack verify            # auditar tu setup existente
+npx claude-operator-stack list-stack        # mostrar los componentes wired
+```
+
+Mismo resultado que `install.sh`, distinta ergonomía. El wizard te lleva por la selección de marketplaces, copia los configs sanitizados como sidecars (`*.from-operator-stack`) e imprime los comandos `/plugin` que vas a correr dentro de Claude Code.
+
 ---
 
 ## Qué hay adentro
+
+> Estructura del repo a fecha v0.1 — actualización a v1.0 (cookbook, scaffolds, profiles, skills, packages) en [issue #8](https://github.com/mccarthy606/claude-operator-stack/issues/8). Para el árbol completo actual, ver el [README en inglés](README.md#whats-inside).
 
 ```
 claude-operator-stack/

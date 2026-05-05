@@ -122,7 +122,10 @@ async def test_inbound_message_classifies_and_replies() -> None:
             "app.webhook.classify_message",
             new=AsyncMock(return_value=ClassificationResult(label="question", raw="question")),
         ),
-        patch("app.webhook.send_text", new=AsyncMock(return_value={"messages": [{"id": "x"}]})) as send_mock,
+        patch(
+            "app.webhook.send_text",
+            new=AsyncMock(return_value={"messages": [{"id": "x"}]}),
+        ) as send_mock,
     ):
         response = client.post(
             "/webhook/whatsapp",
@@ -136,7 +139,7 @@ async def test_inbound_message_classifies_and_replies() -> None:
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
     send_mock.assert_awaited_once()
-    args, kwargs = send_mock.call_args
+    kwargs = send_mock.call_args.kwargs
     assert kwargs.get("to_number") == "5491111111111"
 
 

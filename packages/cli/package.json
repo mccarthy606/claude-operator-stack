@@ -36,6 +36,7 @@
   },
   "files": [
     "dist",
+    "configs",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
@@ -50,6 +51,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsx src/cli.ts",
+    "lint": "eslint src tests",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -61,12 +63,15 @@
     "prompts": "^2.4.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.10.0",
     "@types/node": "^20.14.10",
     "@types/prompts": "^2.4.9",
     "@vitest/coverage-v8": "^2.0.5",
+    "eslint": "^9.10.0",
     "tsup": "^8.2.4",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
+    "typescript-eslint": "^8.5.0",
     "vitest": "^2.0.5"
   }
 }

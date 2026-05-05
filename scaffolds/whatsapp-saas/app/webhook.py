@@ -43,8 +43,8 @@ async def verify_webhook(request: Request) -> int:
     if mode == "subscribe" and token == settings.wa_verify_token and challenge:
         try:
             return int(challenge)
-        except ValueError:
-            raise HTTPException(status_code=400, detail="invalid challenge")
+        except ValueError as err:
+            raise HTTPException(status_code=400, detail="invalid challenge") from err
 
     logger.warning("webhook_verification_failed", extra={"mode": mode})
     raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="verification failed")
@@ -173,7 +173,7 @@ async def handle_message(message: InboundMessage) -> None:
                     logger.info("reply_skipped_session_expired", extra={"sender": sender})
                 else:
                     logger.warning("reply_send_failed", extra={"status": err.status})
-    except Exception:  # noqa: BLE001
+    except Exception:
         # Don't re-raise; one bad message must not stop the batch or trigger a
         # Meta retry storm against the rest of the entries.
         logger.exception("handle_message_failed", extra={"id": message.id})
