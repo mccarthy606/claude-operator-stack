@@ -1,0 +1,23 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request, sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3).status == 200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+# A local Supabase emulator is intentionally not wired here. Two reasons:
+#   1. supabase-py talks to the hosted Supabase REST API; the emulator URL
+#      shape differs and you'll likely hit auth quirks during local dev anyway.
+#   2. For most solo-founder iteration, a free-tier Supabase project per
+#      environment is cheaper-in-attention than running the full local stack.
+# If you want it, see https://supabase.com/docs/guides/cli/local-development.
