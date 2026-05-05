@@ -28,6 +28,7 @@
 - [El Playbook del Operador](#el-playbook-del-operador)
 - [Por qué existe](#por-qué-existe)
 - [Cómo se compara](#cómo-se-compara)
+- [Docs largas](#docs-largas)
 - [Agradecimientos](#agradecimientos)
 - [Estado](#estado)
 - [Licencia](#licencia)
@@ -130,44 +131,26 @@ Mismo resultado que `install.sh`, distinta ergonomía. El wizard te lleva por la
 
 ## Qué hay adentro
 
-> Estructura del repo a fecha v0.1 — actualización a v1.0 (cookbook, scaffolds, profiles, skills, packages) en [issue #8](https://github.com/mccarthy606/claude-operator-stack/issues/8). Para el árbol completo actual, ver el [README en inglés](README.md#whats-inside).
+El repo es un toolkit de cuatro capas: un `stack/` de componentes curados, un set de `workflows/` que los componen, artefactos (`cookbook/`, `case-studies/`, `scaffolds/`, `profiles/`, `skills/`) y la maquinaria de soporte (`configs/`, `commands/`, `docs/`, `tests/`, `credits/`). Nivel superior:
 
 ```
 claude-operator-stack/
-├── README.md                    ← estás acá
-├── install.sh                   ← instalador (auditalo antes de correr)
-├── CLAUDE.md                    ← mi config Claude a nivel proyecto (sanitizada)
-│
-├── stack/                       ← setup componente por componente
-│   ├── ecc.md                   ← ECC — qué uso, por qué
-│   ├── toprank.md               ← Toprank — SEO + Ads workflow
-│   ├── frontend-design.md       ← generación de UI
-│   ├── obsidian-brain.md        ← Obsidian como second brain
-│   ├── graphify.md              ← capa de grafo de conocimiento graphify
-│   └── mcp-servers.md           ← los MCP servers que corro
-│
-├── workflows/                   ← cómo trabajo realmente
-│   ├── ship-a-product-in-a-day.md
-│   ├── parallel-projects.md     ← 7 proyectos en vuelo a la vez
-│   ├── obsidian-as-context.md   ← el loop del «second brain»
-│   ├── content-pipeline.md      ← automatización YouTube + IG
-│   └── solo-ops.md              ← manejar una empresa de una sola persona
-│
-├── case-studies/                ← productos reales lanzados, no demos
-│   ├── niche-booking-trio.md
-│   ├── ai-legal-tool.md
-│   ├── whatsapp-b2b-saas.md
-│   └── youtube-pipeline.md
-│
-├── configs/                     ← configs sanitizados para copiar
-│   ├── settings.json.example
-│   ├── mcp-servers.json.example
-│   ├── hooks/                   ← mis hooks custom (auditalos)
-│   └── rules/                   ← mis reglas
-│
+├── stack/                       ← desglose de 4 núcleo + 2 opcionales
+├── workflows/                   ← 5 playbooks de operador
+├── case-studies/                ← 4 productos lanzados anonimizados
+├── cookbook/                    ← 12 recetas para copiar
+├── skills/                      ← 6 paquetes SKILL.md propios
+├── commands/                    ← 6 slash-commands sobre los skills
+├── scaffolds/                   ← web-saas + whatsapp-saas
+├── profiles/                    ← 4 caminos de instalación por arquetipo
+├── packages/cli/                ← CLI npm hermano de install.sh
+├── configs/                     ← settings/hooks/rules sanitizados
+├── docs/                        ← guías largas y secciones extraídas
+├── tests/                       ← suite de integración E2E
 └── credits/                     ← atribución a cada autor original
-    └── README.md
 ```
+
+[Árbol anotado completo →](docs/whats-inside.md)
 
 ---
 
@@ -206,36 +189,17 @@ La mayoría de los componentes acá son trabajo de otra gente. Lo mío es el peg
 
 ## Cómo se compara
 
-Algunos llegan acá preguntando: ¿esto es un fork de [Everything Claude Code](https://github.com/affaan-m/everything-claude-code), o es otra plantilla starter? Ninguna de las dos.
+Solo Stack es la envoltura operator-first sobre Claude Code; Everything Claude Code (ECC) es el catálogo upstream de skills + agents del que depende este repo; las plantillas starter son scaffolds framework-first. Solo Stack y ECC están pensados para coexistir — buena parte va a instalar los dos.
 
-Las tres opciones de abajo son las que un visitante nuevo suele comparar. Se pisan en algunos puntos, pero cada una apunta a un tipo de trabajo distinto. La tabla es un mapa, no un ranking — agarrá la columna que coincide con cómo pasás la semana en serio.
+[Comparación completa →](docs/comparing-stacks.md)
 
-Qué es cada columna:
+---
 
-- **Solo Stack** es este repo. Una instalación de 4 componentes núcleo + 2 opcionales con el workflow, el cookbook y los case studies envueltos alrededor.
-- **Everything Claude Code** es la librería upstream de skills + agents de la que depende este repo. La construye y mantiene [@affaan-m](https://github.com/affaan-m).
-- **Plantillas starter** es el balde para `create-next-app`, Vite + Tailwind vainilla, T3 stack y demás scaffolds de un solo framework.
+## Docs largas
 
-| Dimensión | Solo Stack | Everything Claude Code | Plantillas starter |
-|-----------|------------|------------------------|--------------------|
-| Audiencia | Fundador solo con 2+ productos al mismo tiempo | Ingenieros y equipos de AI dev | Quienes recién arrancan con web apps y prototipos rápidos |
-| Voz | Operator-first — el workflow antes que el código | Engineer-first — profundidad por ecosistema | Framework-first — el framework define la forma |
-| Alcance del stack | Set curado de 4-núcleo + 2-opcionales con una sola ruta de instalación opinada | 182 skills + 48 agents en 12+ ecosistemas de lenguaje | Un framework + starter de auth/db |
-| Soporte multi-runtime | Solo Claude Code | Claude Code, Cursor, Codex, OpenCode, Gemini, Antigravity | Atado al framework |
-| Productos realmente lanzados | 4 case studies anonimizados de productos de un operador | Producto propio del autor (`zenith.chat`) y configs de plantilla | Ninguno — está pensado como punto de partida |
-| Aportes propios | Workflows, cookbook con 12 recetas, 6 hooks, 6 skills propias | Catálogo amplio de skills + agents, dos paquetes npm | Scaffold + boilerplate |
+Artefactos de profundidad que no encajan en el rol del README como primera impresión: la tabla de comparación completa, el árbol anotado, un changelog narrativo y la justificación del alcance single-harness.
 
-En corto, por audiencia:
-
-- Agarrá **Solo Stack** si llevás varios productos en paralelo y querés un workflow además del config.
-- Agarrá **Everything Claude Code** si querés un catálogo amplio de skills + agents y soporte multi-runtime.
-- Agarrá una **plantilla starter** si estás arrancando tu primera web app y querés el happy path de un framework solo.
-
-Solo Stack y Everything Claude Code están pensados para coexistir — buena parte de los lectores acá va a instalar los dos. Las recetas del cookbook, los profiles y los case studies de este repo asumen que el catálogo de skills de ECC está instalado al lado; los workflows describen cómo ese catálogo se usa de verdad en 2+ productos en paralelo.
-
-Si venís de una plantilla starter y terminaste con 3 abiertas en 3 carpetas distintas, la parte que Solo Stack intenta cubrir está *arriba* de la plantilla: el workflow, el cookbook, la ruta de instalación por perfil y los case studies que muestran qué pasó en productos reales.
-
-Si venís de Everything Claude Code y querés un ejemplo concreto de cómo un operador corre el catálogo sobre una lista de productos en vez de un solo repo, los case studies y los workflows de acá están pensados justamente como ese ejemplo concreto.
+Ver [docs/README.md](docs/README.md) — índice de docs largas (en inglés; traducción diferida).
 
 ---
 

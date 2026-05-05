@@ -60,6 +60,22 @@ npm run lint && npm run typecheck
 
 Audit `install.sh` before running it on your real `~/.claude/`. The installer is designed to be safe (sidecar files, `--dry-run`, `--yes`), but read the script first regardless.
 
+### Tests
+
+Two layers:
+
+- **Unit tests** — `packages/cli/tests/`. Run with `npm --workspace packages/cli test`. Fast (<10s), mocks external dependencies, asserts branch coverage.
+- **Integration tests** — `tests/integration/`. Run with `npm run test:integration`. Slower (~30s on a clean machine), spawns the real CLI binary and asserts the bash installer is HOME-safe.
+
+Before sending a PR:
+
+```bash
+npm --workspace packages/cli test
+npm run test:integration
+```
+
+Both suites mint fresh tmp directories (`mkdtempSync` / `mktemp -d`) for every HOME and `--claude-dir` override. Neither suite touches your real `~/.claude/`. See `tests/README.md` for the isolation guarantees in detail.
+
 ## How to contribute
 
 1. **Open an issue first** for anything bigger than a typo. Five minutes of "is this in scope" beats hours of writing then rejection.
