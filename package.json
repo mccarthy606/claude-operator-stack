@@ -9,6 +9,7 @@
   "scripts": {
     "build": "npm --workspace packages/cli run build",
     "test": "npm --workspace packages/cli test",
+    "test:integration": "bash tests/run-all.sh",
     "dev": "npm --workspace packages/cli run dev"
   },
   "engines": {
