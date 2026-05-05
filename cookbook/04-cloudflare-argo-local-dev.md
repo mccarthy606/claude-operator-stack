@@ -33,8 +33,14 @@ If you do not already have one, point any domain you own at Cloudflare nameserve
 brew install cloudflared
 
 # Linux
+# Verify against Cloudflare's published SHA256 sum:
+#   https://github.com/cloudflare/cloudflared/releases
+# For apt/rpm-managed installs (signed by Cloudflare): https://pkg.cloudflare.com/
+EXPECTED_SHA="<paste from cloudflare release page>"
 curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 \
-  -o /usr/local/bin/cloudflared && chmod +x /usr/local/bin/cloudflared
+  -o /usr/local/bin/cloudflared
+echo "${EXPECTED_SHA}  /usr/local/bin/cloudflared" | sha256sum -c -
+chmod +x /usr/local/bin/cloudflared
 
 # Verify
 cloudflared --version

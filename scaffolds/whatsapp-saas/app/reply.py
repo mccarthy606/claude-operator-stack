@@ -11,6 +11,12 @@ import logging
 from typing import Any
 
 import httpx
+from tenacity import (
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_exponential,
+)
 
 from .deps import get_http_client, get_settings
 
@@ -30,10 +36,21 @@ class WhatsAppSendError(Exception):
         super().__init__(f"WhatsApp send failed: {status} {payload}")
 
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=1, max=8),
+    retry=retry_if_exception_type((httpx.TimeoutException, httpx.NetworkError)),
+    reraise=True,
+)
 async def send_text(to_number: str, body: str) -> dict[str, Any]:
     """Send a plain-text message to ``to_number`` (E.164, no leading '+').
 
     Returns Meta's response JSON on success.
+
+    Wrapped with tenacity retry/backoff for transient httpx network errors
+    (TimeoutException, NetworkError). Application-level 4xx/5xx responses
+    from Meta are not retried here — they are surfaced via WhatsAppSendError
+    so the caller can branch (e.g. on session-expired subcodes).
     """
     settings = get_settings()
     client = get_http_client()
@@ -79,6 +96,7 @@ async def send_text(to_number: str, body: str) -> dict[str, Any]:
 
 def _safe_json(response: httpx.Response) -> dict[str, Any]:
     try:
-        return response.json()
+        data = response.json()
     except ValueError:
         return {"raw": response.text[:500]}
+    return data if isinstance(data, dict) else {"raw": data}

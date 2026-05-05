@@ -32,8 +32,39 @@ Below is the full list of authors whose work this stack depends on. If your work
 | `firecrawl-mcp` | Firecrawl |
 | `fal-ai-mcp-server` | fal.ai |
 | `claude-scheduled-tasks-mcp` | scheduled-tasks community |
+| Vercel MCP ([mcp.vercel.com](https://mcp.vercel.com)) | Vercel |
 
 (Each MCP server has its own license — check upstream.)
+
+## Cookbook references and scaffold dependencies
+
+The cookbook recipes and scaffolds depend on third-party platforms, libraries, and SDKs. The full list, with the surface area each one is referenced from:
+
+### Scaffold dependencies
+
+| Component | Used in | Author |
+|-----------|---------|--------|
+| Next.js | `scaffolds/web-saas/` | Vercel |
+| React | `scaffolds/web-saas/` | Meta |
+| `@sentry/nextjs`, `sentry-sdk[fastapi]` | both scaffolds | Sentry |
+| `@supabase/supabase-js`, `supabase-py` | both scaffolds | Supabase |
+| FastAPI | `scaffolds/whatsapp-saas/` | Sebastián Ramírez |
+| `uvicorn`, `httpx` | `scaffolds/whatsapp-saas/` | encode |
+| `pydantic`, `pydantic-settings` | `scaffolds/whatsapp-saas/` | Samuel Colvin |
+| Anthropic SDK | `scaffolds/whatsapp-saas/` | Anthropic |
+| Docker / Docker Compose | `scaffolds/whatsapp-saas/` | Docker Inc. |
+
+### Cookbook references
+
+- Stripe (Stripe Inc.) — `cookbook/02`
+- Mercado Pago (Mercado Libre) — `cookbook/10`
+- yt-dlp (yt-dlp team) — `cookbook/08`
+- OpenAI Whisper (OpenAI) — `cookbook/08`
+- Telegram Bot API (Telegram) — `cookbook/09`
+- Cloudflare (Cloudflare) — `cookbook/04`, `cookbook/05`
+- Google Analytics (Google) — `cookbook/05`
+
+(Each platform and library carries its own license and terms — check upstream before commercial use.)
 
 ## ECC skills credited explicitly
 

@@ -6,7 +6,8 @@ import logging
 from contextlib import asynccontextmanager
 
 import sentry_sdk
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from sentry_sdk.integrations.fastapi import FastApiIntegration
 from sentry_sdk.scrubber import DEFAULT_DENYLIST, EventScrubber
 
@@ -58,20 +59,42 @@ async def lifespan(app: FastAPI):
     finally:
         client = get_http_client()
         await client.aclose()
+        # Drop the cached client so a hypothetical re-startup builds a fresh
+        # one rather than reusing the closed instance.
+        get_http_client.cache_clear()
         logger.info("app_shutdown")
 
+
+_settings = get_settings()
+_is_prod = _settings.env == "production"
 
 app = FastAPI(
     title="whatsapp-saas",
     version="0.1.0",
     lifespan=lifespan,
-    # Cloud API webhooks do not need OpenAPI exposed in production; flip when
-    # you want internal-only docs.
-    docs_url="/docs",
+    # Cloud API webhooks do not need OpenAPI exposed in production. Gate the
+    # docs endpoints on env so prod builds do not leak the schema.
+    docs_url=None if _is_prod else "/docs",
     redoc_url=None,
+    openapi_url=None if _is_prod else "/openapi.json",
 )
 
 app.include_router(webhook_router)
+
+
+@app.exception_handler(Exception)
+async def _global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    """Catch any unhandled exception and return a sanitised 500.
+
+    Sentry's middleware still receives the exception via the FastAPI
+    integration, so observability is not lost. The response body is
+    intentionally minimal — never echo internal error details to clients.
+    """
+    logger.exception("unhandled_exception", extra={"path": request.url.path})
+    return JSONResponse(
+        status_code=500,
+        content={"status": "error", "detail": "Internal server error"},
+    )
 
 
 @app.get("/healthz", tags=["health"])

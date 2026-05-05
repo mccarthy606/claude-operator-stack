@@ -6,7 +6,7 @@
 
 # Claude Operator Stack — Türkçe
 
-**7 ürün · 4 ay · 0 yatırım · 0 ekip · 1 kişi**
+**4 ayda 7 ürün · solo · gelir öncesi**
 
 </div>
 

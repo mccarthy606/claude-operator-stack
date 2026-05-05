@@ -32,9 +32,18 @@ export function captureError(
 
 export function captureMessage(
   message: string,
+  context?: Record<string, unknown>,
   level: Severity = "info",
 ): void {
-  Sentry.captureMessage(message, level);
+  Sentry.withScope((scope) => {
+    scope.setLevel(level);
+    if (context) {
+      for (const [key, value] of Object.entries(context)) {
+        scope.setExtra(key, value);
+      }
+    }
+    Sentry.captureMessage(message);
+  });
 }
 
 export { Sentry };

@@ -4,7 +4,7 @@ A navigation aid into [Everything Claude Code](https://github.com/affaan-m/every
 
 This file is **not a duplication** of ECC content. ECC remains the source of truth for what each skill does and how it works. This index is the "which one do I want right now" lookup.
 
-ECC ships ~180 skills. The honest answer to "where do I start" is not "read them all" — it is "here are the 30 I touch in a given month, organised by what I'm trying to do." Read this when you have a task and need a starting point. Browse `/skill` inside Claude Code when you have time and want to discover.
+ECC ships ~180 skills. The honest answer to "where do I start" is not "read them all" — it is "here are the 30 I touch in a given month, plus 36 occasional-use skills sorted by domain when you need them." Read this when you have a task and need a starting point. Browse `/skill` inside Claude Code when you have time and want to discover.
 
 ## How to use this index
 

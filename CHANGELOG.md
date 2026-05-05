@@ -4,20 +4,25 @@ All notable changes to the Claude Operator Stack will be documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). The stack uses calendar-versioning aligned with major iterations, not strict semver.
 
-## [1.0.0] — 2026-05-04 (in progress, awaiting public flip)
+## [1.0.0] — 2026-05-05
 
 ### Added
 
 - **cookbook/** — 12 copy-pasteable recipes from real shipped products (Stripe Connect, WhatsApp Cloud API, Cloudflare Tunnel, GA4 + CF analytics, Sentry full-stack, Supabase + Vercel pooling, yt-dlp + Whisper, Telegram lead capture, Mercado Pago, scheduled prompts, content cross-post pipeline, Claude Code from zero). Each ≤200 lines.
 - **configs/hooks/** — 6 sanitized hooks with per-hook README: statusline, prompt-injection-guard, read-before-edit, validate-commit-message, read-injection-scanner, context-monitor. Plus `hooks.json.example` with consolidated wiring.
-- **stack/ecc-skill-index.md** — navigation reference into 60+ ECC skills sorted by use case (building, marketing, research, GSD, solo ops, security, memory).
+- **stack/ecc-skill-index.md** — navigation reference into the 30 monthly-driver ECC skills (plus 36 occasional-use entries) sorted by use case (building, marketing, research, GSD, solo ops, security, memory).
 - **scaffolds/** — two runnable starting points:
   - `web-saas/` (24 files): Next.js 15 + Supabase + Sentry + GA4 with real lead form + `/api/lead` route.
   - `whatsapp-saas/` (18 files): FastAPI + Docker + Meta Cloud API + Anthropic SDK with HMAC verification, classifier, happy-path pytest.
 - **profiles/** — 4 archetype install paths (indie hacker, non-technical founder, freelancer/agency, content creator + operator). Each picks recipes, hooks, scaffold, workflow read order, and what to skip.
 - **assets/screenshots/** — three SVG visualisations: install dry-run, Obsidian project note, Claude Code session reading the note. Embedded in README under Quick Start and Workflow #3.
 - **README.md** — added Cookbook / Scaffolds / Profiles sections; updated "What's Inside" tree to show new directories; embedded screenshots; updated "Currently looking for" with translation sync issue.
+- **credits/README.md** — extended with cookbook references and scaffold dependencies (Next.js, React, Sentry, Supabase, FastAPI, Anthropic SDK, Docker, Stripe, Mercado Pago, yt-dlp, Whisper, Telegram, Cloudflare, Google Analytics, Vercel MCP).
 - **.planning/** — PROJECT.md + ROADMAP for M2 v1.0 (10-phase plan), AUDIT.md from pre-launch sweep, launch-surfaces/ (X thread, Show HN body, founder DMs, GitHub meta, launch checklist).
+
+### Fixed
+
+- Full fix-wave (commit `368abb2`) closed all CRITICAL and HIGH findings from 4 parallel reviews — security hardening across cookbook recipes, hook scripts, scaffold sanitization, and case-study redactions.
 
 ### Process notes
 
@@ -27,14 +32,24 @@ Built in 5 waves with parallel opus-4.7 1M-context subagents:
 - Wave 3: profiles
 - Wave 4: pre-launch audit (verdict WARN, all HIGH findings addressed)
 - Wave 5: README updates + screenshots + launch surfaces
+- Fix-wave: post-review CRITICAL + HIGH closeouts
 
 Pre-launch audit found 0 CRITICAL issues (no secrets, no broken links, no real product names leaked).
 
-### Pending before public flip
+## [0.2.0] — 2026-05-04
 
-- Operator review of all v1.0 additions
-- Operator picks X-thread variant + Show HN title from drafts
-- Public flip itself (Phase 9 of ROADMAP — explicit operator action)
+### Added
+
+- **assets/hero.svg** — visual identity hero banner used at the top of every README variant.
+- **Mermaid diagrams** — stack-overview and workflow diagrams that render natively on github.com.
+- **7-language navigation** — language switcher in every README (English, Русский, Español, Português (BR), Türkçe, 中文, 日本語).
+- **README.ru.md** — full Russian translation.
+- **README.es.md** — full Spanish translation.
+- **README.pt-br.md, README.tr.md, README.zh.md, README.ja.md** — stub translations linking back to the English source while contributors translate the full bodies.
+
+### Notes on this release
+
+The visual identity and language nav land before the v1.0 content additions, so translators can target a stable surface. Stub language READMEs are tracked as open `good first issue`s in GitHub.
 
 ## [0.1.0] — 2026-05-04
 

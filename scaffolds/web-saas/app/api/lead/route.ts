@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSupabase, type LeadInsert } from "../../../lib/supabase";
 import { captureError } from "../../../lib/sentry";
 import { sendServerEvent, anonymousClientId } from "../../../lib/analytics";
+import { checkRateLimit } from "../../../lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -9,16 +10,15 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MESSAGE_LEN = 1000;
 const MAX_NAME_LEN = 120;
 
-type Body = {
-  email?: unknown;
-  name?: unknown;
-  message?: unknown;
-  source?: unknown;
-};
+type Body = Record<string, unknown>;
 
-function validate(body: Body): LeadInsert | { error: string } {
+type ValidationResult =
+  | { ok: true; data: LeadInsert }
+  | { ok: false; error: string };
+
+function validate(body: Body): ValidationResult {
   if (typeof body.email !== "string" || !EMAIL_PATTERN.test(body.email)) {
-    return { error: "Invalid email." };
+    return { ok: false, error: "Invalid email." };
   }
 
   const name =
@@ -37,10 +37,13 @@ function validate(body: Body): LeadInsert | { error: string } {
       : "site";
 
   return {
-    email: body.email.trim().toLowerCase(),
-    name,
-    message,
-    source,
+    ok: true,
+    data: {
+      email: body.email.trim().toLowerCase(),
+      name,
+      message,
+      source,
+    },
   };
 }
 
@@ -71,6 +74,18 @@ async function notifyTelegram(lead: LeadInsert): Promise<void> {
 }
 
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const limit = checkRateLimit(`lead:${ip}`, 10, 60_000);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Too many requests. Try again later." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(Math.ceil((limit.resetAt - Date.now()) / 1000)) },
+      },
+    );
+  }
+
   let body: Body;
   try {
     body = (await request.json()) as Body;
@@ -78,14 +93,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const validated = validate(body);
-  if ("error" in validated) {
-    return NextResponse.json({ error: validated.error }, { status: 400 });
+  const result = validate(body);
+  if (!result.ok) {
+    return NextResponse.json({ error: result.error }, { status: 400 });
   }
+  const lead = result.data;
 
   try {
     const supabase = getServerSupabase();
-    const { error } = await supabase.from("leads").insert(validated);
+    const { error } = await supabase.from("leads").insert(lead);
 
     if (error) {
       // Unique-constraint violation on email — treat as success so the user is
@@ -96,23 +112,34 @@ export async function POST(request: Request) {
       throw error;
     }
 
-    // Fire-and-forget side-effects.
-    await Promise.allSettled([
-      notifyTelegram(validated),
+    // Fire-and-forget side-effects. We don't await failure but we do forward
+    // any rejections to Sentry — otherwise allSettled silently swallows them.
+    const sideEffects = await Promise.allSettled([
+      notifyTelegram(lead),
       sendServerEvent({
         clientId: anonymousClientId(),
         events: [
           {
             name: "generate_lead",
-            params: { source: validated.source ?? "site" },
+            params: { source: lead.source ?? "site" },
           },
         ],
       }),
     ]);
 
+    const stages = ["telegram_notify", "ga4_server_event"] as const;
+    sideEffects.forEach((outcome, index) => {
+      if (outcome.status === "rejected") {
+        captureError(outcome.reason, {
+          stage: stages[index] ?? "lead_side_effect",
+          email: lead.email,
+        });
+      }
+    });
+
     return NextResponse.json({ ok: true });
   } catch (err) {
-    captureError(err, { stage: "lead_insert", email: validated.email });
+    captureError(err, { stage: "lead_insert", email: lead.email });
     return NextResponse.json(
       { error: "Server error. Try again shortly." },
       { status: 500 },

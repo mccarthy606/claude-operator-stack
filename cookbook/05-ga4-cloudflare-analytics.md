@@ -104,6 +104,8 @@ export function newClientId() {
 }
 ```
 
+> **Note on logging exposure.** GA4's Measurement Protocol requires `api_secret` in the URL query string — that's a Google design choice. Most reverse proxies, APM agents, and server access logs will record the full URL. Confirm your log scrubbing rules cover the query path, or override `console.log` for this fetch path.
+
 `client_id` is required by the Measurement Protocol. Generate one per session and stash it in a non-tracking cookie (`HttpOnly`, `SameSite=Lax`, no third-party domain) or in your database against the user row.
 
 ### 4. Fire events from server actions

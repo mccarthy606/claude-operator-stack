@@ -54,6 +54,12 @@ export default function RootLayout({
       <body>
         {children}
 
+        {/*
+          TODO: gate behind explicit consent for EU/UK traffic.
+          This default loads GA4 unconditionally; for GDPR/UK-GDPR audiences,
+          swap in a consent banner (e.g. cookieyes / klaro / your own) and
+          conditionally render the <Script> only after `granted`.
+        */}
         {ga4Id ? (
           <>
             <Script

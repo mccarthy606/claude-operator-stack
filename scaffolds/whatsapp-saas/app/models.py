@@ -7,7 +7,7 @@ than mirroring the whole schema upfront.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -22,7 +22,21 @@ class InboundMessage(BaseModel):
     id: str
     from_: str = Field(alias="from")  # E.164 number, no leading '+'
     timestamp: str
-    type: Literal["text", "image", "audio", "video", "document", "interactive", "button", "location"]
+    type: Literal[
+        "text",
+        "image",
+        "audio",
+        "video",
+        "document",
+        "interactive",
+        "button",
+        "location",
+        "sticker",
+        "reaction",
+        "contacts",
+        "order",
+        "system",
+    ]
     text: TextPayload | None = None
 
     model_config = {
@@ -33,7 +47,7 @@ class InboundMessage(BaseModel):
 
 class Contact(BaseModel):
     wa_id: str
-    profile: dict | None = None
+    profile: dict[str, Any] | None = None
 
 
 class Metadata(BaseModel):
@@ -63,8 +77,12 @@ class Entry(BaseModel):
 class WebhookPayload(BaseModel):
     """Top-level payload Meta POSTs to the webhook for `messages` events."""
 
-    object: str
+    # Aliased to avoid shadowing the builtin ``object``. Pydantic accepts
+    # either name on input thanks to ``populate_by_name``.
+    object_type: str = Field(alias="object")
     entry: list[Entry]
+
+    model_config = {"populate_by_name": True}
 
 
 # --- Internal classification labels ---------------------------------------

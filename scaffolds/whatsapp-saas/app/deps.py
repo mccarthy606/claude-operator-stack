@@ -65,8 +65,8 @@ def get_settings() -> Settings:
 
 @lru_cache(maxsize=1)
 def get_anthropic_client() -> anthropic.AsyncAnthropic:
-    s = get_settings()
-    return anthropic.AsyncAnthropic(api_key=s.anthropic_api_key)
+    settings = get_settings()
+    return anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
 
 
 _supabase: AClient | None = None
@@ -81,13 +81,17 @@ async def get_supabase() -> AClient:
     """
     global _supabase
     if _supabase is None:
-        s = get_settings()
+        settings = get_settings()
         if _HAS_ASYNC_SUPABASE:
-            _supabase = await acreate_client(s.supabase_url, s.supabase_service_role_key)
+            _supabase = await acreate_client(
+                settings.supabase_url, settings.supabase_service_role_key
+            )
         else:  # pragma: no cover - sync fallback for older supabase-py
             # TODO: bump supabase>=2.10 in pyproject.toml so the async client is
             # always available. The sync client below will block the event loop.
-            _supabase = acreate_client(s.supabase_url, s.supabase_service_role_key)
+            _supabase = acreate_client(
+                settings.supabase_url, settings.supabase_service_role_key
+            )
     return _supabase
 
 

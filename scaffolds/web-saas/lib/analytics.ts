@@ -58,7 +58,10 @@ export async function sendServerEvent(options: SendOptions): Promise<void> {
  * This is acceptable for server-only events that have no browser session
  * (e.g. webhook-triggered). For client-tied events, prefer to read the
  * `_ga` cookie value parsed for the client_id.
+ *
+ * Uses `crypto.randomUUID()` (Node 20+ / modern browsers) for collision
+ * resistance — `Math.random()` is not safe for identifiers.
  */
 export function anonymousClientId(): string {
-  return `srv.${Date.now()}.${Math.random().toString(36).slice(2, 10)}`;
+  return crypto.randomUUID();
 }

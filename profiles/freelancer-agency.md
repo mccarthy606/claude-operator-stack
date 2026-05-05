@@ -63,7 +63,7 @@ For client work that does not match either scaffold, see [scaffolds/README.md](.
 
 ## What to skip
 
-The stack has parts that do not earn their keep for this profile:
+What this profile drops:
 
 - **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) — only if your client context already lives somewhere shared. If clients live in Linear or Notion, Obsidian becomes a duplicate brain. Add it for your private operator layer if you want, not as the project source of truth.
 - **content-pipeline workflow** — only relevant if your engagements include content delivery. Most do not.

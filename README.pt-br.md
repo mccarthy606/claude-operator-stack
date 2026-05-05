@@ -6,7 +6,7 @@
 
 # Claude Operator Stack — Português (BR)
 
-**7 produtos · 4 meses · 0 funding · 0 time · 1 pessoa**
+**7 produtos em 4 meses · solo · pré-receita**
 
 </div>
 

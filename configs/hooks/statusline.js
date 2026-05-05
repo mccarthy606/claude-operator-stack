@@ -48,6 +48,9 @@ function runStatusline() {
         const sessionSafe = session && !/[/\\]|\.\./.test(session);
         if (sessionSafe) {
           try {
+            // Per-session bridge file. Session IDs are validated for path traversal above (line 48).
+            // On a multi-user shared machine where two users somehow share the same session id,
+            // one could overwrite the other's metrics — vanishingly unlikely but worth flagging.
             const bridgePath = path.join(os.tmpdir(), `claude-ctx-${session}.json`);
             fs.writeFileSync(bridgePath, JSON.stringify({
               session_id: session,

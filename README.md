@@ -179,7 +179,7 @@ claude-operator-stack/
     └── README.md
 ```
 
-Inside `stack/`: 6 component breakdowns plus [`ecc-skill-index.md`](stack/ecc-skill-index.md) — a navigation reference into 60+ ECC skills sorted by use case.
+Inside `stack/`: 6 component breakdowns plus [`ecc-skill-index.md`](stack/ecc-skill-index.md) — a navigation reference into the 30 ECC skills I actually use, sorted by use case.
 
 ---
 
@@ -279,7 +279,7 @@ If your work is in here and not credited, open an issue and I'll fix it the same
 
 ## Status
 
-Young repo. v0.2 added the hero banner, Mermaid diagrams, the 7-language nav, and full RU and ES translations. Case studies get filled in as products ship. CHANGELOG tracks the rest.
+Young repo. v1.0 adds the cookbook (12 recipes), scaffolds (web + WhatsApp), profiles (4 archetypes), 6 hooks, the ECC skill index, and screenshots. Earlier v0.2 added the hero banner, Mermaid diagrams, 7-language nav, and full RU/ES translations (RU/ES coverage of the v1.0 additions is tracked as an open issue). Case studies get filled in as products ship. CHANGELOG tracks the rest.
 
 Issues, PRs, and forks welcome. The stack is designed to be customized: copy what fits, drop what doesn't.
 

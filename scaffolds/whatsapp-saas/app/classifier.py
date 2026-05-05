@@ -8,7 +8,15 @@ they can change in one place. If you add new labels, also update
 from __future__ import annotations
 
 import logging
-from typing import get_args
+from typing import cast, get_args
+
+import anthropic
+from tenacity import (
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_exponential,
+)
 
 from .deps import get_anthropic_client, get_settings
 from .models import ClassificationLabel, ClassificationResult
@@ -30,11 +38,28 @@ SYSTEM_PROMPT = (
 )
 
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=1, max=8),
+    retry=retry_if_exception_type(
+        (
+            anthropic.RateLimitError,
+            anthropic.APITimeoutError,
+            anthropic.APIConnectionError,
+        )
+    ),
+    reraise=True,
+)
 async def classify_message(text: str) -> ClassificationResult:
     """Classify a single inbound message body.
 
     Falls back to ``"spam"`` on parse failure rather than raising — a misrouted
     message is recoverable, a 5xx triggers a Meta retry storm.
+
+    Wrapped with tenacity retry/backoff for transient Anthropic errors
+    (RateLimitError, APITimeoutError, APIConnectionError). After 3 attempts
+    the original exception is re-raised; the inner except handles the
+    post-retry case as well as non-retryable APIError instances.
     """
     settings = get_settings()
     client = get_anthropic_client()
@@ -47,7 +72,11 @@ async def classify_message(text: str) -> ClassificationResult:
             messages=[{"role": "user", "content": text[:2000]}],
         )
         raw = response.content[0].text if response.content else ""
-    except Exception:
+    except (
+        anthropic.APIError,
+        anthropic.APITimeoutError,
+        anthropic.APIConnectionError,
+    ):
         logger.exception("classifier_call_failed")
         return ClassificationResult(label="spam", raw="")
 
@@ -59,4 +88,4 @@ async def classify_message(text: str) -> ClassificationResult:
         )
         return ClassificationResult(label="spam", raw=raw)
 
-    return ClassificationResult(label=label_candidate, raw=raw)  # type: ignore[arg-type]
+    return ClassificationResult(label=cast(ClassificationLabel, label_candidate), raw=raw)

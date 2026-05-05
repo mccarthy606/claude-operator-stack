@@ -14,6 +14,7 @@ dependencies = [
     "anthropic>=0.40.0",
     "supabase>=2.10.0",
     "sentry-sdk[fastapi]>=2.18.0",
+    "tenacity>=9.0.0",
 ]
 
 [dependency-groups]

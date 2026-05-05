@@ -77,6 +77,8 @@ if ! command -v claude >/dev/null 2>&1; then
   echo "Then re-run this installer."
   exit 1
 fi
+# Cosmetic only — used for the printed "detected version" message. A locally-installed
+# shim could spoof this, but the user has already trusted the `claude` binary in PATH.
 CLAUDE_VERSION=$(claude --version 2>/dev/null | awk '{print $1}' || echo "unknown")
 ok "claude CLI found (version $CLAUDE_VERSION)"
 
@@ -109,6 +111,9 @@ mkdir -p "$CLAUDE_DIR"
 mkdir -p "$CLAUDE_DIR/mcp-configs"
 mkdir -p "$CLAUDE_DIR/rules"
 mkdir -p "$CLAUDE_DIR/hooks"
+
+# Hooks are intentional opt-in — copy from configs/hooks/ manually after auditing each one.
+echo "Note: hooks are opt-in. Audit and copy from configs/hooks/ to ~/.claude/hooks/ as needed; see configs/hooks/README.md."
 
 copy_if_safe() {
   local src="$1"

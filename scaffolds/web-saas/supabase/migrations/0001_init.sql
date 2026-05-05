@@ -31,3 +31,6 @@ create index if not exists leads_source_idx
 
 comment on table public.leads is
     'Inbound lead form submissions. Server-only writes via service role.';
+
+comment on column public.leads.source is
+    'Where the lead originated (e.g., "form", "api", "import"). Free-form for v0; promote to enum if values stabilise.';

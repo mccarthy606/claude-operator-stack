@@ -15,6 +15,8 @@ type SubmitState =
   | { status: "success" }
   | { status: "error"; message: string };
 
+type LeadResponse = { error?: string; ok?: boolean };
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function LeadForm({ source = "site" }: LeadFormProps) {
@@ -23,7 +25,10 @@ export function LeadForm({ source = "site" }: LeadFormProps) {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    // Capture the form element synchronously — `event.currentTarget` is nulled
+    // out after the first await, so we cannot rely on it inside the success path.
+    const formEl = event.currentTarget;
+    const formData = new FormData(formEl);
     const email = String(formData.get("email") ?? "").trim();
     const name = String(formData.get("name") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
@@ -55,7 +60,7 @@ export function LeadForm({ source = "site" }: LeadFormProps) {
       });
 
       if (!res.ok) {
-        const payload = await res.json().catch(() => ({}));
+        const payload = (await res.json().catch(() => ({}))) as LeadResponse;
         const detail =
           typeof payload?.error === "string"
             ? payload.error
@@ -65,8 +70,17 @@ export function LeadForm({ source = "site" }: LeadFormProps) {
       }
 
       setState({ status: "success" });
-      event.currentTarget.reset();
-    } catch (_err) {
+      formEl?.reset();
+    } catch (err) {
+      // Surface network failures so the team sees them in Sentry rather than
+      // silently swallowing them client-side.
+      if (typeof window !== "undefined") {
+        import("@sentry/nextjs")
+          .then(({ captureException }) => captureException(err))
+          .catch(() => {
+            // Sentry SDK failed to load — degrade silently rather than throw.
+          });
+      }
       setState({
         status: "error",
         message: "Network error. Try again in a moment.",

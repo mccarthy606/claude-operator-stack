@@ -44,7 +44,8 @@
     "filesystem": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "${HOME}/Projects"],
-      "description": "Sandboxed file ops outside CWD — set the path to your projects root"
+      "description": "Sandboxed file ops outside CWD — set the path to your projects root",
+      "_comment": "Filesystem MCP grants the agent read/write access across the entire path you set. The default ${HOME}/Projects is convenient but if your .env files live inside that tree (typical layout), the agent can read them. Narrow the path to a single project or a sandbox directory before enabling this on a machine with production secrets."
     },
 
     "memory": {

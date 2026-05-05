@@ -23,6 +23,23 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
+          {
+            key: "Content-Security-Policy",
+            // Sane default for a Next.js + GA4 + Sentry app. Tighten before going live:
+            //   - replace 'unsafe-inline' on script-src with nonce-based loading once on Next 15.2+
+            //   - audit connect-src for any third-party endpoints your product calls
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com",
+              "font-src 'self' data:",
+              "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.sentry.io",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join("; "),
+          },
         ],
       },
     ];
@@ -34,7 +51,10 @@ const nextConfig: NextConfig = {
 export default withSentryConfig(nextConfig, {
   org: process.env.SENTRY_ORG,
   project: process.env.SENTRY_PROJECT,
-  silent: !process.env.CI,
+  // Stay quiet on local builds. The token is the real signal that sourcemap
+  // upload is configured — keying off CI alone is noisy on local `pnpm build`
+  // and silent in CI environments that don't set CI=true.
+  silent: !process.env.SENTRY_AUTH_TOKEN,
   widenClientFileUpload: true,
   hideSourceMaps: true,
   disableLogger: true,

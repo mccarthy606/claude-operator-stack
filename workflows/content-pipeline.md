@@ -40,8 +40,8 @@ tags: [content, platform/youtube, brand/<name>, status/draft]
 target_platform: YouTube
 hook: <one line>
 length: 8-12 min
-record_date: 
-publish_date: 
+record_date:
+publish_date:
 ---
 ```
 
