@@ -1,7 +1,7 @@
 # Stripe Connect for a P2P Marketplace
 
 > **Time:** ~3h (clean run; double if it is your first Connect integration)
-> **Stack:** Next.js 16, Stripe Connect (Express accounts), Stripe webhooks
+> **Stack:** Next.js 15, Stripe Connect (Express accounts), Stripe webhooks
 > **Used in:** [case-studies/...](../case-studies/) (P2P Marketplace)
 
 ## The problem

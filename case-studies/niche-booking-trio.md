@@ -8,13 +8,13 @@ A trio of niche booking sites in a single Latin American market. Three domains, 
 
 ## Market hypothesis
 
-In a city with strong car culture but no domestic motorsport infrastructure, there's underserved demand for paid driving experiences: track days, drift training, and high-performance ride-alongs. The hypothesis: native-audience landing pages with a clear booking flow, local language, and photography that doesn't look stock can convert organic search and Instagram DMs into paying bookings.
+In a city with strong car culture but no domestic motorsport infrastructure, there's underserved demand for paid driving experiences across three adjacent disciplines. The hypothesis: native-audience landing pages with a clear booking flow, local language, and photography that doesn't look stock can convert organic search and Instagram DMs into paying bookings.
 
 Three angles, three sites:
 
-- **Drift School** — paid lessons for civilians who want to learn drift in a controlled setting
-- **Drift Taxi** — passenger ride-alongs at events
-- **Track Days** — open-track events for owner-drivers
+- **Discipline A** — paid lessons for civilians who want hands-on instruction in the operator's specialty
+- **Discipline B** — short paid passenger experiences at scheduled events
+- **Discipline C** — open-venue events for participants who bring their own equipment
 
 Same operator, same physical location, different audiences and price points.
 
@@ -34,7 +34,7 @@ Three sites share one Next.js codebase and one design system. Each site has its 
 
 | Choice | Why |
 |--------|-----|
-| **Next.js 16 (app router)** | Static + dynamic mix, good defaults for SEO, strong Vercel deploy story |
+| **Next.js 15 (app router)** | Static + dynamic mix, good defaults for SEO, strong Vercel deploy story |
 | **Supabase** | Postgres + auth + storage in one. Free tier covers pre-revenue. |
 | **Vercel** | Zero-config preview deploys, fastest path to public URL |
 | **Cloudflare DNS + Web Analytics** | Free, no cookie banner needed |

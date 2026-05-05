@@ -13,8 +13,18 @@ import anthropic
 import httpx
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from supabase import Client as SupabaseClient
-from supabase import create_client
+
+try:
+    # supabase-py >= 2.10 exposes an async client. Prefer it so handlers in the
+    # request path do not block the event loop.
+    from supabase import AClient, acreate_client  # type: ignore[attr-defined]
+
+    _HAS_ASYNC_SUPABASE = True
+except ImportError:  # pragma: no cover - fallback for older supabase-py
+    from supabase import Client as AClient  # type: ignore[assignment]
+    from supabase import create_client as acreate_client  # type: ignore[assignment]
+
+    _HAS_ASYNC_SUPABASE = False
 
 
 class Settings(BaseSettings):
@@ -37,7 +47,7 @@ class Settings(BaseSettings):
 
     # Anthropic
     anthropic_api_key: str
-    classifier_model: str = "claude-sonnet-4-6"
+    classifier_model: str = "claude-sonnet-4-5"
 
     # Supabase
     supabase_url: str
@@ -54,15 +64,31 @@ def get_settings() -> Settings:
 
 
 @lru_cache(maxsize=1)
-def get_anthropic_client() -> anthropic.Anthropic:
+def get_anthropic_client() -> anthropic.AsyncAnthropic:
     s = get_settings()
-    return anthropic.Anthropic(api_key=s.anthropic_api_key)
+    return anthropic.AsyncAnthropic(api_key=s.anthropic_api_key)
 
 
-@lru_cache(maxsize=1)
-def get_supabase() -> SupabaseClient:
-    s = get_settings()
-    return create_client(s.supabase_url, s.supabase_service_role_key)
+_supabase: AClient | None = None
+
+
+async def get_supabase() -> AClient:
+    """Return the cached Supabase async client, constructing it on first call.
+
+    The supabase-py async client is built via ``acreate_client`` which itself
+    is awaitable; an ``lru_cache`` would not work here. A module-level singleton
+    is fine because the FastAPI lifecycle is single-process.
+    """
+    global _supabase
+    if _supabase is None:
+        s = get_settings()
+        if _HAS_ASYNC_SUPABASE:
+            _supabase = await acreate_client(s.supabase_url, s.supabase_service_role_key)
+        else:  # pragma: no cover - sync fallback for older supabase-py
+            # TODO: bump supabase>=2.10 in pyproject.toml so the async client is
+            # always available. The sync client below will block the event loop.
+            _supabase = acreate_client(s.supabase_url, s.supabase_service_role_key)
+    return _supabase
 
 
 @lru_cache(maxsize=1)

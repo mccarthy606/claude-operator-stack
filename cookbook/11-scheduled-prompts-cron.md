@@ -35,7 +35,7 @@ In `~/.claude/mcp.json`:
 
 Restart Claude Code. Run `/mcp` and confirm `scheduled-tasks` is listed.
 
-> Verify the actual package name and source against the [stack/mcp-servers.md](../stack/mcp-servers.md) reference; package names move and `<verify before shipping>` if your tooling reports a different identifier.
+> Verify the actual package name and source against the [stack/mcp-servers.md](../stack/mcp-servers.md) reference; package names occasionally move, and your tooling may report a different identifier than the one shown here.
 
 ### 2. Create your first task — production health check
 

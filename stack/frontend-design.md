@@ -21,7 +21,7 @@ The Frontend-Design skill produces UIs that don't look like a Tailwind template.
 - Motion that clarifies flow
 - Data viz as part of the design system
 
-These qualities are codified in my [`rules/web/design-quality.md`](https://github.com/...) — anti-template policy, banned patterns list.
+These qualities are codified in the operator's web design-quality rules — anti-template policy, banned patterns list.
 
 ## Where I use it
 

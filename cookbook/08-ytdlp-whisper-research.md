@@ -140,7 +140,7 @@ def make_brief(query: str, transcripts: list[dict]) -> str:
         for t in transcripts
     )
     msg = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-sonnet-4-5",
         max_tokens=2000,
         messages=[{"role": "user", "content": PROMPT.format(
             query=query, n=len(transcripts), transcripts=body,
@@ -182,7 +182,7 @@ uv run python main.py "used car dealer marketing" 10
 
 ## Pitfalls
 
-- **YouTube blocking yt-dlp.** YouTube tightens `yt-dlp` periodically. Always pin to a recent version: `uv add 'yt-dlp>=<verify before shipping>'`. If downloads start 403-ing, run `uv add yt-dlp@latest`.
+- **YouTube blocking yt-dlp.** YouTube tightens `yt-dlp` periodically. Always pin to a recent version: `uv add 'yt-dlp>=2024.12.13'`. If downloads start 403-ing, run `uv add yt-dlp@latest`.
 - **Whisper hallucinating on silence.** Long stretches of silence get transcribed as repeated phrases ("thank you for watching", "subscribe to my channel"). Pass `vad_filter=True` to `WhisperModel.transcribe()` to skip silent regions.
 - **Auto-sub language picking the wrong one.** A bilingual creator's video may have auto-subs in two languages and `yt-dlp` picks one arbitrarily. Filter by `subtitleslangs` and verify before transcribing.
 - **Disk fills up.** mp3s plus VTTs add up. Add a cleanup step at the end of the run, or use a `tempfile.TemporaryDirectory` and only keep the transcript text.

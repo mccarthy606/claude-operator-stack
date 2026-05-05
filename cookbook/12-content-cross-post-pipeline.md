@@ -151,7 +151,7 @@ For batch publishing, paste the variants into your scheduler of choice (Buffer, 
 
 ## References
 
-- [ECC `crosspost` skill](https://github.com/snubroot/Everything-Claude-Code) (browse skills directory)
+- [ECC `crosspost` skill](https://github.com/affaan-m/everything-claude-code) (browse skills directory)
 - [stack/ecc.md](../stack/ecc.md) — how this stack uses ECC
 - [workflows/content-pipeline.md](../workflows/content-pipeline.md) — broader content workflow this slots into
 - [recipe 08 — pulling source material](08-ytdlp-whisper-research.md)

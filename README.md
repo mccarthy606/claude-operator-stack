@@ -26,6 +26,9 @@
 - [Quick Start](#quick-start)
 - [What's Inside](#whats-inside)
 - [The Operator Playbook](#the-operator-playbook)
+- [Cookbook](#cookbook)
+- [Scaffolds](#scaffolds)
+- [Profiles](#profiles)
 - [Why this exists](#why-this-exists)
 - [Acknowledgements](#acknowledgements)
 - [Status](#status)
@@ -167,8 +170,10 @@ claude-operator-stack/
 ├── configs/                     ← sanitized configs you can copy
 │   ├── settings.json.example
 │   ├── mcp-servers.json.example
+│   ├── hooks.json.example
 │   ├── hooks/                   ← 6 sanitized hooks + per-hook README
-│   └── rules/                   ← project-level rules
+│   └── rules/
+│       └── obsidian-integration.md
 │
 └── credits/                     ← attribution to every original author
     └── README.md

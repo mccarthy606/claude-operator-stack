@@ -1,7 +1,7 @@
 # Sentry Across Next.js + FastAPI
 
 > **Time:** ~1.5h
-> **Stack:** Sentry, Next.js 16, FastAPI, single Sentry project for both
+> **Stack:** Sentry, Next.js 15, FastAPI, single Sentry project for both
 > **Used in:** [WhatsApp B2B SaaS](../case-studies/whatsapp-b2b-saas.md), every shipped product in the stack
 
 ## The problem

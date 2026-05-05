@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
   const { email, name, message } = await req.json();
 
   const text = [
-    `New lead from <b>${process.env.NEXT_PUBLIC_SITE_NAME}</b>`,
+    `New lead from ${process.env.NEXT_PUBLIC_SITE_NAME}`,
     `Name: ${name ?? '(none)'}`,
     `Email: ${email}`,
     `Message: ${message ?? '(none)'}`,
@@ -71,7 +71,6 @@ export async function POST(req: NextRequest) {
     body: JSON.stringify({
       chat_id: TG_CHAT_ID,
       text,
-      parse_mode: 'HTML',
     }),
   });
 
@@ -136,7 +135,7 @@ At that point keep the Telegram notification *in addition* to the DB write — t
 - **Token in client-side code.** The bot token must never reach the browser. Always send from a server route. If it leaks, revoke via @BotFather (`/revoke`) and rotate.
 - **Forgetting to chat with the bot once.** Telegram requires the user to have initiated a chat with the bot before the bot can message them. The first time you set this up, send the bot any message manually.
 - **Rate limits.** Telegram allows ~30 messages per second per bot, ~1 per second to the same chat. For a v0 form this never matters. If you somehow have a flood, queue the sends.
-- **Markdown parsing failures.** `parse_mode: 'Markdown'` errors out on stray `_` or `*` in user input. Use `parse_mode: 'HTML'` and escape `<`, `>`, `&` in the user data, or skip parse_mode entirely for raw text.
+- **HTML formatting is intentionally omitted.** This recipe uses plain text to avoid the escape footgun: with `parse_mode: 'HTML'`, an attacker can submit `<a href="...">` or `<b>` payloads that render as styled phishing inside your bot notification. If you want bold or links in the bot message, escape every interpolated value first — `text.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'})[c])` — and add `parse_mode: 'HTML'` back. Otherwise a submitter can ship a phishing message styled as your bot. See [Telegram Bot API formatting docs](https://core.telegram.org/bots/api#html-style) for the full grammar.
 - **Treating it as durable storage.** Telegram is the notification layer, not the database. If you need to retrieve a lead from last week, you are scrolling chat history. Move to a DB before you are doing that daily.
 
 ## References

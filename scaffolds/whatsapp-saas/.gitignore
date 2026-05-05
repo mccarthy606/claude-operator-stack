@@ -9,9 +9,6 @@ __pycache__/
 venv/
 env/
 
-# uv
-uv.lock
-
 # Env
 .env
 .env.*

@@ -19,13 +19,15 @@ export const metadata: Metadata = {
     siteName: "Your product name",
     title: "Your product name",
     description: "One-sentence value prop.",
-    images: ["/og.png"],
+    // TODO: ship a 1200x630 og.png in public/ before launch
+    // images: ["/og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Your product name",
     description: "One-sentence value prop.",
-    images: ["/og.png"],
+    // TODO: ship a 1200x630 og.png in public/ before launch
+    // images: ["/og.png"],
   },
   robots: {
     index: true,

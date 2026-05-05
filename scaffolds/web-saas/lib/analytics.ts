@@ -40,6 +40,7 @@ export async function sendServerEvent(options: SendOptions): Promise<void> {
         user_id: options.userId,
         events: options.events,
       }),
+      signal: AbortSignal.timeout(2000),
     });
 
     // GA4 returns 204 on success; any 4xx/5xx is worth logging but not fatal.

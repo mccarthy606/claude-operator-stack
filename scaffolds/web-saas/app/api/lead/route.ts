@@ -63,6 +63,7 @@ async function notifyTelegram(lead: LeadInsert): Promise<void> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: chatId, text }),
+      signal: AbortSignal.timeout(2000),
     });
   } catch (err) {
     captureError(err, { stage: "telegram_notify", email: lead.email });

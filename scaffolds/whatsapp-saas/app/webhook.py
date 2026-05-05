@@ -15,7 +15,7 @@ import hashlib
 import hmac
 import logging
 
-from fastapi import APIRouter, HTTPException, Request, status
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Request, status
 from pydantic import ValidationError
 
 from .classifier import classify_message
@@ -54,7 +54,7 @@ async def verify_webhook(request: Request) -> int:
 
 
 @router.post("/whatsapp")
-async def receive_webhook(request: Request) -> dict[str, str]:
+async def receive_webhook(request: Request, background: BackgroundTasks) -> dict[str, str]:
     raw = await request.body()
     sig_header = request.headers.get("X-Hub-Signature-256", "")
 
@@ -71,13 +71,16 @@ async def receive_webhook(request: Request) -> dict[str, str]:
         # Return 200 — Meta should not retry payloads we cannot parse.
         return {"status": "ignored"}
 
+    # Schedule per-message handling on the background-tasks runner so we can
+    # return 200 OK before any classifier or DB work runs. Meta retries on slow
+    # webhooks (>20s); a single slow Anthropic call must not block the response.
     for entry in payload.entry:
         for change in entry.changes:
             for message in change.value.messages:
                 if not await _claim_message(message.id):
                     logger.info("webhook_duplicate_skipped", extra={"id": message.id})
                     continue
-                await handle_message(message)
+                background.add_task(handle_message, message)
 
     return {"status": "ok"}
 
@@ -107,11 +110,12 @@ async def _claim_message(message_id: str) -> bool:
     """Insert ``message_id`` into the dedupe table.
 
     Returns ``True`` on a fresh insert, ``False`` if the row already existed.
-    The table is created lazily on first use (see ``init_tables`` in deps).
+    The dedupe table is created via the SQL in ``README-deploy.md`` before
+    first deploy.
     """
-    supabase = get_supabase()
+    supabase = await get_supabase()
     try:
-        supabase.table("inbound_dedupe").insert({"message_id": message_id}).execute()
+        await supabase.table("inbound_dedupe").insert({"message_id": message_id}).execute()
         return True
     except Exception as err:
         # supabase-py raises on unique-violation (Postgres error code 23505).
@@ -133,34 +137,43 @@ async def handle_message(message: InboundMessage) -> None:
     The default behaviour here is intentionally minimal — classify, log,
     auto-reply for ``question``, ignore everything else. Replace with your
     real routing once the verticals are decided.
+
+    Runs in a BackgroundTasks runner after the webhook has already returned
+    200 OK to Meta. Any exception here is logged and swallowed so a single bad
+    message does not abort processing of the rest of the batch.
     """
-    if message.type != "text" or message.text is None:
-        logger.info("non_text_message_ignored", extra={"type": message.type})
-        return
+    try:
+        if message.type != "text" or message.text is None:
+            logger.info("non_text_message_ignored", extra={"type": message.type})
+            return
 
-    text = message.text.body
-    sender = message.from_
+        text = message.text.body
+        sender = message.from_
 
-    result = await classify_message(text)
-    logger.info(
-        "message_classified",
-        extra={"sender": sender, "label": result.label, "raw": result.raw[:64]},
-    )
+        result = await classify_message(text)
+        logger.info(
+            "message_classified",
+            extra={"sender": sender, "label": result.label, "raw": result.raw[:64]},
+        )
 
-    if result.label == "question":
-        try:
-            await send_text(
-                to_number=sender,
-                body=(
-                    "Thanks — we got your message and will reply shortly. "
-                    "If this is urgent, reply with URGENT."
-                ),
-            )
-        except WhatsAppSendError as err:
-            error_block = err.payload.get("error", {})
-            subcode = error_block.get("error_subcode")
-            if subcode == 2018278:
-                # messages_after_session_expired — outside the 24h window
-                logger.info("reply_skipped_session_expired", extra={"sender": sender})
-            else:
-                logger.warning("reply_send_failed", extra={"status": err.status})
+        if result.label == "question":
+            try:
+                await send_text(
+                    to_number=sender,
+                    body=(
+                        "Thanks — we got your message and will reply shortly. "
+                        "If this is urgent, reply with URGENT."
+                    ),
+                )
+            except WhatsAppSendError as err:
+                error_block = err.payload.get("error", {})
+                subcode = error_block.get("error_subcode")
+                if subcode == 2018278:
+                    # messages_after_session_expired — outside the 24h window
+                    logger.info("reply_skipped_session_expired", extra={"sender": sender})
+                else:
+                    logger.warning("reply_send_failed", extra={"status": err.status})
+    except Exception:  # noqa: BLE001
+        # Don't re-raise; one bad message must not stop the batch or trigger a
+        # Meta retry storm against the rest of the entries.
+        logger.exception("handle_message_failed", extra={"id": message.id})

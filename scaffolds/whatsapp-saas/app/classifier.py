@@ -40,7 +40,7 @@ async def classify_message(text: str) -> ClassificationResult:
     client = get_anthropic_client()
 
     try:
-        response = client.messages.create(
+        response = await client.messages.create(
             model=settings.classifier_model,
             max_tokens=12,
             system=SYSTEM_PROMPT,

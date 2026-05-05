@@ -26,7 +26,7 @@ Source links go to the upstream ECC repo. Skill bodies are not reproduced here. 
 | `code-review` | Review uncommitted local changes before push, or a GitHub PR. | `/code-review` for working tree, or `/code-review <PR#>` for a remote PR |
 | `simplify` | Audit a recent diff for redundant code, weak naming, missed reuse. | `/simplify` right after a feature lands and before the PR goes up |
 | `plankton-code-quality` | Write-time enforcement — formatting, linting, complexity budget. | `/plankton-code-quality` as a project-level rule, runs on save |
-| `documentation-lookup` | Current library docs via Context7 instead of stale training data. | `/documentation-lookup how does Next.js 16 handle parallel routes` |
+| `documentation-lookup` | Current library docs via Context7 instead of stale training data. | `/documentation-lookup how does Next.js 15 handle parallel routes` |
 | `skill-create` | Codify a repeatable workflow into a reusable skill. | `/skill-create` after the third time you do the same multi-step task |
 
 ## Marketing and content

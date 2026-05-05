@@ -12,7 +12,7 @@
 - **Toolchain:** [uv](https://github.com/astral-sh/uv) for env + deps. No pip, no Poetry. `uv add`, `uv sync`, `uv run`.
 - **Channel:** Meta WhatsApp Cloud API (official). No third-party WhatsApp wrapper — they get numbers banned.
 - **DB:** Supabase Postgres for dedupe, conversations, leads. Service role from server, never the anon key.
-- **AI:** Anthropic SDK. Default classification model: `claude-sonnet-4-6`. Switch to Haiku for trivial classification once you have measured what you actually need.
+- **AI:** Anthropic SDK. Default classification model: `claude-sonnet-4-5`. Switch to Haiku for trivial classification once you have measured what you actually need.
 - **Errors:** Sentry, signature headers in the scrubber denylist.
 - **Deploy:** Docker. Railway or Fly.io are both fine; pick one. See `README-deploy.md`.
 

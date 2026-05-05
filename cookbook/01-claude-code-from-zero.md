@@ -33,7 +33,7 @@ The three pieces every operator project benefits from:
 
 ```bash
 # Everything Claude Code (skill index, slash commands, agents)
-git clone https://github.com/snubroot/Everything-Claude-Code.git ~/.claude/ECC
+git clone https://github.com/affaan-m/everything-claude-code.git ~/.claude/ECC
 bash ~/.claude/ECC/install.sh
 
 # Toprank (curated content + SEO skills)
@@ -91,7 +91,7 @@ Inside the new project root, create `CLAUDE.md`:
 <one paragraph: what the product does, who it's for>
 
 ## Stack
-- Frontend: Next.js 16 (app router) / Tailwind / shadcn
+- Frontend: Next.js 15 (app router) / Tailwind / shadcn
 - Backend: FastAPI / Python 3.12 / uv
 - DB: Supabase (Postgres + Auth + Storage)
 - Deploy: Vercel (frontend) / Railway (backend)
@@ -129,7 +129,7 @@ When you open Claude Code in the new project the first time:
 ## References
 
 - [Claude Code docs](https://docs.claude.com/en/docs/claude-code/overview)
-- [Everything Claude Code](https://github.com/snubroot/Everything-Claude-Code)
+- [Everything Claude Code](https://github.com/affaan-m/everything-claude-code)
 - [stack/ecc.md](../stack/ecc.md) — the ECC reference in this stack
 - [stack/mcp-servers.md](../stack/mcp-servers.md) — full MCP reference
 - [workflows/parallel-projects.md](../workflows/parallel-projects.md) — how this setup compounds when you run several projects

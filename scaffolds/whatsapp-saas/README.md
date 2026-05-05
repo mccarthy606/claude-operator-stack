@@ -29,6 +29,9 @@ cd ~/Projects/<your-product>/
 git init && git add -A && git commit -m "chore: initial scaffold from claude-operator-stack"
 
 # Install deps with uv (https://github.com/astral-sh/uv)
+# Run `uv sync` once locally before `docker compose up --build` so `uv.lock`
+# is generated. Commit the lockfile — the Docker build uses `uv sync --frozen`
+# and will fail without it.
 uv sync
 
 # Set env
@@ -50,7 +53,7 @@ The healthcheck at `GET /healthz` returns `{"status":"ok"}`. The webhook lives a
 - **Webhook verification + signature validation** in `app/webhook.py`. Real `X-Hub-Signature-256` HMAC-SHA256 against the raw body, constant-time compare. See [recipe 03](../../cookbook/03-whatsapp-cloud-api-webhook.md).
 - **Inbound message parser** with typed Pydantic models in `app/models.py`. Handles text messages today; image/audio extension is mechanical.
 - **Idempotency** — every Meta message ID is checked against a Supabase dedupe table before processing. Meta retries on any 5xx, this scaffold does not double-process.
-- **Claude classification** in `app/classifier.py`. Inbound text gets classified into `question | lead | complaint | spam` via `claude-sonnet-4-6`. Replace the prompt in one place.
+- **Claude classification** in `app/classifier.py`. Inbound text gets classified into `question | lead | complaint | spam` via `claude-sonnet-4-5`. Replace the prompt in one place.
 - **WhatsApp send helper** in `app/reply.py`. Outbound text within the 24h customer-service window; logs and surfaces the error if you try to send outside it.
 - **Sentry** init in `app/main.py` with PII scrubbing on and signature headers added to the denylist. See [recipe 06](../../cookbook/06-sentry-fullstack.md).
 - **Scheduled prompt hooks** — see [recipe 11](../../cookbook/11-scheduled-prompts-cron.md) for how to wire daily ops checks against this service.
@@ -61,7 +64,7 @@ The healthcheck at `GET /healthz` returns `{"status":"ok"}`. The webhook lives a
 
 - Replace placeholders in `CLAUDE.md`: project name, the verticals you target, what counts as `lead` vs `question` for your domain.
 - Edit the classifier prompt in `app/classifier.py`. Domain context belongs there, not in the orchestration code.
-- Edit the dedupe + leads schema in `app/deps.py` (the `init_tables` helper) once you know your real columns.
+- Edit the dedupe + leads schema in `README-deploy.md` (the SQL block at the top — apply to your Supabase project before deploying) once you know your real columns.
 - Replace the placeholder reply logic in `app/webhook.py:handle_message` with whatever your product actually does — auto-reply for `question`, route for `lead`, ignore `spam`, escalate `complaint`.
 - Pick a host: Railway and Fly.io notes are in `README-deploy.md`. Pick one, do not run both.
 

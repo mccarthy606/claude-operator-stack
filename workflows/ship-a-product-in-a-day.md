@@ -45,7 +45,7 @@ Open Claude Code in the new repo. Pin the visual direction up front (see `stack/
 
 ```
 /feature-dev landing page for <product>, hero + value prop + lead form + footer.
-   Stack: Next.js 16 app router, Tailwind, Vercel deploy.
+   Stack: Next.js 15 app router, Tailwind, Vercel deploy.
    Tone: <pin direction here, never "clean minimal">.
 ```
 
