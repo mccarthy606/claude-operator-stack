@@ -34,3 +34,11 @@ __pycache__/
 **/secrets*
 **/*-token*
 **/*-key.json
+
+# CLI package build artefacts
+packages/*/dist/
+packages/*/node_modules/
+packages/*/.tsbuildinfo
+packages/*/coverage/
+packages/*/*.tgz
+package-lock.json

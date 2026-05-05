@@ -3,6 +3,7 @@ milestone: M2 — v1.0 Public Launch
 project: claude-operator-stack
 status: active
 created: 2026-05-04
+updated: 2026-05-05
 target: launch-quality public artefact with organic-traction shape
 ---
 
@@ -10,15 +11,17 @@ target: launch-quality public artefact with organic-traction shape
 
 ## Overview
 
-Ten phases that take the v0.2 minimum-viable repo to a launch-quality v1.0. The shape: depth before flip. First add the operator-grade content that earns the launch (cookbook, hooks, skill index, scaffolds, profiles), then add credibility artefacts (screenshots, asciinema), then do the one-shot public flip with launch surfaces. Every phase is atomically shippable inside a 2-8h focus session and, except where noted, can be merged to `main` without depending on later phases. The final two phases (credibility capture + launch) are the only ones that gate the visibility flip.
+Ten integer phases plus four decimal "doubling-down" phases (inserted 2026-05-05 after the ECC gap analysis) that take the v0.2 minimum-viable repo to a launch-quality v1.0. The shape: depth before flip. First add the operator-grade content that earns the launch (cookbook, hooks, skill index, scaffolds, profiles), then add credibility artefacts (screenshots, asciinema), then double down on the four highest-leverage non-overlapping artefacts vs ECC (animated hero, compare matrix, npm CLI, original skills marketplace), then do the one-shot public flip with launch surfaces. Every phase is atomically shippable inside a 2-8h focus session and, except where noted, can be merged to `main` without depending on later phases. The final two phases (public flip + launch+72h response) are the only ones that gate the visibility flip.
 
-**Ordering principle — "revenue of attention":** the audience that lands on this repo within the first 72h after launch will skim three things — the README hero, the case studies, and one randomly-chosen artefact. The cookbook (Phase 1) and the hooks (Phase 2) are the highest-probability "random artefact" pulls because they are copy-pasteable and don't require buying into the whole stack. They get built first. Skill index (Phase 3) anchors the credibility-of-curation claim. Scaffolds (Phase 4) and profiles (Phase 5) deepen self-identification but are heavier; they come after the lighter wins. Screenshots (Phase 7) require the user's manual capture and asciinema setup so they sit just before launch. Launch (Phase 9) is the irreversible action and goes last.
+**Ordering principle — "revenue of attention":** the audience that lands on this repo within the first 72h after launch will skim three things — the README hero, the case studies, and one randomly-chosen artefact. The cookbook (Phase 1) and the hooks (Phase 2) are the highest-probability "random artefact" pulls because they are copy-pasteable and don't require buying into the whole stack. They get built first. Skill index (Phase 3) anchors the credibility-of-curation claim. Scaffolds (Phase 4) and profiles (Phase 5) deepen self-identification but are heavier; they come after the lighter wins. Screenshots (Phase 7) require the user's manual capture and asciinema setup so they sit just before launch. Phases 8.1-8.4 are the post-audit doubling-down layer: each is a non-overlapping artefact vs ECC, sized to ship in one focus session, and adds reasons to star without surface-area-for-surface-area's-sake. Launch (Phase 9) is the irreversible action and goes last.
+
+**Why the 8.x doubling-down phases (added 2026-05-05):** after closing all 5 CRITICAL + 14 HIGH + 24 MEDIUM + 22 LOW review findings (commits `368abb2` and `24d5eb7`), an honest ECC gap analysis showed v1.0 is technically clean but visually + economically light vs ECC's 4-month head start, 170-contributor surface, multi-harness coverage, real npm packages, and lander site. We can't replicate that surface area but we **can** double down on what makes us non-overlapping with ECC: operator-first voice, solo-founder use-cases, real shipped products, anonymisation discipline, native RU/ES authoring. The four 8.x phases each ship a different non-overlapping artefact and slot in cleanly between launch-prep and the irreversible flip.
 
 ## Phases
 
 **Phase Numbering:**
 - Integer phases (1, 2, 3): Planned milestone work
-- Decimal phases (e.g. 4.1): Reserved for urgent insertions discovered mid-milestone
+- Decimal phases (e.g. 4.1, 8.1): Urgent insertions or doubling-down content discovered mid-milestone
 
 - [ ] **Phase 1: Cookbook of recipes** — 12 markdown how-tos from real shipped projects, indexed and cross-linked
 - [ ] **Phase 2: Sanitized custom hooks** — 6 hooks copied from `~/.claude/hooks/`, scrubbed, with per-hook README
@@ -28,7 +31,11 @@ Ten phases that take the v0.2 minimum-viable repo to a launch-quality v1.0. The 
 - [ ] **Phase 6: Pre-launch audit pass** — broken-link check, attribution audit, sanitisation re-sweep, README front-page polish
 - [ ] **Phase 7: Credibility capture (user-driven)** — 3 screenshots + 1 asciinema cast, embedded in README
 - [ ] **Phase 8: Launch surfaces prep** — GitHub Topics, social preview image, About text, X-thread draft, Show HN draft, founder shortlist
-- [ ] **Phase 9: Public flip + launch** — `gh repo edit --visibility public`, post X thread, submit Show HN, send founder DMs
+- [ ] **Phase 8.1: Animated hero visual** — replace static `assets/hero.svg` with an animated operator-loop visual that leapfrogs ECC visually
+- [ ] **Phase 8.2: Compare matrix in README** — honest 3-column table (Solo Stack vs ECC vs Starter templates) so readers leave with a clear mental map
+- [ ] **Phase 8.3: npm CLI package — `claude-operator-stack`** — real `npx claude-operator-stack init` wizard at `packages/cli/`, `init`/`verify`/`list-stack` only
+- [ ] **Phase 8.4: Solo-founder skills marketplace** — 5-7 original SKILL.md packages targeting solo-founder use-cases ECC's catalog doesn't cover
+- [ ] **Phase 9: Public flip + launch** — `gh repo edit --visibility public`, post X thread, submit Show HN, send founder DMs, publish npm package
 - [ ] **Phase 10: Launch+72h response** — triage incoming issues/PRs/discussions, hot-fix obvious cuts, write retro
 
 ## Phase Details
@@ -324,34 +331,182 @@ Ten phases that take the v0.2 minimum-viable repo to a launch-quality v1.0. The 
 
 ---
 
-### Phase 9: Public flip + launch
-**Effort:** ~2h (the irreversible session)
-**Depends on:** Phases 1-8 (all content shipped, all surfaces prepared, audit clean)
-**Goal:** The one-shot public launch. Walk the pre-flip checklist, flip visibility, apply Topics + social preview + About, post the X thread, submit Show HN, send the founder DMs. Tag v1.0.0.
+### Phase 8.1: Animated hero visual
+**Effort:** ~3-4h
+**Depends on:** Nothing (replaces existing static `assets/hero.svg`; parallelisable with 8.2/8.3/8.4)
+**Goal:** Replace `assets/hero.svg` with an animated SVG (or short video loop, ≤15 seconds) that shows the operator-loop in motion: project directory open → Claude reads `~/Brain/Projects/<name>.md` → ships a PR → screen flashes the next project. Static visual is currently an SVG; ECC has none, this is a place where we can demonstrably leapfrog them visually.
 
-**Why:** Launch is intentionally one phase, intentionally late, intentionally minimal-thought. By the time this phase starts, every decision should be locked in; this phase is execution only. That keeps the irreversible action calm.
+**Why:** The hero visual is the single most-viewed pixel on the repo — every visitor sees it before reading a word. ECC ships *no* hero animation; their README leads with text. An animated operator-loop visual is the fastest way to communicate "this is what running the stack looks like" to a reader who hasn't installed anything yet. It also reinforces the "operator-first" voice (ECC's voice is engineer-first / framework-first). Animated SVG is preferred over MP4 because SVG loops cleanly inline on github.com and respects prefers-reduced-motion if authored well.
+
+**Success criteria:**
+1. New `assets/hero.{svg|webm|mp4}` (pick the format that renders inline on github.com)
+2. README.md `<img>` tag updated to point at the new asset
+3. Loop ≤15 seconds, file ≤500KB (GitHub clips larger inline images)
+4. Preview in dark and light theme — no white background that breaks dark mode
+5. Captures the "solo operator running the loop" feeling without literal screenshots of the operator's vault (privacy-safe — generic project names like "marketplace", "saas", "pipeline")
+6. All 6 translated READMEs (RU, ES, ZH, JA, FR, DE if present) updated to point at the new asset
+7. Animation respects `prefers-reduced-motion` (animation pauses or shows static frame for users with the setting)
+
+**Risks:**
+- **SVG animations can be inconsistent across browsers.** Mitigation: if going SVG, test on Chrome + Firefox + Safari before commit; if any breaks, fall back to animated PNG (apng).
+- **Video files don't loop natively in GitHub markdown.** Mitigation: use animated SVG or animated PNG (apng) for true loop; MP4/webm only as last resort with explicit autoplay+loop attributes.
+- **Animation crosses the privacy line and shows real project names.** Mitigation: hard rule — only generic placeholder names (`marketplace`, `saas`, `pipeline`); slap-pass before commit.
+- **File size balloons past 500KB and GitHub clips it.** Mitigation: target 200KB; if over, simplify the animation rather than cropping.
+
+**Files to create/modify:**
+- `assets/hero.svg` (replace) OR `assets/hero.webm` + `assets/hero-fallback.svg`
+- `README.md` (update `<img>` tag in the hero block)
+- All translated READMEs (`README.ru.md`, `README.es.md`, etc. — update `<img>` tags to point at the same asset)
+- `CHANGELOG.md` (modify)
+
+---
+
+### Phase 8.2: Compare matrix in README
+**Effort:** ~1-2h
+**Depends on:** Nothing (parallelisable with 8.1/8.3/8.4)
+**Goal:** Add a brief, honest "How this compares" section to README.md. Three columns: Solo Stack, Everything Claude Code, Starter templates (e.g., create-next-app, tailwind starter). Three rows that highlight the **non-overlapping** value: tone/audience, depth-of-stack, real shipped proof. Reader leaves the page with a clear mental map of when to pick each, instead of "this is yet another claude config."
+
+**Why:** Readers landing on the repo for the first time often ask "is this just an ECC fork?" or "is this just another starter template?" within 30 seconds. The compare matrix answers both questions in one scan. It also forces the operator to articulate the non-overlap clearly — which sharpens positioning across the rest of the README as a side effect. Honest comparison (no trash-talking) reads as confidence, not insecurity. The translated RU + ES versions ensure the bilingual identity carries through to this surface.
+
+**Success criteria:**
+1. New section in README.md (between "Why this exists" and "Status" works well; or as a Decision Helper block right before Quick Start)
+2. 3-column markdown table with 5-7 honest comparison rows
+3. Section linked from README TOC
+4. No trash-talking — neutral, factual; reader trusts the author who knows their borders
+5. Same section translated into RU + ES (ES is the AR market, RU is the bilingual identity)
+6. Each row passes a "would I be happy if the ECC author read this" check
+7. Compare matrix references ECC by URL (github.com/affaan-m/everything-claude-code), giving credit and showing this is informed positioning, not ignorance
+
+**Risks:**
+- **Compare matrix is tone-sensitive.** Mitigation: an agent left to its own devices will produce marketing copy. Plan must specify exact rows and a no-marketing rule. Slap-pass for marketing-speak before commit.
+- **Comparison reads as defensive ("we are not just X").** Mitigation: phrase rows in terms of audience-fit ("if you want X, pick this column"), not in terms of what we are not.
+- **Translated versions go stale when README compare matrix changes.** Mitigation: cross-reference between RU/ES and the canonical EN section in a comment so future edits are easy to sync.
+
+**Files to create/modify:**
+- `README.md` (insert section + TOC entry)
+- `README.ru.md` (translate)
+- `README.es.md` (translate)
+- `.planning/phases/P8.2-compare-matrix/PLAN.md` (planning artefact)
+- `CHANGELOG.md` (modify)
+
+---
+
+### Phase 8.3: npm CLI package — `claude-operator-stack`
+**Effort:** ~6-8h (the heaviest of the four 8.x phases)
+**Depends on:** Nothing (separate `packages/cli/` directory; doesn't touch existing repo content; parallelisable with 8.1/8.2/8.4)
+**Goal:** Ship a real npm package — `npx claude-operator-stack init` — that runs an interactive installer wizard. Replaces the bash `install.sh` for users who prefer node, AND adds the kind of "real software" artefact that ECC has and we don't (their `ecc-universal` npm package + `ecc-agentshield`). One npm package = one provable software thing we built; massive credibility lift over "here's a bash script."
+
+**Why:** ECC ships real npm packages. We ship a bash script. The credibility delta from "I run a bash script" to "I run `npx <thing>`" is enormous for an audience that lives in node-land — and a sizeable chunk of solo-founder operators do. The package also doubles as a verification surface: `npx claude-operator-stack verify` reads `~/.claude/settings.json` and reports which stack components are wired, which is a maintenance trust signal. Critically, the bash path stays — they coexist. CLI is the "node-native" path; bash is the "audit-and-run" path. Different audiences, both served.
+
+**Success criteria:**
+1. New `packages/cli/` directory with:
+   - `package.json` (real `name: claude-operator-stack`, `version: 0.1.0`, MIT, repo URL, author)
+   - `src/index.ts` (CLI entrypoint with `init`, `verify`, `list-stack` commands)
+   - `src/init.ts` (interactive wizard — prompts for which marketplaces, which hooks, vault path; mirrors `install.sh` flow)
+   - `src/verify.ts` (read `~/.claude/settings.json` and report which stack components are wired)
+   - README, LICENSE, basic tests with vitest or `node:test`
+2. Buildable: `pnpm build` produces `dist/` with sourcemaps
+3. Runnable locally: `pnpm dev init --dry-run` works end-to-end
+4. Uses zero net-new heavy deps — only `commander`, `prompts`, `chalk` (or `picocolors`), `zod` if needed for config validation
+5. Keeps `install.sh` working — they coexist; CLI is the "node-native" path, bash is the "audit-and-run" path
+6. `npx claude-operator-stack init --dry-run` works without publishing (via local link or direct invocation in repo)
+7. Top-level README adds a "Quick Start (npm path)" alongside the existing bash path
+8. Test coverage ≥ 70% on `init.ts` and `verify.ts` (lower than the 80% rule because this is a CLI wizard, not business logic — interactive prompts are harder to test)
+
+**Risks:**
+- **Heaviest phase by far. Scope must be clamped:** `init` + `verify` + `list-stack` only. No marketplace browser, no MCP server installer (those are v1.1).
+- **Scope creep into building a plugin runtime.** Mitigation: hard rule in PLAN.md — we are NOT writing a plugin runtime; we're writing an installer wizard for an existing stack. ECC owns runtime; we own installer ergonomics. PLAN.md must list explicit non-goals.
+- **npm publishing is not part of this phase.** Mitigation: that's a P9 decision (publish coordinated with public flip). Phase 8.3 ships the package buildable + locally runnable; publishing is the irreversible step coordinated with the visibility flip.
+- **Interactive wizards are hard to test.** Mitigation: factor pure logic out of prompts; test the pure logic; smoke-test the prompts with a `--dry-run` mode. 70% coverage is the realistic bar.
+- **TypeScript build configuration drift from rest of repo.** Mitigation: `packages/cli/tsconfig.json` extends a root `tsconfig.base.json` if one exists, else stands alone with sensible strict defaults.
+
+**Files to create/modify:**
+- `packages/cli/` (new — full directory; ~15-25 files including src, tests, package.json, tsconfig, README, LICENSE)
+- `README.md` (Quick Start gets new "via npm" subsection)
+- `package.json` at repo root (add `workspaces` field if going pnpm/yarn workspaces)
+- `pnpm-workspace.yaml` or equivalent (new if going pnpm workspaces)
+- `.gitignore` (modify: add `packages/*/dist/` and `packages/*/node_modules/`)
+- `.planning/phases/P8.3-npm-cli/PLAN.md` (planning artefact)
+- `CHANGELOG.md` (modify)
+
+---
+
+### Phase 8.4: Solo-founder skills marketplace
+**Effort:** ~6-8h
+**Depends on:** Nothing (new `skills/` directory at repo root, doesn't touch existing repo content; parallelisable with 8.1/8.2/8.3)
+**Goal:** Ship 5-7 *original* skill packages that target solo-founder use-cases ECC's catalog doesn't cover. Each skill is a single SKILL.md file with frontmatter, mirroring ECC's skill convention so it can be discovered by Claude Code. **Not duplicating ECC** — these target gaps.
+
+**Why:** ECC has 182 skills targeting general engineering use-cases. Solo founders have a different daily loop: cost monitoring across 5+ services, multi-project context-switching, anonymisation discipline before publishing, weekly review rituals, ship-in-a-day workflows. None of these are well-covered by ECC's catalog. Shipping 5-7 original skills that target *those gaps* gives the repo a non-overlapping skills surface — readers can install ours alongside ECC's, not instead of. It also demonstrates that we understand ECC's conventions deeply enough to extend them, which earns credibility with the ECC audience.
+
+**Suggested skill set (pick 5-7 the agent decides are most coherent):**
+1. `solo-billing-monitor` — daily cost rollup across Vercel + Railway + Supabase + Anthropic + OpenAI; flags >30% week-over-week jumps
+2. `multi-project-context-bridge` — copy decisions tagged with project name from one OMEGA session into another, with anonymisation
+3. `obsidian-sync-helper` — verify `~/Brain/Projects/<name>.md` matches the project's actual git state (open tasks vs uncommitted, decisions vs commit messages)
+4. `case-study-anonymiser` — apply the operator's anonymisation playbook to a draft case study (URL stripping, name redaction, "Discipline A/B/C" alias mapping)
+5. `cookbook-add-recipe` — interactive wizard to add a new cookbook recipe in the existing fixed shape (problem → stack → recipe → pitfalls → references)
+6. `weekly-monday-review` — Monday review skill: open the dashboard, surface stale projects, suggest the 2-of-7 to focus on this week
+7. `ship-day-planner` — turn a one-line product idea into the "ship in a day" workflow split into the 8 blocks from `workflows/ship-a-product-in-a-day.md`
+
+**Success criteria:**
+1. New `skills/` directory at repo root with 5-7 skill subdirectories
+2. Each subdirectory has SKILL.md with frontmatter (`name`, `description`, `origin: claude-operator-stack`)
+3. Each SKILL.md follows the convention: `# Title → ## When to Use → ## Core Concepts → ## How It Works (numbered steps)`
+4. Each skill is *invocable* — when installed at `~/.claude/skills/`, Claude Code discovers it via standard skill loading
+5. README.md `What's Inside` tree gets `skills/` added
+6. New section in README "Solo-founder skills (originals)" with one-line descriptions and the count
+7. `skills/README.md` indexes the set with a one-line use-case per skill
+8. Each skill has a 30-90 line body that actually instructs Claude on what to do, not a stub
+9. Distinct from cookbook: cookbook = how-to docs the operator reads; skills = invocable prompts Claude executes (this distinction stated in `skills/README.md`)
+
+**Risks:**
+- **Scope creep — must clamp at 5-7.** Mitigation: if candidates overflow, pick the 5 most non-overlapping with ECC. PLAN.md lists the cut-line explicitly.
+- **Each skill needs to be real, not just a stub.** Mitigation: SKILL.md must instruct Claude on what to actually do, not just describe. Slap-pass enforces a minimum body length and concrete steps.
+- **Skills accidentally duplicate ECC functionality.** Mitigation: PLAN.md cross-references the candidate against ECC's skill index before writing; if ECC has equivalent, drop the candidate or sharpen the differentiation.
+- **Confusion between cookbook and skills.** Mitigation: explicit distinction in `skills/README.md` and `cookbook/README.md` cross-link block.
+
+**Files to create/modify:**
+- `skills/<5-7 skill names>/SKILL.md` (new each)
+- `skills/README.md` (new — index)
+- `README.md` ("What's Inside" tree update + new "Solo-founder skills" section)
+- `cookbook/README.md` (modify: cross-link to `skills/` with the cookbook-vs-skills distinction)
+- `.planning/phases/P8.4-own-skills/PLAN.md` (planning artefact)
+- `CHANGELOG.md` (modify)
+
+---
+
+### Phase 9: Public flip + launch
+**Effort:** ~2-3h (the irreversible session; +30min if npm publish is included)
+**Depends on:** Phases 1-8.4 (all content shipped, all surfaces prepared, audit clean, doubling-down phases complete)
+**Goal:** The one-shot public launch. Walk the pre-flip checklist, flip visibility, apply Topics + social preview + About, post the X thread, submit Show HN, send the founder DMs. Tag v1.0.0. **Coordinate npm publish of `claude-operator-stack` package** with the visibility flip (the package can't resolve a public repo URL until the repo is public).
+
+**Why:** Launch is intentionally one phase, intentionally late, intentionally minimal-thought. By the time this phase starts, every decision should be locked in; this phase is execution only. That keeps the irreversible action calm. The npm publish piggybacks on this phase because publishing a package referencing a private repo creates a confusing user experience — better to publish at the moment the repo flips public.
 
 **Success criteria:**
 1. Pre-flip checklist (from Phase 8) walked top to bottom; every item ticked
 2. `gh repo edit mccarthy606/claude-operator-stack --visibility public` executed successfully
 3. Topics, social preview, About text applied via gh CLI
 4. v1.0.0 tag created and pushed; GitHub release published with curated changelog
-5. X thread posted; URL recorded in `.planning/launch/launch-log.md`
-6. Show HN submitted; URL recorded
-7. Founder DMs sent (5-10); recipient list + send timestamps recorded
-8. README badges updated to reflect public state if any were placeholder
-9. Repo is reachable at `https://github.com/mccarthy606/claude-operator-stack` from a logged-out browser
+5. **npm publish executed for `claude-operator-stack@0.1.0`** (from Phase 8.3); package resolves on `npmjs.com/package/claude-operator-stack`
+6. `npx claude-operator-stack@0.1.0 init --dry-run` works from a clean machine
+7. X thread posted; URL recorded in `.planning/launch/launch-log.md`
+8. Show HN submitted; URL recorded
+9. Founder DMs sent (5-10); recipient list + send timestamps recorded
+10. README badges updated to reflect public state if any were placeholder
+11. Repo is reachable at `https://github.com/mccarthy606/claude-operator-stack` from a logged-out browser
 
 **Risks:**
 - **A late-discovered sanitisation issue blocks the flip mid-phase.** Mitigation: the pre-flip checklist runs the sanitisation grep one final time; if it fails, abort the flip and return to Phase 6. Better to delay than to flip dirty.
 - **gh CLI auth lapses or repo permissions are wrong at flip-time.** Mitigation: the pre-flip checklist includes `gh auth status` and `gh repo view --json viewerPermission` checks.
+- **npm publish fails because of name conflict.** Mitigation: verify `claude-operator-stack` is available on npm during Phase 8.3 (not at flip-time); if taken, pivot name early.
+- **npm publish succeeds but package is broken on a clean machine.** Mitigation: smoke-test `npx claude-operator-stack@0.1.0 init --dry-run` from a fresh node install before counting Phase 9 done; if broken, `npm unpublish` within 72h window and ship v0.1.1.
 - **Show HN or X thread under-performs and the founder shortlist is wasted.** Mitigation: this is acceptable. Launch outcome is shaped by content + surfaces, not by perfect timing. If first wave is small, Phase 10 covers iteration.
 
 **Files to create/modify:**
-- `.planning/launch/launch-log.md` (new — runtime log of what got posted where, when)
+- `.planning/launch/launch-log.md` (new — runtime log of what got posted where, when, including npm publish output)
 - `CHANGELOG.md` (modify: tag v1.0.0 entry with release notes)
 - README badges (modify if any need update)
 - GitHub repo metadata (Topics, social preview, About) — applied via gh CLI
+- `packages/cli/package.json` (modify: bump to 0.1.0 if not already, ensure repo URL is correct)
 
 ---
 
@@ -367,8 +522,8 @@ Ten phases that take the v0.2 minimum-viable repo to a launch-quality v1.0. The 
 2. Every PR opened in launch+72h has either a merge, a request-for-changes, or an explicit decline within 48h
 3. Every X-thread reply that asks a question gets an answer
 4. At least 3 hot-fix commits land if real issues are surfaced (typos, broken links, missing attribution)
-5. `.planning/launch/launch-retro.md` written at hour 72 with: stars/forks/PRs/discussions counts, what worked, what didn't, what to change for v1.1
-6. v1.0.1 patch tag if any hot-fixes warranted it
+5. `.planning/launch/launch-retro.md` written at hour 72 with: stars/forks/PRs/discussions counts, npm install counts (from `npm-stat` or similar), what worked, what didn't, what to change for v1.1
+6. v1.0.1 patch tag if any hot-fixes warranted it (and a corresponding npm v0.1.1 if CLI hot-fixed)
 7. Issues opened by the audience are triaged into `good first issue` / `enhancement` / `wontfix` with labels
 
 **Risks:**
@@ -380,12 +535,15 @@ Ten phases that take the v0.2 minimum-viable repo to a launch-quality v1.0. The 
 - `.planning/launch/launch-retro.md` (new — 72h retro)
 - Hot-fix commits to wherever real issues land
 - `CHANGELOG.md` (modify if v1.0.1 ships)
+- `packages/cli/package.json` (modify if CLI hot-fix ships at v0.1.1)
 
 ---
 
 ## Progress
 
-**Execution order:** Phase 1 → 2 (parallelisable with 1; can swap) → 3 → 4 (depends on 1,2) → 5 (depends on 1-4) → 6 (audit) → 7 (user-driven capture) → 8 (launch prep) → 9 (flip) → 10 (response)
+**Execution order:** Phase 1 → 2 (parallelisable with 1; can swap) → 3 → 4 (depends on 1,2) → 5 (depends on 1-4) → 6 (audit) → 7 (user-driven capture) → 8 (launch prep) → **Wave A: 8.1, 8.2, 8.3, 8.4 in parallel** (4 agents, ~6-8h wallclock; P8.3 + P8.4 are the long pole) → 9 (flip + npm publish) → 10 (response)
+
+**If sequential is preferred for the 8.x wave** (cheap-to-expensive, builds confidence in the surface before the heavy CLI phase): **8.2 → 8.4 → 8.1 → 8.3**.
 
 | Phase | Effort | Depends on | Status | Completed |
 |-------|--------|------------|--------|-----------|
@@ -397,15 +555,27 @@ Ten phases that take the v0.2 minimum-viable repo to a launch-quality v1.0. The 
 | 6. Pre-launch audit pass | 2-3h | 1-5 | Not started | - |
 | 7. Credibility capture (user-driven) | 2h | 1-6 | Not started | - |
 | 8. Launch surfaces prep | 2-3h | 1-7 | Not started | - |
-| 9. Public flip + launch | 2h | 1-8 | Not started | - |
+| 8.1. Animated hero visual | 3-4h | — (post-8) | Not started | - |
+| 8.2. Compare matrix in README | 1-2h | — (post-8) | Not started | - |
+| 8.3. npm CLI package | 6-8h | — (post-8) | Not started | - |
+| 8.4. Solo-founder skills | 6-8h | — (post-8) | Not started | - |
+| 9. Public flip + launch | 2-3h | 1-8.4 | Not started | - |
 | 10. Launch+72h response | 2-4h | 9 | Not started | - |
 
-**Total effort estimate:** ~30-41h of focused work, 8-12 focus sessions, 2-3 calendar weeks at typical solo-founder cadence.
+**Total effort estimate:** ~46-63h of focused work (was ~30-41h before 8.x insertions; 8.x adds ~16-22h), 11-16 focus sessions, 3-4 calendar weeks at typical solo-founder cadence. Wave-A parallelism on 8.1-8.4 can compress wallclock to ~6-8h if 4 agents run concurrently.
+
+## Two risks to watch (updated 2026-05-05)
+
+1. **Scope creep on P8.3 and P8.4** (the new top risk after the 8.x insertions). The npm CLI phase wants to grow into a plugin runtime; the skills phase wants to grow into 15 skills. Both must enforce hard caps in their PLAN.md docs: P8.3 = `init` + `verify` + `list-stack` only, no runtime; P8.4 = 5-7 skills max, with explicit cut-line if candidates overflow. PLAN.md authors must list non-goals in addition to goals.
+2. **Sanitisation slip in the new artefacts** (the standing risk, now applies to 4 more surfaces). Hero animation must use generic project names, compare matrix must not leak operator domains, npm CLI must not vendor real `~/.claude/settings.json`, skills must not encode operator-specific paths. The pre-flip sanitisation grep in Phase 9 covers this, but each 8.x phase should run its own grep before commit so the audit gate isn't the only safety net.
 
 ## Notes for downstream workflows
 
 - `/gsd-discuss-phase 1` should pull `cookbook/` recipe shortlist and confirm which 12 of the 15 candidates ship
 - `/gsd-plan-phase 1` should produce 12 micro-plans (one per recipe), or 3 macro-plans (4 recipes each), depending on user preference
+- `/gsd-plan-phase 8.1` through `/gsd-plan-phase 8.4` produce the four PLAN.md docs in `.planning/phases/P8.{1,2,3,4}-*/PLAN.md`; each PLAN.md must include explicit non-goals in addition to goals (scope creep is the new top risk)
 - `/gsd-execute-phase` ordering: do the recipes the operator remembers most vividly first; energy is the bottleneck, not knowledge
+- For the 8.x wave: prefer parallel execution (4 agents simultaneously) since the 4 phases are mutually independent at the directory level; cross-references happen only in README, which is the last touch
 - Phase 7 must be flagged as user-driven in the discuss step — the agent cannot capture screenshots
-- Phase 9 must include a manual "are you sure?" gate before `gh repo edit --visibility public`
+- Phase 8.1 must be flagged as potentially user-driven (user may have aesthetic preferences for the animated visual that override the agent's first draft)
+- Phase 9 must include a manual "are you sure?" gate before `gh repo edit --visibility public` AND before `npm publish`; both are irreversible

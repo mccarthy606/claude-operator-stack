@@ -4,6 +4,17 @@ All notable changes to the Claude Operator Stack will be documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). The stack uses calendar-versioning aligned with major iterations, not strict semver.
 
+## [Unreleased]
+
+### Added
+
+- **skills/** — 6 original `SKILL.md` packages targeting solo-founder use-cases ECC's catalog doesn't cover: `solo-billing-monitor`, `multi-project-context-bridge`, `obsidian-sync-helper`, `case-study-anonymiser`, `weekly-monday-review`, `ship-day-planner`. Each is an invocable prompt for Claude (not a how-to doc), 80-95 lines, with `origin: claude-operator-stack` frontmatter, leaning on existing `workflows/`, `cookbook/`, `stack/`, and `case-studies/` files. README integration deferred to a coordinated post-wave-8 pass — see `.planning/phases/P8.4-own-skills/INTEGRATION.md`.
+- **packages/cli/** — npm CLI package `claude-operator-stack` with three commands (`init`, `verify`, `list-stack`). Built and locally runnable; not yet published. Sibling to `install.sh`; same target files, same sidecar safety, different ergonomics. Pinned at `0.1.0`; publish coordinates with the public visibility flip in Phase 9.
+
+### Changed
+
+- Replaced static hero with animated SVG (P8.1)
+
 ## [1.0.0] — 2026-05-05
 
 ### Added

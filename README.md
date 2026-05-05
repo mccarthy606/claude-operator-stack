@@ -27,9 +27,11 @@
 - [What's Inside](#whats-inside)
 - [The Operator Playbook](#the-operator-playbook)
 - [Cookbook](#cookbook)
+- [Solo-founder skills (originals)](#solo-founder-skills-originals)
 - [Scaffolds](#scaffolds)
 - [Profiles](#profiles)
 - [Why this exists](#why-this-exists)
+- [How this compares](#how-this-compares)
 - [Acknowledgements](#acknowledgements)
 - [Status](#status)
 - [License](#license)
@@ -87,9 +89,20 @@ See [case-studies/](case-studies/) for the *how*.
 
 Sets up the stack on a fresh machine. macOS and Linux supported; Windows via WSL.
 
-> Pick one install path. Don't run `curl | bash` on top of a manual clone — they conflict.
+> Pick one install path. Don't run both back-to-back on a fresh `~/.claude/` — they target the same files and the second run will create duplicate sidecars.
 
-Clone, audit, run:
+### Via npm (node-native path)
+
+```bash
+npx claude-operator-stack init --dry-run    # preview
+npx claude-operator-stack init              # apply
+npx claude-operator-stack verify            # audit your existing setup
+npx claude-operator-stack list-stack        # show the six components
+```
+
+Same outcome as `install.sh`, different ergonomics. The wizard prompts you through marketplace selection, copies sanitized configs as sidecar files (`*.from-operator-stack`), and prints the manual `/plugin` commands you'll run inside Claude Code.
+
+### Via bash (audit-and-run path)
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
@@ -156,6 +169,17 @@ claude-operator-stack/
 │   ├── 10-mercado-pago-latam.md
 │   ├── 11-scheduled-prompts-cron.md
 │   └── 12-content-cross-post-pipeline.md
+│
+├── skills/                      ← 6 original SKILL.md packages (invocable prompts)
+│   ├── solo-billing-monitor/
+│   ├── multi-project-context-bridge/
+│   ├── obsidian-sync-helper/
+│   ├── case-study-anonymiser/
+│   ├── weekly-monday-review/
+│   └── ship-day-planner/
+│
+├── packages/                    ← npm-publishable packages (workspaces)
+│   └── cli/                     ← claude-operator-stack: init | verify | list-stack
 │
 ├── scaffolds/                   ← copy-and-run starting points
 │   ├── web-saas/                ← Next.js 15 + Supabase + Sentry + GA4
@@ -229,6 +253,23 @@ Full index in [cookbook/README.md](cookbook/README.md).
 
 ---
 
+## Solo-founder skills (originals)
+
+Six original `SKILL.md` packages targeting solo-founder use-cases ECC's 182-skill catalog doesn't cover. They ship alongside ECC, not instead — both directories coexist under `~/.claude/skills/`.
+
+| Skill | Use case |
+|-------|----------|
+| [`solo-billing-monitor`](skills/solo-billing-monitor/SKILL.md) | Weekly cost rollup across cloud + AI APIs |
+| [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) | Bridge OMEGA decisions across projects with anonymisation |
+| [`obsidian-sync-helper`](skills/obsidian-sync-helper/SKILL.md) | Verify Brain notes vs git state |
+| [`case-study-anonymiser`](skills/case-study-anonymiser/SKILL.md) | Apply the redaction playbook to a draft case study |
+| [`weekly-monday-review`](skills/weekly-monday-review/SKILL.md) | Monday review → 2-of-N focus pick |
+| [`ship-day-planner`](skills/ship-day-planner/SKILL.md) | One-line idea → 8 ship-day blocks |
+
+Cookbook recipes are how-to docs the operator reads; skills are invocable prompts Claude executes when triggered. See [skills/README.md](skills/README.md).
+
+---
+
 ## Scaffolds
 
 Two runnable starting points. Clone the directory, fill in `.env`, ship.
@@ -260,6 +301,41 @@ Most AI-tooling material is written for engineers. This is written for operators
 The bet: a non-engineer with a tight project list, a curated stack, and a workflow that compounds can ship more than a small team, given the right setup. I am not trying to argue AI replaces engineers; I am documenting what one operator can do with the right tools loaded.
 
 Most components here are other people's work. What's mine is the glue: the install path, the workflows, and the case studies that pull seven separate projects into one stack.
+
+---
+
+## How this compares
+
+A few people land here asking: is this just a fork of [Everything Claude Code](https://github.com/affaan-m/everything-claude-code), or another starter template? Neither.
+
+The three options below are the ones first-time visitors usually weigh. They overlap in places, but each one targets a different kind of work. The table is meant as a map, not a ranking — pick the column that fits how you actually spend your week.
+
+A note on what each column is:
+
+- **Solo Stack** is this repo. A 6-component install with the workflow, cookbook, and case studies wrapped around it.
+- **Everything Claude Code** is the upstream skills + agents library this repo depends on. Built and maintained by [@affaan-m](https://github.com/affaan-m).
+- **Starter templates** is the bucket for `create-next-app`, vanilla Vite + Tailwind, T3 stack, and similar single-framework scaffolds.
+
+| Dimension | Solo Stack | Everything Claude Code | Starter templates |
+|-----------|------------|------------------------|-------------------|
+| Audience | Solo founder running 2+ products at once | Engineers and AI dev teams | Web app newcomers and quick prototypers |
+| Tone | Operator-first — the workflow comes before the code | Engineer-first — depth across language ecosystems | Framework-first — Next.js / Vite / etc. set the shape |
+| Stack scope | Curated 6-component set with one opinionated install path | 182 skills + 48 agents across 12+ language ecosystems | Single framework + auth/db starter |
+| Multi-harness | Claude Code only | Claude Code, Cursor, Codex, OpenCode, Gemini, Antigravity | Framework-specific |
+| Real shipped proof | 4 anonymised case studies from one operator's products | Author's own product (`zenith.chat`) and template configs | None — meant as a starting point |
+| Custom contributions | Workflows, cookbook of 12 recipes, 6 hooks, 6 original skills | Wide skills + agents catalogue, two npm packages | Scaffold + boilerplate |
+
+Audience-fit shorthand:
+
+- Pick **Solo Stack** if you run several products at once and want a workflow as much as a config.
+- Pick **Everything Claude Code** if you want a wide skills + agents catalogue and multi-harness coverage.
+- Pick a **Starter template** if you're starting your first web app and want one framework's happy path.
+
+Solo Stack and Everything Claude Code are designed to coexist — many readers here will install both. The cookbook recipes, profiles, and case studies in this repo assume an install of ECC's skill catalogue is sitting next to them; the workflows here describe how to use that catalogue across 2+ products in parallel.
+
+If you came in from a starter template and ended up with 3 of them open in different folders, the gap Solo Stack tries to fill is the part that sits *above* the template — the workflow, the cookbook, the per-profile install path, and the case studies showing what happened on real products.
+
+If you came in from Everything Claude Code and want a worked example of how an operator runs the catalogue across a product list rather than a single repo, the case studies and workflows in this repo are designed to be that worked example.
 
 ---
 

@@ -1,0 +1,17 @@
+{
+  "name": "claude-operator-stack-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Workspace root — see packages/cli for the published package.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm --workspace packages/cli run build",
+    "test": "npm --workspace packages/cli test",
+    "dev": "npm --workspace packages/cli run dev"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -50,6 +50,7 @@ Hard cap of ~200 lines per recipe. If a recipe outgrows that, it gets split.
 
 ## Related
 
+- [skills/](../skills/) — invocable SKILL.md packages Claude executes (cookbook = human reads, skills = Claude executes)
 - [workflows/](../workflows/) — the operator playbook that sits above these recipes
 - [case-studies/](../case-studies/) — the products these recipes shipped inside of
 - [stack/](../stack/) — the components every recipe assumes are installed

@@ -1,0 +1,72 @@
+{
+  "name": "claude-operator-stack",
+  "version": "0.1.0",
+  "description": "Wizard installer for the Claude Operator Stack — a curated stack of skills, agents, MCP servers, and operator workflows for Claude Code.",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "anthropic",
+    "cli",
+    "installer",
+    "wizard",
+    "skills",
+    "agents",
+    "mcp",
+    "operator-stack"
+  ],
+  "homepage": "https://github.com/mccarthy606/claude-operator-stack#readme",
+  "bugs": {
+    "url": "https://github.com/mccarthy606/claude-operator-stack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mccarthy606/claude-operator-stack.git",
+    "directory": "packages/cli"
+  },
+  "license": "MIT",
+  "author": "Dmitry McCarthy <https://github.com/mccarthy606>",
+  "type": "module",
+  "bin": {
+    "claude-operator-stack": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/cli.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "_publishNote": "Publish is intentionally NOT triggered by this package version (0.1.0). The package is built and locally runnable. Publishing coordinates with the public visibility flip in Phase 9 — do not run `npm publish` from this phase.",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "picocolors": "^1.0.1",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/prompts": "^2.4.9",
+    "@vitest/coverage-v8": "^2.0.5",
+    "tsup": "^8.2.4",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
