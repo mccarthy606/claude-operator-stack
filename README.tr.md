@@ -16,7 +16,7 @@
 
 Bu çeviri bir taslaktır. Tam içerik İngilizce olarak [README.md](README.md) dosyasında mevcut.
 
-Çeviriye yardım etmek ister misiniz? [issue #3 — translate README to Turkish](https://github.com/mccarthy606/claude-operator-stack/issues) bölümüne bakın veya PR açın. Yönergeler [CONTRIBUTING.md](CONTRIBUTING.md) içinde.
+Çeviriye yardım etmek ister misiniz? [issue #2 — translate README to Turkish](https://github.com/mccarthy606/claude-operator-stack/issues) bölümüne bakın veya PR açın. Yönergeler [CONTRIBUTING.md](CONTRIBUTING.md) içinde.
 
 ## Bu nedir
 

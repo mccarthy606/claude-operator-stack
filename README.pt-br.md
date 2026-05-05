@@ -16,7 +16,7 @@
 
 Esta tradução é um stub. O conteúdo completo em inglês está em [README.md](README.md).
 
-Quer ajudar a traduzir? Veja [issue #2 — translate README to Portuguese (BR)](https://github.com/mccarthy606/claude-operator-stack/issues) ou abra um PR. Diretrizes em [CONTRIBUTING.md](CONTRIBUTING.md).
+Quer ajudar a traduzir? Veja [issue #1 — translate README to Portuguese (BR)](https://github.com/mccarthy606/claude-operator-stack/issues) ou abra um PR. Diretrizes em [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Resumo do que é
 

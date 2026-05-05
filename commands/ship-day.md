@@ -30,7 +30,7 @@ When invoked, this command runs the [`ship-day-planner`](../skills/ship-day-plan
 | `--inputs-only` | optional flag | off | Returns the 8 blocks but skips the night-before frame. Use when you already wrote the frame the night before. |
 | `--stack` | optional | `Next.js 15 + Supabase + Vercel + GA4 + Cloudflare` | Stack override (e.g. `Astro` instead of `Next`, `Mercado Pago` instead of `Stripe` for LATAM). Honoured throughout the plan. |
 
-The hypothesis is a positional arg because the workflow is only as good as the sentence — a hypothesis-shaped sentence makes the plan crisp; "an app that helps people" produces a plan that lies.
+The hypothesis is a positional arg because the rest of the plan keys off it. A hypothesis-shaped sentence ("tiny pricing-calculator microsite for indie SaaS founders sized 5-50k MRR") makes the plan crisp; "an app that helps people" produces a plan that doesn't survive contact with the day.
 
 ## Examples
 

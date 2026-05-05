@@ -16,7 +16,7 @@
 
 此翻译为占位文档。完整英文版本见 [README.md](README.md)。
 
-想帮助翻译？查看 [issue #4 — translate README to Chinese](https://github.com/mccarthy606/claude-operator-stack/issues) 或直接提交 PR。指南见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+想帮助翻译？查看 [issue #3 — translate README to Chinese](https://github.com/mccarthy606/claude-operator-stack/issues) 或直接提交 PR。指南见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 这是什么
 

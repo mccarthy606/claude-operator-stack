@@ -79,10 +79,10 @@ Full protocol — including the optional `--write-status` follow-up flow — liv
 ## Defaults and conventions
 
 - **Project corpus**: `~/Brain/Projects/*.md` by default. Override only if you keep notes elsewhere.
-- **Capacity caps**: 2 focus + 3 Friday touchpoints + remaining paused. The 2-cap is structural — relaxing to 3 has produced a worse week every time.
+- **Capacity caps**: 2 focus + 3 Friday touchpoints + remaining paused. The 2-cap is structural; relaxing to 3 has produced a worse week every time.
 - **Silence threshold**: 4 days no commit triggers `## Force-visible` regardless of rank. Habit 3 third-rail rule.
 - **Read-only**: status frontmatter writes are off by default; even with `--write-status`, every write requires per-project confirmation.
-- **Empty force-visible block**: kept visible. An empty section means the third-rail is quiet this week, which is itself information.
+- **Empty force-visible block**: kept visible. An empty section means the third-rail is quiet this week.
 
 ## Related
 

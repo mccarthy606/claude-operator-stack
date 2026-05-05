@@ -8,6 +8,14 @@ claude-operator-stack/
 ├── install.sh                   ← one-liner installer (audit before running)
 ├── CLAUDE.md                    ← my project-level Claude config (sanitized)
 │
+├── assets/                      ← hero banner + screenshots embedded in docs
+│   ├── hero.svg                 ← animated SVG hero shown atop README
+│   └── screenshots/             ← stack-in-action SVG screenshots
+│       ├── install-dryrun.svg
+│       ├── obsidian-vault.svg
+│       ├── claude-reads-note.svg
+│       └── README.md
+│
 ├── stack/                       ← component-by-component setup
 │   ├── ecc.md                   ← Everything Claude Code: what I use, why
 │   ├── toprank.md               ← Toprank: SEO + Ads workflow
@@ -28,6 +36,15 @@ claude-operator-stack/
 │   ├── ai-legal-tool.md
 │   ├── whatsapp-b2b-saas.md
 │   └── youtube-pipeline.md
+│
+├── commands/                    ← 6 slash-commands wrapping the original skills
+│   ├── solo-monday-review.md
+│   ├── anonymise-case-study.md
+│   ├── ship-day.md
+│   ├── cost-rollup.md
+│   ├── bridge-context.md
+│   ├── sync-brain.md
+│   └── README.md                ← convention + skills-vs-commands index
 │
 ├── cookbook/                    ← 12 copy-pasteable how-to recipes
 │   ├── 01-claude-code-from-zero.md
@@ -77,6 +94,16 @@ claude-operator-stack/
 │   ├── hooks/                   ← 6 sanitized hooks + per-hook README
 │   └── rules/
 │       └── obsidian-integration.md
+│
+├── tests/                       ← integration tests for install.sh + CLI
+│   ├── integration/
+│   │   ├── install-sh.test.sh
+│   │   ├── cli-init.test.ts
+│   │   ├── cli-verify.test.ts
+│   │   └── cli-list-stack.test.ts
+│   ├── run-all.sh               ← entrypoint that runs all integration tests
+│   ├── vitest.config.ts
+│   └── README.md
 │
 └── credits/                     ← attribution to every original author
     └── README.md

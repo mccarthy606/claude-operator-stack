@@ -16,7 +16,7 @@
 
 この翻訳はスタブです。完全な英語版は [README.md](README.md) を参照してください。
 
-翻訳の手伝いをしませんか？ [issue #5 — translate README to Japanese](https://github.com/mccarthy606/claude-operator-stack/issues) を確認するか、直接 PR を開いてください。ガイドラインは [CONTRIBUTING.md](CONTRIBUTING.md) にあります。
+翻訳の手伝いをしませんか？ [issue #4 — translate README to Japanese](https://github.com/mccarthy606/claude-operator-stack/issues) を確認するか、直接 PR を開いてください。ガイドラインは [CONTRIBUTING.md](CONTRIBUTING.md) にあります。
 
 ## これは何か
 

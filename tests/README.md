@@ -52,7 +52,7 @@ The boundary:
 - **Integration** = real binary, real filesystem, end-to-end contract.
 
 A breakage in only the integration suite usually means the dist build is
-emitting different behaviour than the source — worth investigating, never
+emitting different behaviour than the source. Worth investigating, never
 worth weakening the assertion.
 
 ## Isolation guarantees

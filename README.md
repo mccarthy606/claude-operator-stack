@@ -236,7 +236,7 @@ Six slash-commands that wrap the six original skills as one-keystroke verbs in C
 | [`/anonymise-case-study`](commands/anonymise-case-study.md) | Apply the redaction playbook to a draft | [`case-study-anonymiser`](skills/case-study-anonymiser/SKILL.md) |
 | [`/ship-day`](commands/ship-day.md) | One-line idea → 8 ship-day blocks | [`ship-day-planner`](skills/ship-day-planner/SKILL.md) |
 | [`/cost-rollup`](commands/cost-rollup.md) | Weekly cross-cloud + AI cost rollup | [`solo-billing-monitor`](skills/solo-billing-monitor/SKILL.md) |
-| [`/bridge-context`](commands/bridge-context.md) | Bridge OMEGA decisions across projects, anonymised | [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) |
+| [`/bridge-context`](commands/bridge-context.md) | Bridge cross-project decisions via graphify, anonymised | [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) |
 | [`/sync-brain`](commands/sync-brain.md) | Verify Brain note vs git state | [`obsidian-sync-helper`](skills/obsidian-sync-helper/SKILL.md) |
 
 These coexist with [Everything Claude Code](https://github.com/affaan-m/everything-claude-code)'s 67 commands under `~/.claude/commands/`. Names checked at plan-time and execute-time against ECC's catalog — zero collisions. See [commands/README.md](commands/README.md) for the full index.

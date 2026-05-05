@@ -75,7 +75,7 @@ Full protocol — including how internal cross-references are preserved and how 
 
 ## Defaults and conventions
 
-- **Alias scheme**: same as [`/anonymise-case-study`](anonymise-case-study.md) — `Project-A/B`, `Counterparty-N`, `Customer-N`. Consistency across commands is the point.
+- **Alias scheme**: same as [`/anonymise-case-study`](anonymise-case-study.md): `Project-A/B`, `Counterparty-N`, `Customer-N`. Consistency across commands keeps the alias map stable.
 - **Time window**: last 30 days against `captured_at` or file mtime; widen for quarterly post-mortems, narrow for last-week-only bridges.
 - **Limit**: 5 items max by default. A 30-node dump is a backlog import, not a bridge.
 - **Direction**: one direction per call. Bridging A→B and B→A in the same response collapses the namespace and the alias map stops being stable.
