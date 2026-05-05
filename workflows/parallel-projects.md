@@ -6,6 +6,30 @@ The default failure mode of solo multi-project work is **context fragmentation**
 
 Three habits make this work for me. None are clever. All are mechanical.
 
+```mermaid
+flowchart LR
+    subgraph week["Weekly loop"]
+        M[Monday 30 min<br/>review all 7 projects] --> P{Pick 2 for the week}
+        P --> F[Focused work<br/>2 projects · ~80% time]
+        P --> T[Friday touchpoint<br/>3 projects · 30 min each]
+        P --> S[Paused<br/>2 projects · status updated]
+    end
+
+    F --> O[Per-session: open project dir<br/>Claude reads ~/Brain/Projects/&lt;name&gt;.md]
+    O --> W[Work + update note + commit]
+    W --> X[OMEGA stores tagged decisions]
+    X -.cross-session.-> O
+
+    classDef gate fill:#0a0a0f,stroke:#22d3ee,color:#e4e4e7
+    classDef focus fill:#0a0a0f,stroke:#22c55e,color:#f4f4f5
+    classDef pause fill:#0a0a0f,stroke:#52525b,color:#a1a1aa
+    classDef io fill:#0a0a0f,stroke:#7c3aed,color:#e4e4e7
+    class P gate
+    class M,F,T focus
+    class S pause
+    class O,W,X io
+```
+
 ## Habit 1: One Obsidian note per project, single source of truth
 
 Every project has exactly one note in `~/Brain/Projects/<name>.md`. The note holds:

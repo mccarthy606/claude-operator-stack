@@ -1,13 +1,13 @@
 <div align="center">
 
-# Claude Operator Stack
+<img src="assets/hero.svg" alt="Claude Operator Stack — 7 products · 4 months · 1 person" width="100%"/>
 
-### How a non-CS founder ships 7 AI products in 4 months
-### from a kitchen in Buenos Aires
+**English** · [Русский](README.ru.md) · [Español](README.es.md) · [Português (BR)](README.pt-br.md) · [Türkçe](README.tr.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Stack](https://img.shields.io/badge/stack-Claude_Code_+_4_marketplaces-7c3aed)](#the-stack)
 [![Status](https://img.shields.io/badge/status-active-22c55e)](#)
+[![Last commit](https://img.shields.io/github/last-commit/mccarthy606/claude-operator-stack)](https://github.com/mccarthy606/claude-operator-stack/commits/main)
 [![Built by](https://img.shields.io/badge/built_by-%40mccarthy606-orange)](https://github.com/mccarthy606)
 
 **7 products · 4 months · 0 funding · 0 team · 1 person**
@@ -19,6 +19,21 @@
 > This repo is the stack and the playbook that made it possible.
 
 </div>
+
+---
+
+## Contents
+
+- [What this is](#what-this-is)
+- [The Stack](#the-stack)
+- [The 7 products in 4 months](#the-7-products-in-4-months)
+- [Quick Start](#quick-start)
+- [What's Inside](#whats-inside)
+- [The Operator Playbook](#the-operator-playbook)
+- [Why this exists](#why-this-exists)
+- [Acknowledgements](#acknowledgements)
+- [Status](#status)
+- [License](#license)
 
 ---
 
@@ -77,26 +92,26 @@ See [case-studies/](case-studies/) for the *how*.
 
 Bootstraps the entire stack on a fresh machine in under 5 minutes. macOS + Linux supported, Windows via WSL.
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/mccarthy606/claude-operator-stack/main/install.sh | bash
-```
+> **Pick one path only.** This stack is opinionated about install methods. Don't stack `curl | bash` on top of a manual clone — they will conflict.
 
-Or, manually:
+**Recommended — clone, audit, run:**
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
 cd claude-operator-stack
-./install.sh
+less install.sh           # audit it first
+./install.sh --dry-run    # preview every change
+./install.sh              # apply
 ```
 
 The installer will:
 
-1. Verify `claude` CLI is installed (and offer to install if missing)
-2. Add the three marketplaces (ECC, Toprank, Frontend-Design)
-3. Copy sanitized `settings.json` and `mcp-servers.json` templates to `~/.claude/`
+1. Verify `claude` CLI is installed (and abort with instructions if missing)
+2. Print the marketplace + plugin commands you'll run inside Claude Code
+3. Copy sanitized `settings.json` and `mcp-servers.json` templates to `~/.claude/` as **sidecar files** — your existing config is never silently overwritten
 4. Print the next-step checklist for adding your own API keys
 
-Nothing is committed without confirmation. You can audit `install.sh` before running it.
+Nothing is committed to your `~/.claude/` without explicit confirmation. The installer supports `--dry-run` and `--yes` flags.
 
 ---
 

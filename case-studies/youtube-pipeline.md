@@ -18,14 +18,23 @@ But it's worth documenting as a case study because:
 
 ## Pipeline shape
 
-```
-   topic       →   research     →   script      →   record    →   captions
-   (manual)        (Claude)         (Claude)        (manual)      (Claude)
+```mermaid
+flowchart LR
+    T[topic<br/><i>manual</i>] --> R[research<br/><i>Claude</i>]
+    R --> S[script<br/><i>Claude</i>]
+    S --> RC[record<br/><i>manual</i>]
+    RC --> C[captions<br/><i>Claude</i>]
+    C --> X[cross-post drafts<br/><i>Claude</i>]
+    X --> D[distribute<br/><i>Claude</i>]
+    D --> P[publish<br/><i>manual</i>]
 
-                                    ┌──────────────────────┐
-   publish     ←   distribute   ←   │  cross-post drafts   │
-   (manual)        (Claude)         └──────────────────────┘
+    classDef manual fill:#0a0a0f,stroke:#22c55e,color:#f4f4f5
+    classDef agent fill:#0a0a0f,stroke:#7c3aed,color:#e4e4e7
+    class T,RC,P manual
+    class R,S,C,X,D agent
 ```
+
+Three of seven steps are manual. The rest is Claude-assisted. The split is deliberate — see [`workflows/content-pipeline.md`](../workflows/content-pipeline.md).
 
 ## Stack and why
 

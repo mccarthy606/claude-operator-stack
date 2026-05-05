@@ -2,6 +2,44 @@
 
 Six components, one curated layout, full attribution.
 
+```mermaid
+flowchart TB
+    subgraph runtime[" "]
+        CC[Claude Code<br/><sub>Anthropic · runtime</sub>]
+    end
+
+    subgraph plugins["Plugin marketplaces (skills + agents + commands)"]
+        ECC[Everything Claude Code<br/><sub>@affaan-m</sub>]
+        TR[Toprank<br/><sub>nowork-studio · SEO + Ads</sub>]
+        FD[Frontend-Design<br/><sub>Anthropic · UI generation</sub>]
+    end
+
+    subgraph memory["Two-tier memory"]
+        OB[Obsidian Brain<br/><sub>operator-curated context</sub>]
+        OM[OMEGA Memory<br/><sub>agent-curated typed memory</sub>]
+    end
+
+    subgraph integrations["MCP servers (~15)"]
+        MCP[github · supabase · railway · vercel<br/>scrapling · playwright · omega-memory<br/>filesystem · context7 · exa · firecrawl · ...]
+    end
+
+    CC --> ECC
+    CC --> TR
+    CC --> FD
+    CC --> OB
+    CC --> OM
+    CC --> MCP
+
+    classDef rt fill:#0a0a0f,stroke:#22c55e,stroke-width:2px,color:#f4f4f5
+    classDef plug fill:#0a0a0f,stroke:#7c3aed,color:#e4e4e7
+    classDef mem fill:#0a0a0f,stroke:#22d3ee,color:#e4e4e7
+    classDef int fill:#0a0a0f,stroke:#f59e0b,color:#e4e4e7
+    class CC rt
+    class ECC,TR,FD plug
+    class OB,OM mem
+    class MCP int
+```
+
 | Component | Layer | Original author | Notes |
 |-----------|-------|-----------------|-------|
 | [Everything Claude Code](ecc.md) | Skills + Agents | [@affaan-m](https://github.com/affaan-m) | 182 skills, 48 agents — the backbone |

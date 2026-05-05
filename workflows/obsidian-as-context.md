@@ -4,35 +4,24 @@ The full loop — how Obsidian becomes the shared memory that Claude reads autom
 
 ## The loop in one diagram
 
-```
-   ┌─────────────────────────────────────────────────────┐
-   │                                                     │
-   │   Claude Code session starts                        │
-   │           │                                         │
-   │           ▼                                         │
-   │   Read ~/Brain/Projects/<name>.md                   │
-   │   (status, stack, open tasks, decisions)            │
-   │           │                                         │
-   │           ▼                                         │
-   │   Work happens                                      │
-   │           │                                         │
-   │           ▼                                         │
-   │   Update project note:                              │
-   │     - tick checkboxes                               │
-   │     - append to "## Decisions"                      │
-   │     - add to "## Open questions" if stuck           │
-   │           │                                         │
-   │           ▼                                         │
-   │   If new reusable knowledge: add to                 │
-   │   ~/Brain/Knowledge/<topic>.md                      │
-   │           │                                         │
-   │           ▼                                         │
-   │   Obsidian Git plugin auto-commits every 10 min    │
-   │           │                                         │
-   │           ▼                                         │
-   │   Next session loads the updated note               │
-   │                                                     │
-   └─────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[Claude Code session starts] --> B[Read ~/Brain/Projects/&lt;name&gt;.md<br/>status · stack · open tasks · decisions]
+    B --> C[Work happens]
+    C --> D[Update project note<br/>tick checkboxes · append decisions · log open questions]
+    D --> E{New reusable<br/>knowledge?}
+    E -- yes --> F[Add to ~/Brain/Knowledge/&lt;topic&gt;.md]
+    E -- no --> G[Obsidian Git auto-commits every 10 min]
+    F --> G
+    G --> H[Next session loads updated context]
+    H -.session boundary.-> A
+
+    classDef start fill:#0a0a0f,stroke:#22c55e,stroke-width:2px,color:#f4f4f5
+    classDef io fill:#0a0a0f,stroke:#7c3aed,stroke-width:1px,color:#e4e4e7
+    classDef decision fill:#0a0a0f,stroke:#22d3ee,stroke-width:1px,color:#e4e4e7
+    class A,H start
+    class B,C,D,F,G io
+    class E decision
 ```
 
 ## The integration rule
