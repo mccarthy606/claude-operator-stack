@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="install.sh --dry-run output">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0f"/>
+      <stop offset="1" stop-color="#161821"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="0.5" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1280" height="3" fill="url(#accent)"/>
+
+  <!-- terminal chrome bar -->
+  <rect x="0" y="3" width="1280" height="40" fill="#1a1d27"/>
+  <circle cx="24" cy="23" r="6" fill="#ff5f56"/>
+  <circle cx="46" cy="23" r="6" fill="#ffbd2e"/>
+  <circle cx="68" cy="23" r="6" fill="#27c93f"/>
+  <text x="640" y="28" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#71717a">claude-operator-stack — bash</text>
+
+  <!-- terminal output -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#e4e4e7">
+    <text x="32" y="80"><tspan fill="#22c55e">~/Projects/claude-operator-stack</tspan> <tspan fill="#71717a">on</tspan> <tspan fill="#22d3ee">main</tspan></text>
+    <text x="32" y="104"><tspan fill="#71717a">$</tspan> ./install.sh --dry-run</text>
+
+    <text x="32" y="148" fill="#a1a1aa">  ╔═══════════════════════════════════════════════════╗</text>
+    <text x="32" y="166" fill="#a1a1aa">  ║      Claude Operator Stack — installer            ║</text>
+    <text x="32" y="184" fill="#a1a1aa">  ║      curated stack for solo founders              ║</text>
+    <text x="32" y="202" fill="#a1a1aa">  ╚═══════════════════════════════════════════════════╝</text>
+
+    <text x="32" y="240"><tspan fill="#22d3ee">▶</tspan> Step 1/4 — checking Claude Code CLI</text>
+    <text x="32" y="262"><tspan fill="#22c55e">✓</tspan> claude CLI found (version 2.1.128)</text>
+
+    <text x="32" y="298"><tspan fill="#22d3ee">▶</tspan> Step 2/4 — marketplaces and plugins</text>
+    <text x="32" y="324" fill="#d4d4d8">  After this installer finishes, open Claude Code and run:</text>
+    <text x="56" y="350" fill="#a78bfa">    /plugin marketplace add anthropics/claude-plugins-official</text>
+    <text x="56" y="370" fill="#a78bfa">    /plugin marketplace add nowork-studio/toprank</text>
+    <text x="56" y="390" fill="#a78bfa">    /plugin install frontend-design@claude-plugins-official</text>
+    <text x="56" y="410" fill="#a78bfa">    /plugin install toprank@nowork-studio</text>
+    <text x="32" y="438" fill="#fbbf24">  Acknowledge and continue? [y/N] y</text>
+
+    <text x="32" y="476"><tspan fill="#22d3ee">▶</tspan> Step 3/4 — copying sanitized configs to ~/.claude/</text>
+    <text x="32" y="500" fill="#71717a">  [dry-run] cp configs/settings.json.example ~/.claude/settings.json.from-operator-stack</text>
+    <text x="32" y="520"><tspan fill="#22c55e">✓</tspan> wrote ~/.claude/settings.json.from-operator-stack</text>
+    <text x="32" y="544" fill="#71717a">  [dry-run] cp configs/mcp-servers.json.example ~/.claude/mcp-configs/mcp-servers.json.from-operator-stack</text>
+    <text x="32" y="564"><tspan fill="#22c55e">✓</tspan> wrote ~/.claude/mcp-configs/mcp-servers.json.from-operator-stack</text>
+    <text x="32" y="588" fill="#71717a">  [dry-run] cp configs/rules/obsidian-integration.md ~/.claude/rules/obsidian-integration.md</text>
+    <text x="32" y="608"><tspan fill="#22c55e">✓</tspan> wrote ~/.claude/rules/obsidian-integration.md</text>
+
+    <text x="32" y="646"><tspan fill="#22d3ee">▶</tspan> Step 4/4 — next steps</text>
+    <text x="32" y="670" fill="#d4d4d8">  Read these next:</text>
+    <text x="56" y="694" fill="#a1a1aa">    1. configs/README.md            — what each config does</text>
+    <text x="56" y="714" fill="#a1a1aa">    2. stack/mcp-servers.md         — which MCP servers to authenticate</text>
+    <text x="56" y="734" fill="#a1a1aa">    3. workflows/parallel-projects.md — how to actually use the stack</text>
+
+    <text x="32" y="772"><tspan fill="#22c55e">✓</tspan> done</text>
+  </g>
+
+  <rect x="0" y="797" width="1280" height="3" fill="url(#accent)"/>
+</svg>

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "_comment": "Consolidated hooks block to paste under the 'hooks' key in ~/.claude/settings.json. Wires up all six hooks shipped in this directory. Comment out (or delete) any hook block you don't want enabled. Each script ships next to this file with its own README explaining what it does.",
+
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${HOME}/.claude/hooks/prompt-injection-guard.js"
+          }
+        ],
+        "id": "pre:write-edit:prompt-injection-guard",
+        "description": "Scan content destined for disk for prompt-injection patterns. Advisory only."
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${HOME}/.claude/hooks/read-before-edit.js"
+          }
+        ],
+        "id": "pre:write-edit:read-before-edit",
+        "description": "Reminds the agent to Read existing files first. No-ops inside Claude Code where the runtime enforces it."
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${HOME}/.claude/hooks/validate-commit-message.sh"
+          }
+        ],
+        "id": "pre:bash:validate-commit-message",
+        "description": "Hard-blocks `git commit -m \"...\"` calls that violate Conventional Commits."
+      }
+    ],
+
+    "PostToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${HOME}/.claude/hooks/read-injection-scanner.js"
+          }
+        ],
+        "id": "post:read:injection-scanner",
+        "description": "Scans Read output for injection + invisible-Unicode patterns. Severity LOW/HIGH."
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${HOME}/.claude/hooks/context-monitor.js",
+            "async": true,
+            "timeout": 5
+          }
+        ],
+        "id": "post:any:context-monitor",
+        "description": "Surfaces context-budget signal at 35% and 25% remaining. Pairs with statusline.js."
+      }
+    ],
+
+    "_statusline_note": "statusline.js is wired via the 'statusLine' top-level key in settings.json, not via the hooks key. See its README for the snippet."
+  },
+
+  "_install": {
+    "step_1": "Copy the six scripts from this directory to ${HOME}/.claude/hooks/",
+    "step_2": "Make the .sh script executable: chmod +x ${HOME}/.claude/hooks/validate-commit-message.sh",
+    "step_3": "Merge the 'hooks' object above into your existing ~/.claude/settings.json (do not overwrite the whole file)",
+    "step_4": "Restart Claude Code. The first session will trigger the hooks and show their output."
+  },
+
+  "_uninstall": {
+    "step_1": "Delete the hook entries from settings.json, OR comment out the matchers you don't want",
+    "step_2": "Optionally delete the scripts from ${HOME}/.claude/hooks/"
+  }
+}

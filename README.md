@@ -70,7 +70,7 @@ What this stack actually shipped between January and May 2026.
 |---|---------|--------|-------|
 | 1 | Niche Booking Trio — 3 niche booking sites | **Live** (3 domains) | Next.js · Supabase · GA4 · Sentry |
 | 2 | P2P Marketplace — P2P classic-car rental | Code complete | Next.js · Stripe Connect · Prisma |
-| 3 | WhatsApp B2B SaaS — WhatsApp SaaS for dealers | Code complete | FastAPI · Docker · Whatsapp Cloud API |
+| 3 | WhatsApp B2B SaaS — WhatsApp SaaS for dealers | Code complete | FastAPI · Docker · WhatsApp Cloud API |
 | 4 | AI Legal Tool — AI traffic-fine appeals | Code complete | Next.js · Prisma · Claude API |
 | 5 | YouTube production pipeline | **Live** (active) | Python · yt-dlp · Whisper · Claude |
 | 6 | Jarvis Workspace — personal AI assistant | **Live** (daily use) | Claude Code · Obsidian · OMEGA |
@@ -105,6 +105,10 @@ The installer will:
 
 Nothing is committed to your `~/.claude/` without explicit confirmation. The installer supports `--dry-run` and `--yes` flags.
 
+<div align="center">
+<img src="assets/screenshots/install-dryrun.svg" alt="install.sh --dry-run output" width="100%"/>
+</div>
+
 ---
 
 ## What's Inside
@@ -136,19 +140,41 @@ claude-operator-stack/
 │   ├── whatsapp-b2b-saas.md
 │   └── youtube-pipeline.md
 │
-├── profiles/                    ← opinionated install paths by operator archetype
+├── cookbook/                    ← 12 copy-pasteable how-to recipes
+│   ├── 01-claude-code-from-zero.md
+│   ├── 02-stripe-connect-p2p.md
+│   ├── 03-whatsapp-cloud-api-webhook.md
+│   ├── 04-cloudflare-argo-local-dev.md
+│   ├── 05-ga4-cloudflare-analytics.md
+│   ├── 06-sentry-fullstack.md
+│   ├── 07-supabase-vercel-pooling.md
+│   ├── 08-ytdlp-whisper-research.md
+│   ├── 09-telegram-bot-leads-v0.md
+│   ├── 10-mercado-pago-latam.md
+│   ├── 11-scheduled-prompts-cron.md
+│   └── 12-content-cross-post-pipeline.md
 │
-├── scaffolds/                   ← copy-and-run starting points (web-saas, whatsapp-saas)
+├── scaffolds/                   ← copy-and-run starting points
+│   ├── web-saas/                ← Next.js 15 + Supabase + Sentry + GA4
+│   └── whatsapp-saas/           ← FastAPI + Docker + WhatsApp Cloud API + Anthropic SDK
+│
+├── profiles/                    ← opinionated install paths by archetype
+│   ├── indie-hacker.md
+│   ├── non-technical-founder.md
+│   ├── freelancer-agency.md
+│   └── content-creator-operator.md
 │
 ├── configs/                     ← sanitized configs you can copy
 │   ├── settings.json.example
 │   ├── mcp-servers.json.example
-│   ├── hooks/                   ← my custom hooks (audit them)
-│   └── rules/                   ← my project rules
+│   ├── hooks/                   ← 6 sanitized hooks + per-hook README
+│   └── rules/                   ← project-level rules
 │
 └── credits/                     ← attribution to every original author
     └── README.md
 ```
+
+Inside `stack/`: 6 component breakdowns plus [`ecc-skill-index.md`](stack/ecc-skill-index.md) — a navigation reference into 60+ ECC skills sorted by use case.
 
 ---
 
@@ -165,11 +191,60 @@ Keeping seven projects in flight without losing context between them. See [workf
 ### 3. Obsidian as context
 Every project also has a note in `~/Brain`; Claude Code reads it on session start. See [workflows/obsidian-as-context.md](workflows/obsidian-as-context.md).
 
+<table>
+<tr>
+<td width="50%"><img src="assets/screenshots/obsidian-vault.svg" alt="Obsidian vault — ~/Brain/Projects/ view" width="100%"/></td>
+<td width="50%"><img src="assets/screenshots/claude-reads-note.svg" alt="Claude Code session reading the project note at start" width="100%"/></td>
+</tr>
+<tr>
+<td><sub><b>Left:</b> the project note Claude reads at session start.</sub></td>
+<td><sub><b>Right:</b> Claude loading that context, then asking where to pick up.</sub></td>
+</tr>
+</table>
+
 ### 4. Content pipeline
 YouTube, Instagram, and drive2 across three brands with most of the production steps automated. See [workflows/content-pipeline.md](workflows/content-pipeline.md).
 
 ### 5. Solo ops
 Customer support, billing, scheduling, and infra handled from one person's calendar. See [workflows/solo-ops.md](workflows/solo-ops.md).
+
+---
+
+## Cookbook
+
+Twelve copy-pasteable recipes pulled out of real shipped products. Each one ≤200 lines: problem, solution, code, pitfalls.
+
+A few examples:
+- [Stripe Connect onboarding for a P2P marketplace](cookbook/02-stripe-connect-p2p.md)
+- [WhatsApp Cloud API webhook in FastAPI](cookbook/03-whatsapp-cloud-api-webhook.md)
+- [Cloudflare Tunnel for local-dev webhooks](cookbook/04-cloudflare-argo-local-dev.md)
+- [Sentry across Next.js + FastAPI in one project](cookbook/06-sentry-fullstack.md)
+
+Full index in [cookbook/README.md](cookbook/README.md).
+
+---
+
+## Scaffolds
+
+Two runnable starting points. Clone the directory, fill in `.env`, ship.
+
+- [`scaffolds/web-saas/`](scaffolds/web-saas/) — Next.js 15 + Supabase + Sentry + GA4 with a real lead form, real `/api/lead` route, and a pre-configured `CLAUDE.md` tuned for the stack.
+- [`scaffolds/whatsapp-saas/`](scaffolds/whatsapp-saas/) — FastAPI + Docker + Meta Cloud API + Anthropic SDK with HMAC verification, a Claude classifier, and a happy-path pytest.
+
+Both ship with placeholder `CLAUDE.md` blocks (visual direction, project name, etc.) marked deliberately rather than fake-looking defaults.
+
+---
+
+## Profiles
+
+Pick the install path that matches how you describe yourself. Each profile picks ~6 cookbook recipes, 2-4 hooks, a scaffold, and a workflow read order — and tells you what to skip.
+
+- [Indie hacker](profiles/indie-hacker.md) — solo dev shipping 2-4 small bets in parallel
+- [Non-technical founder](profiles/non-technical-founder.md) — Claude is your engineer, you do the framing
+- [Freelancer / small agency](profiles/freelancer-agency.md) — N client repos with shared baseline + per-client overrides
+- [Content creator + operator](profiles/content-creator-operator.md) — content is half your income, software the other half
+
+Index in [profiles/README.md](profiles/README.md).
 
 ---
 
@@ -209,7 +284,7 @@ Open `good first issue`s if you want to contribute:
 
 - [Translate README to PT-BR](https://github.com/mccarthy606/claude-operator-stack/issues/1) · [TR](https://github.com/mccarthy606/claude-operator-stack/issues/2) · [中文](https://github.com/mccarthy606/claude-operator-stack/issues/3) · [日本語](https://github.com/mccarthy606/claude-operator-stack/issues/4) (stubs in place, replace with full translations)
 - [Add native Windows install script](https://github.com/mccarthy606/claude-operator-stack/issues/5) (`install.ps1`)
-- [Capture 3 README screenshots](https://github.com/mccarthy606/claude-operator-stack/issues/6) (Obsidian + Claude Code + asciinema of installer)
+- [Sync RU + ES translations with v1.0 content](https://github.com/mccarthy606/claude-operator-stack/issues/8) (cookbook, scaffolds, profiles, screenshots)
 - [Add Mermaid to content-pipeline.md](https://github.com/mccarthy606/claude-operator-stack/issues/7) (~30 min)
 
 See [all open issues](https://github.com/mccarthy606/claude-operator-stack/issues) and [CONTRIBUTING.md](CONTRIBUTING.md).
