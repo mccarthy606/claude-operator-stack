@@ -46,7 +46,7 @@ Each server in `mcp-servers.json` has the same shape:
 
 Use `${VAR}` style placeholders in the example config — they get replaced from your shell env or a `.env` you load before starting Claude Code.
 
-**Never commit the resolved file** — keep `mcp-servers.json` (resolved) gitignored, ship `.example` only.
+Never commit the resolved file. Keep `mcp-servers.json` gitignored and ship the `.example` only.
 
 ## OAuth servers
 
@@ -64,7 +64,7 @@ export GITHUB_PAT="$(security find-generic-password -s github-pat -w)"
 export SUPABASE_ACCESS_TOKEN="$(security find-generic-password -s supabase-token -w)"
 ```
 
-Tokens live in macOS keychain (`security` CLI on macOS). On Linux, use `pass` or `secret-tool`. **Do not** put raw tokens in your dotfiles — even private ones get accidentally pasted into screenshots and tweets.
+Tokens live in macOS keychain (`security` CLI on macOS). On Linux, use `pass` or `secret-tool`. Do not put raw tokens in your dotfiles — even private ones get accidentally pasted into screenshots and tweets.
 
 ## Auditing what's loaded
 

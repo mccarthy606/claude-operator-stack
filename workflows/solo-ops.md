@@ -2,7 +2,7 @@
 
 How customer support, billing, scheduling, and infra get handled by one person without consuming the day.
 
-The mistake most solo founders make: treating ops as background noise that you'll "automate later." Then ops eats the week and the product doesn't ship. The fix is to treat ops as a **first-class workflow** with the same Claude Code support as building.
+The mistake most solo founders make: treating ops as background noise that they'll "automate later." Ops then eats the week and the product doesn't ship. The fix is to treat ops as a real workflow with the same Claude Code support as building.
 
 ## The four ops surfaces
 
@@ -26,7 +26,7 @@ ECC's `chief-of-staff` skill is the entrypoint. Triages email + WhatsApp + Slack
 
 For action_required, it drafts the reply. I review and send. Time per inbox: 10–15 minutes most days.
 
-The `chief-of-staff` skill does not auto-send. Human in the loop on every reply that goes to a real person. **Auto-reply is a trap** — one wrong tone in a customer escalation costs more than a week of saved time.
+The `chief-of-staff` skill does not auto-send. Human in the loop on every reply that goes to a real person. Auto-reply is a trap: one wrong tone in a customer escalation costs more than a week of saved time.
 
 ## Surface 2: Money
 
@@ -36,7 +36,7 @@ Three subdomains:
 - **Paying my own bills** — annual review only, scripts generate the spreadsheet from bank exports. Not Claude territory yet.
 - **Taxes** — quarterly with my accountant, manually. AI in this loop is too risky for jurisdictional rules.
 
-The pattern is: **automate notification, do not automate decision.** I should know within 5 minutes when something paid; I should not have a script transferring money around.
+The pattern is to automate notification but not decision. I should know within 5 minutes when something paid, but I should not have a script transferring money around.
 
 ## Surface 3: Calendar
 
@@ -90,12 +90,8 @@ Each of these has been bitten by founders who automated and regretted it. The co
 
 ## The principle
 
-**AI handles inbound classification and outbound drafting. Humans handle decisions and tone.**
+AI handles inbound classification and outbound drafting; humans handle decisions and tone. If a workflow can be expressed as "given X input, classify or draft Y," automate it. If it requires judgment about a person, money, or risk, keep a human in the chair.
 
-If a workflow can be expressed as "given X input, classify or draft Y" — automate. If it requires judgment about a person, money, or risk — keep a human in the chair.
+## Scope
 
-## What this is not
-
-This is not "build a one-person company so big it doesn't need a team." It is "build the muscle to stay solo through pre-revenue without operations eating the runway."
-
-When the projects start producing money and need a real team, hire. The point is not to be solo forever — the point is to be solo *productively* until hiring is a decision instead of a desperate move.
+This is about building the muscle to stay solo through pre-revenue without operations eating the runway, not about building a one-person company so big it doesn't need a team. When the projects start producing money and need a real team, hire. The goal is to be solo productively until hiring is a decision instead of a desperate move.

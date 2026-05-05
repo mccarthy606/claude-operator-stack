@@ -13,7 +13,7 @@ When editing or adding to this repo:
 - **Voice:** operator-first, not engineer-first. The audience is fellow solo founders, not AI researchers.
 - **Tone:** terse, opinionated, no marketing fluff. State the thing, give a reason, move on.
 - **No emojis** in any documentation file unless explicitly asked.
-- **Attribution discipline:** every component this stack uses has its original author credited. If you add a new component, add it to `credits/README.md` *in the same PR* — not later.
+- **Attribution discipline:** every component this stack uses has its original author credited. If you add a new component, add it to `credits/README.md` in the same PR, not later.
 - **No real URLs** of the operator's private products. Patterns and case studies are anonymized at the URL level.
 - **Skill content is not reproduced.** This stack does not redistribute upstream skills. It documents which ones are used, why, and how — with links back to the source repo.
 
@@ -32,6 +32,6 @@ When editing or adding to this repo:
 - Flag any prose that drifts toward marketing-speak — strip it
 - Flag any stack component that is no longer maintained or has a security advisory
 
-## What this CLAUDE.md is not
+## Scope
 
-This is the **repo's own** CLAUDE.md — opinions about how to work *on the stack itself*. It is not the user's project-level CLAUDE.md when they install the stack. That one lives at `~/.claude/CLAUDE.md` after install and is shaped by the user's own work, not this file.
+This is the repo's own CLAUDE.md — opinions about how to work on the stack itself. It is not the user's project-level CLAUDE.md when they install the stack; that one lives at `~/.claude/CLAUDE.md` after install and is shaped by the user's own work.

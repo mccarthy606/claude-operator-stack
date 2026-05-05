@@ -1,6 +1,6 @@
 # Credits
 
-The Claude Operator Stack is **a curator's toolkit, not original software.** Almost every component is built by someone else — the value this repo adds is the curation, the workflows, and the case studies that show how the components compose.
+The Claude Operator Stack is a curator's toolkit, not original software. Almost every component is built by someone else; the value this repo adds is the curation, the workflows, and the case studies that show how the components compose.
 
 Below is the full list of authors whose work this stack depends on. If your work appears in the stack and is not credited here, please open an issue or PR — fixes are merged the same day.
 
@@ -63,6 +63,6 @@ Open source works because credit chains stay intact. If you fork this stack:
 - Keep the upstream component links in `stack/` files
 - Keep this `credits/README.md` (add yourself, don't replace)
 - If you publish derived case studies, name the stack
-- If you build a commercial product on top, that's allowed under MIT — but a one-line "based on Claude Operator Stack by @mccarthy606" in your README is the courteous move
+- If you build a commercial product on top, that's allowed under MIT, but a one-line "based on Claude Operator Stack by @mccarthy606" in your README is the courteous move
 
 The goal is to make it easy for others to find the same building blocks, not to demand royalties.

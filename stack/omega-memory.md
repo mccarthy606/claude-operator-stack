@@ -3,7 +3,7 @@
 **Status:** local protocol + helper tools
 **Layer:** persistent memory across Claude Code conversations
 
-OMEGA is the **memory tier** of this stack. Where Obsidian is the operator-curated brain, OMEGA is the **agent-curated memory** — Claude writes to it, Claude reads from it, with a small, opinionated set of memory types.
+OMEGA is the agent-curated memory tier of this stack. Obsidian is the operator-curated brain; OMEGA is the layer Claude writes to and reads from with a small, opinionated set of memory types.
 
 ## Memory types
 
@@ -43,9 +43,7 @@ Different write patterns:
 - **Obsidian**: high-value, human-edited, structured, slow-moving
 - **OMEGA**: high-frequency, agent-edited, fine-grained, fast-moving
 
-If you tried to put OMEGA-style decisions into Obsidian, the vault would become a wall of agent text and the human-curated structure would erode. Splitting them keeps both honest.
-
-OMEGA is also queryable in a way Obsidian Markdown is not — typed memories with similarity search across past sessions.
+If you tried to put OMEGA-style decisions into Obsidian, the vault would become a wall of agent text and the human-curated structure would erode. Splitting them keeps both honest. OMEGA is also queryable in a way Obsidian Markdown is not, with typed memories and similarity search across past sessions.
 
 ## The MCP server
 
@@ -68,4 +66,4 @@ The OMEGA protocol entries in CLAUDE.md and the MCP server config in mcp-servers
 | User preference Claude learned this session | OMEGA `user_preference` |
 | A reusable solution with code | Obsidian `Knowledge/` |
 
-Both layers, separate jobs. Together they make Claude Code feel like a teammate that doesn't forget.
+Two layers with separate jobs. Together they make Claude Code feel like a teammate that doesn't forget.

@@ -66,9 +66,9 @@ Everyone's stack has skills and agents. The combination that makes this one diff
 
 - **ECC + Toprank** = code work + business work share one runtime
 - **Obsidian + OMEGA** = two-tier memory (operator-curated + agent-curated) instead of one
-- **MCP set chosen for solo operator load** — not the maximum, the minimum that earns its keep
+- **MCP set chosen for solo operator load** — the minimum that pays for itself, not the maximum
 
-Adding more components is easy. The discipline is removing components that don't earn their keep.
+Adding more components is easy; the discipline is removing components that don't pay off.
 
 ## What is *not* in the stack
 

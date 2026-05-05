@@ -2,11 +2,11 @@
 
 ## Reporting a vulnerability
 
-If you find a vulnerability — a leaked secret in a config example, a `curl | bash` pattern that could be abused, an install script that does something unexpected, or any other security concern — please **open a private security advisory** through GitHub's "Security" tab on this repo.
+If you find a vulnerability (a leaked secret in a config example, a `curl | bash` pattern that could be abused, an install script that does something unexpected, or any other security concern), please open a private security advisory through GitHub's "Security" tab on this repo.
 
 If GitHub Security Advisories are not available to you, email the maintainer (handle in the LICENSE / README). Use a subject prefix of `[security]`.
 
-Please do **not** open a public issue for security concerns. The repo is small enough that a private heads-up is faster and reduces exposure.
+Please do not open a public issue for security concerns. The repo is small enough that a private heads-up is faster and reduces exposure.
 
 ## What is in scope
 

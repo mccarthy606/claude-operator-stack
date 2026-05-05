@@ -4,7 +4,7 @@ How seven projects stay in flight without context collapse.
 
 The default failure mode of solo multi-project work is **context fragmentation**: switching between products costs an hour each time, you forget where you were, and the smallest project starves while the loudest one eats your week.
 
-Three habits make this work for me. None are clever. All are mechanical.
+Three mechanical habits make this work for me.
 
 ```mermaid
 flowchart LR
@@ -55,9 +55,9 @@ Every Monday, 30 minutes:
 3. Decide which 2 projects get focus this week
 4. Mark the others "paused — touching on Friday only"
 
-Without this filter, all 7 projects compete every day. With it, 2 win the week and the others get a 30-minute Friday touchpoint.
+Without this filter, all 7 projects compete every day. With the filter, 2 win the week and the others get a 30-minute Friday touchpoint.
 
-The decision criterion: **which project's next milestone moves the needle most for revenue or evidence?** Not "which is most fun" or "which is loudest in my head."
+The decision criterion: which project's next milestone moves the needle most for revenue or evidence — not "which is most fun" or "which is loudest in my head."
 
 ## Habit 3: Per-project Claude Code worktrees
 
@@ -79,11 +79,9 @@ Each project session uses its own context window. Memory bridges via OMEGA: a de
 
 OMEGA's typed memory is what stops context-window-isolated sessions from feeling siloed.
 
-## What this is not
+## Scope
 
-This is not "fan out to N parallel agents and let them all work." That pattern works for narrow research tasks but not for product work — products need decisions, decisions need state, state needs to be authoritative in one place.
-
-The stack is built around **one operator + sequential focus across projects**, not parallel agents with no coordinator.
+This isn't a "fan out to N parallel agents and let them all work" pattern. That works for narrow research tasks but not for product work, where products need decisions, decisions need state, and state needs to be authoritative in one place. The stack is built around one operator with sequential focus across projects, not parallel agents with no coordinator.
 
 ## Numbers from my own loop
 
@@ -94,4 +92,4 @@ In a typical week:
 - 2 projects sit paused with status updated, no work
 - 1 hour goes to Monday planning + Friday review
 
-The trick is not doing more. The trick is being honest about which projects are *not* getting attention this week, so you stop owing them mental load.
+The discipline is being honest about which projects are *not* getting attention this week, so you stop owing them mental load.

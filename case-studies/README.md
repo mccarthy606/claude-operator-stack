@@ -2,9 +2,7 @@
 
 Four shipped products. Real stack choices, real tradeoffs, real lessons.
 
-These case studies are not promotional. They describe what was built, what shipped, what's stuck, and what I'd change in version 2 — at the level a fellow founder would want to read.
-
-URLs and customer specifics are deliberately omitted. The point is the *pattern*, not the brand.
+These case studies are not promotional. They describe what was built, what shipped, what's stuck, and what I'd change in version 2 — at the level a fellow founder would want to read. URLs and customer specifics are deliberately omitted; the patterns are the part worth sharing.
 
 ## The four
 
@@ -31,7 +29,7 @@ URLs and customer specifics are deliberately omitted. The point is the *pattern*
 - Counterparty info (jurisdictions, legal counsel, payment processors)
 - The bits I'm still validating where talking publicly would interfere
 
-These exist privately in `~/Brain/Projects/`. The case studies here are the **publishable subset.**
+These exist privately in `~/Brain/Projects/`. The case studies here are the publishable subset.
 
 ## How to read these
 

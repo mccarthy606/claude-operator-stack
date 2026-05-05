@@ -13,7 +13,7 @@ Sanitized configuration examples. Nothing here contains real secrets — every c
 
 ## Setup pattern
 
-The `install.sh` at the repo root copies these files as **sidecars** — written to `<dest>.from-operator-stack` so you can diff and merge into your existing config by hand. It does not silently overwrite your `settings.json`.
+The `install.sh` at the repo root copies these files as sidecars, writing them to `<dest>.from-operator-stack` so you can diff and merge into your existing config by hand. It does not silently overwrite your `settings.json`.
 
 If you want to apply them directly:
 
@@ -40,7 +40,7 @@ export EXA_API_KEY="$(security find-generic-password -s exa-key -w)"
 
 On Linux, use `pass` or `secret-tool`. On Windows, use `cmdkey` + `wincred`.
 
-**Never** put raw tokens in shell rc files committed to git or screenshot.
+Never put raw tokens in shell rc files that get committed to git or screenshot.
 
 ## What's deliberately not here
 

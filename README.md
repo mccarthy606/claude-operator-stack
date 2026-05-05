@@ -10,13 +10,9 @@
 [![Last commit](https://img.shields.io/github/last-commit/mccarthy606/claude-operator-stack)](https://github.com/mccarthy606/claude-operator-stack/commits/main)
 [![Built by](https://img.shields.io/badge/built_by-%40mccarthy606-orange)](https://github.com/mccarthy606)
 
-**7 products · 4 months · 0 funding · 0 team · 1 person**
+**7 products in 4 months · solo · pre-revenue**
 
-> I started writing code in January 2026 with Cursor + Claude.
-> Four months later: 3 live sites, 4 ready-to-ship SaaS products, 1 active YouTube channel.
-> Solo. No team. No CS degree.
->
-> This repo is the stack and the playbook that made it possible.
+> I started writing code in January 2026 with Cursor and Claude. Four months later: 3 live sites, 4 SaaS codebases ready to deploy, 1 active YouTube channel. This repo is the stack and the playbook I run from.
 
 </div>
 
@@ -39,17 +35,13 @@
 
 ## What this is
 
-**Claude Operator Stack is not a fork.** It's a curator's toolkit + the operator playbook for solo founders who want to ship multiple AI products in parallel without a team.
+A curated toolkit and a playbook for solo founders running several AI products at once.
 
-Most "awesome Claude" repos dump skills and call it a day. This one does the opposite: it picks the **smallest set of high-leverage components** that actually compose into a daily workflow, attributes the original authors, and explains *how to use them together* through real shipped projects.
+The stack is what I install and update. The playbook is how I use it across the week — which components to reach for in which order, what to read first, where the seams are.
 
-If you are:
+Most parts of the stack are other people's work, credited where used. What's added here: the install path, the workflows that compose the parts together, and four case studies of products built on top.
 
-- A solo founder shipping 2+ products at once
-- A non-CS person using AI to compress the build cycle
-- An operator who wants Claude Code to be a real teammate, not a chatbot
-
-— this is for you.
+It's aimed at people running 2+ products at the same time, founders without a CS background, and anyone who wants Claude Code to do real work instead of being a chat companion.
 
 ---
 
@@ -64,7 +56,7 @@ If you are:
 | **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | `~/Brain` vault as project + identity context |
 | **Orchestration** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | The runtime |
 
-Every skill, every agent, every prompt in this stack credits its original author. **Nothing here is rebadged.** If a piece comes from somewhere else, that's where the link goes.
+Every skill and agent in this stack credits its original author. If a piece comes from somewhere else, the link goes there.
 
 See [stack/](stack/) for component-by-component setup notes.
 
@@ -90,11 +82,11 @@ See [case-studies/](case-studies/) for the *how*.
 
 ## Quick Start
 
-Bootstraps the entire stack on a fresh machine in under 5 minutes. macOS + Linux supported, Windows via WSL.
+Sets up the stack on a fresh machine. macOS and Linux supported; Windows via WSL.
 
-> **Pick one path only.** This stack is opinionated about install methods. Don't stack `curl | bash` on top of a manual clone — they will conflict.
+> Pick one install path. Don't run `curl | bash` on top of a manual clone — they conflict.
 
-**Recommended — clone, audit, run:**
+Clone, audit, run:
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
@@ -158,54 +150,54 @@ claude-operator-stack/
 
 ## The Operator Playbook
 
-Five workflows that actually run my week.
+Five workflows that run my week.
 
 ### 1. Ship a product in a day
-From idea to live URL in one focused session. See [workflows/ship-a-product-in-a-day.md](workflows/ship-a-product-in-a-day.md).
+From idea to live URL in one session. See [workflows/ship-a-product-in-a-day.md](workflows/ship-a-product-in-a-day.md).
 
 ### 2. Parallel projects
-How seven projects stay in flight without context collapse. See [workflows/parallel-projects.md](workflows/parallel-projects.md).
+Keeping seven projects in flight without losing context between them. See [workflows/parallel-projects.md](workflows/parallel-projects.md).
 
 ### 3. Obsidian as context
-Why every project is also a note in `~/Brain` — and how Claude Code reads from it. See [workflows/obsidian-as-context.md](workflows/obsidian-as-context.md).
+Every project also has a note in `~/Brain`; Claude Code reads it on session start. See [workflows/obsidian-as-context.md](workflows/obsidian-as-context.md).
 
 ### 4. Content pipeline
-YouTube + Instagram + drive2 across 3 brands, mostly automated. See [workflows/content-pipeline.md](workflows/content-pipeline.md).
+YouTube, Instagram, and drive2 across three brands with most of the production steps automated. See [workflows/content-pipeline.md](workflows/content-pipeline.md).
 
 ### 5. Solo ops
-Running customer support, billing, scheduling, and infra from one person's calendar. See [workflows/solo-ops.md](workflows/solo-ops.md).
+Customer support, billing, scheduling, and infra handled from one person's calendar. See [workflows/solo-ops.md](workflows/solo-ops.md).
 
 ---
 
 ## Why this exists
 
-Most AI-tooling content is written by AI engineers, for AI engineers. This is written by an operator, for operators.
+Most AI-tooling material is written for engineers. This is written for operators.
 
-I am not trying to convince you that AI replaces engineers. I am showing you that a **non-engineer with a clear project list, a curated stack, and a loop that compounds** can ship more than a small team — if the stack is set up right.
+The bet: a non-engineer with a tight project list, a curated stack, and a workflow that compounds can ship more than a small team, given the right setup. I am not trying to argue AI replaces engineers; I am documenting what one operator can do with the right tools loaded.
 
-The tools in this repo are ~95% other people's work. The other 5% is the **glue, the workflows, and the case studies that make the stack work as one thing instead of seven.**
+Most components here are other people's work. What's mine is the glue: the install path, the workflows, and the case studies that pull seven separate projects into one stack.
 
 ---
 
 ## Acknowledgements
 
-This stack stands on the shoulders of:
+Built with:
 
-- **[@affaan-m](https://github.com/affaan-m)** — Everything Claude Code. The skill + agent backbone.
-- **nowork-studio** — Toprank. SEO, Google Ads, Meta Ads.
-- **Anthropic** — Claude Code, Frontend-Design, the API.
-- **Obsidian team** — the second-brain runtime.
-- **Every individual skill author** credited in `origin:` frontmatter and in [credits/README.md](credits/README.md).
+- [@affaan-m](https://github.com/affaan-m) — Everything Claude Code (skills and agents)
+- nowork-studio — Toprank (SEO, Google Ads, Meta Ads)
+- Anthropic — Claude Code, Frontend-Design, the API
+- Obsidian team — the second-brain runtime
+- Every skill author credited individually in `origin:` frontmatter and in [credits/README.md](credits/README.md)
 
-If your work is in here and not credited, open an issue — I will fix it the same day.
+If your work is in here and not credited, open an issue and I'll fix it the same day.
 
 ---
 
 ## Status
 
-This repo is **young**. v0.2 ships visual identity (hero banner, Mermaid diagrams, 7-language nav, RU + ES full translations). Case studies are filled in shipping order. The CHANGELOG tracks what's done.
+Young repo. v0.2 added the hero banner, Mermaid diagrams, the 7-language nav, and full RU and ES translations. Case studies get filled in as products ship. CHANGELOG tracks the rest.
 
-Issues, PRs, and forks welcome. Especially forks — the stack is meant to be customized to your operator profile, not copied verbatim.
+Issues, PRs, and forks welcome. The stack is designed to be customized: copy what fits, drop what doesn't.
 
 ### Currently looking for
 

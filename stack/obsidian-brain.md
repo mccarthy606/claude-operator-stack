@@ -4,13 +4,11 @@
 **Sync:** Obsidian Git (free) → private GitHub repo
 **Vault location:** `~/Brain` (this is convention, you can name yours anything)
 
-The Obsidian vault is **not just notes** in this stack. It is the **shared context surface** that Claude Code reads from automatically at the start of every session.
+The Obsidian vault is the shared context surface that Claude Code reads from automatically at the start of every session — not just a notes app.
 
 ## Why it matters
 
-When you ship 7 products in parallel, the bottleneck is not code — it's context recovery. "Where was I on the marketplace?" "What did I decide about Stripe Connect for the WhatsApp SaaS?" "What's the open question on the legal-tool MVP?"
-
-Without a second brain, every session starts from zero. With a structured vault that Claude reads, every session starts loaded.
+When you ship 7 products in parallel, the bottleneck is context recovery, not code. "Where was I on the marketplace?" "What did I decide about Stripe Connect for the WhatsApp SaaS?" "What's the open question on the legal-tool MVP?" A structured vault that Claude reads means every session starts loaded instead of from zero.
 
 ## Vault structure
 
@@ -54,16 +52,14 @@ The frontmatter is structured so Dataview queries can produce a live "what's in 
 
 ## The Me/ section
 
-A vault-within-vault for self-context: `~/Brain/Me/` holds biography, current state, principles, goals. Claude reads it before giving career or strategy advice — not before code edits. It is what stops generic startup-coach answers and produces ones grounded in your actual situation.
+A vault-within-vault for self-context: `~/Brain/Me/` holds biography, current state, principles, and goals. Claude reads it before giving career or strategy advice (not before code edits), which stops generic startup-coach answers and produces ones grounded in your actual situation.
 
-This is a personal section. **It does not ship with the stack** — it would be invasive to install someone else's identity. But the structure is documented, and the install script can scaffold an empty `~/Brain/Me/` with templates if you opt in.
+This is a personal section. It does not ship with the stack, since installing someone else's identity would be invasive. The structure is documented, and the install script can scaffold an empty `~/Brain/Me/` with templates if you opt in.
 
 ## Sync
 
 Use the Obsidian Git plugin (free) and a private GitHub repo. Auto-commit every 10 minutes is a sensible default. Resolve conflicts manually — they are rare if you only edit on one device at a time.
 
-## What this is not
+## Scope
 
-This is not "AI organizes my notes for me." Obsidian is **operator-curated**. You write the notes, you decide the structure. Claude reads from it; Claude does not own it.
-
-That ownership boundary is what keeps the second brain honest.
+Obsidian is operator-curated. You write the notes, you decide the structure, Claude reads from it but does not own it. That ownership boundary is what keeps the second brain honest.

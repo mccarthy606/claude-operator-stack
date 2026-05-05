@@ -8,7 +8,7 @@ WhatsApp-first AI assistant for used-car dealerships. Inbound lead qualification
 
 ## Market hypothesis
 
-Used-car dealerships in this market run their entire customer pipeline on WhatsApp. The dealer's owner or a single sales rep handles inbound on their personal WhatsApp Business — meaning leads sit unanswered overnight, on weekends, and during test drives. A tool that integrates *into* the dealer's existing WhatsApp number (not a new chatbot URL the customer has to find) and qualifies leads + answers basic inventory questions can pay for itself in one extra closed deal per month.
+Used-car dealerships in this market run their entire customer pipeline on WhatsApp. The dealer's owner or a single sales rep handles inbound on their personal WhatsApp Business, which means leads sit unanswered overnight, on weekends, and during test drives. A tool that integrates into the dealer's existing WhatsApp number (not a new chatbot URL the customer has to find) and qualifies leads + answers basic inventory questions can pay for itself in one extra closed deal per month.
 
 ## Product shape
 
@@ -57,7 +57,7 @@ Rejected:
 
 ## What I'd do differently in v2
 
-- **Talk to 5 dealers in week 1, not week 8.** Same lesson as AI Legal Tool but with extra force: B2B SaaS where I am not the buyer's profile means I cannot guess the workflow correctly. The first pilot conversation revealed a feature priority I had completely wrong (dealers care about lead-quality scoring more than auto-reply speed).
+- **Talk to 5 dealers in week 1, not week 8.** Same lesson as AI Legal Tool. In B2B SaaS where I am not the buyer's profile, I cannot guess the workflow correctly. The first pilot conversation revealed a feature priority I had completely wrong (dealers care about lead-quality scoring more than auto-reply speed).
 - **Pick one feature, ship it, sell it.** I built the full classification + auto-reply + flagging system before I had a customer. Should have shipped just lead classification + manual reply, sold it for a small fee, then expanded based on what dealers actually paid for.
 - **Build the billing + onboarding before the inference improvements.** Currently the inference works great but the dealer onboarding is "DM me." First pilot will expose that gap immediately.
 
@@ -69,9 +69,7 @@ Rejected:
 
 ## What I'm watching
 
-The first pilot dealer's reaction in week 1 is the only real signal. Everything before that is hypothetical. Once one dealer is live and paying, I can iterate; until then I am writing fiction about what dealers want.
-
-The pattern repeats: **for B2B, the first paying customer matters more than the first 10 features.**
+The first pilot dealer's reaction in week 1 is the only real signal. Everything before that is hypothetical. Once one dealer is live and paying, I can iterate; until then I am writing fiction about what dealers want. For B2B, the first paying customer matters more than the first 10 features.
 
 ## Lessons that transferred elsewhere
 

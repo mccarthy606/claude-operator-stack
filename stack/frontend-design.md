@@ -4,11 +4,11 @@
 **Author:** Anthropic
 **License:** MIT
 
-The Frontend-Design skill is what produces UIs that don't look like a Tailwind template. It is one skill, but it is the difference between "shipped a landing page" and "shipped a landing page someone screenshots."
+The Frontend-Design skill produces UIs that don't look like a Tailwind template. It is one skill, but it makes the difference between "shipped a landing page" and "shipped a landing page someone screenshots."
 
 ## What it does
 
-`frontend-design` is a generation skill biased toward **distinctive, opinionated, production-grade UI**. It refuses generic patterns (default cards, centered hero with gradient blob, gray-on-white with an accent color) and pushes for at least four of these qualities per surface:
+`frontend-design` is a generation skill biased toward distinctive, opinionated, production-grade UI. It refuses generic patterns (default cards, centered hero with gradient blob, gray-on-white with an accent color) and pushes for at least four of these qualities per surface:
 
 - Hierarchy through scale contrast
 - Intentional rhythm in spacing
@@ -41,9 +41,7 @@ Restart Claude Code. Then invoke via `/frontend-design` or just describe the sur
 
 ## My usage convention
 
-Before any session that touches frontend, I pin the visual direction up front: editorial, neo-brutalism, glassmorphism with depth, dark luxury, bento, scrollytelling, swiss, retro-futurism. **Never "clean minimal"** — that is the default that produces template-looking UI.
-
-Pinning the direction first means Claude isn't guessing tone halfway through a build. The skill respects pinned direction throughout the session.
+Before any session that touches frontend, I pin the visual direction up front: editorial, neo-brutalism, glassmorphism with depth, dark luxury, bento, scrollytelling, swiss, retro-futurism. Never "clean minimal" — that's the default that produces template-looking UI. Pinning the direction first means Claude isn't guessing tone halfway through a build, and the skill respects the pinned direction throughout the session.
 
 ## Updating
 

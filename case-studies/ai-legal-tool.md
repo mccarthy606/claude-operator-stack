@@ -59,20 +59,18 @@ Rejected:
 ## What I'd do differently in v2
 
 - **Talk to a lawyer in week 1, not week 8.** I wrote the prompts and templates without legal review and now compliance is the critical-path blocker. A 2-hour conversation with a local lawyer in week 1 would have shaped the schema, the disclaimers, and the boundaries of what the tool can claim. Building first, validating legality second was the wrong order for a regulated domain.
-- **Pilot the manual version before building the automated version.** A spreadsheet + a Telegram bot + me hand-drafting appeals for 10 users would have validated whether people will actually pay before I built the pipeline. Cheaper, faster, more learning.
+- **Pilot the manual version before building the automated version.** A spreadsheet, a Telegram bot, and me hand-drafting appeals for 10 users would have validated whether people will actually pay before I built the pipeline — cheaper and with much sharper learning.
 - **Pick a narrower violation set for v1.** I built 6 violation types because Claude could draft them all. Should have shipped 1 type, validated conversion, then expanded.
 
 ## Estimated time + cost
 
 - **Build time:** ~3 weeks of focused work (4–5 hr/day) for the end-to-end MVP.
 - **Cash cost so far:** ~$50 (domain, Stripe processing fees on test transactions, Anthropic API for prompt iteration during build).
-- **Projected monthly at 100 appeals/mo:** ~$30 infra + ~$50 inference = ~$80. Per-appeal cost on inference is the bottleneck; price has to be set with that in mind.
+- **Projected monthly at 100 appeals/mo:** ~$30 infra + ~$50 inference = ~$80. Per-appeal inference cost dominates, so pricing has to be set with that in mind.
 
 ## What I'm watching
 
-The unlock is the compliance review. With it, the path to first revenue is clear (paid ads + organic for "appeal traffic fine in <jurisdiction>" queries). Without it, the product can't ship publicly without exposing me to legal risk.
-
-The lesson is not "regulated domains are bad." The lesson is **compliance is part of product, not a release-blocker to discover at the end.**
+The unlock is the compliance review. With it, the path to first revenue is clear (paid ads + organic for "appeal traffic fine in <jurisdiction>" queries). Without it, the product can't ship publicly without exposing me to legal risk. The takeaway: in a regulated domain, compliance is part of product, not a release-blocker to discover at the end.
 
 ## Lessons that transferred elsewhere
 

@@ -5,7 +5,7 @@
 **License:** see upstream
 **Current version pinned:** 0.17.0+
 
-Toprank is the **SEO + paid-ads layer**. Without it, I would be writing GSC analyzers, broken-link checkers, and Google Ads loaders by hand. With it, the loop is one slash command per audit.
+Toprank is the SEO and paid-ads layer. Without it, I would be writing GSC analyzers, broken-link checkers, and Google Ads loaders by hand; with it, the loop is one slash command per audit.
 
 ## What I use from Toprank
 
@@ -36,11 +36,11 @@ Toprank's `business-context` system is what makes its recommendations actually u
 
 3. First time you invoke `/seo` or `/google-ads`, Toprank's preamble will guide you through OAuth — you sign in to NotFair (Toprank's auth backend) in a browser and the token is stored in your OS keychain. No `ADSAGENT_API_KEY` env var anymore as of 0.15.0.
 
-## Where it earns its keep
+## Where it pays for itself
 
 For my Niche Booking Trio (3 sites in one regional market), I run a Toprank weekly review every Monday morning. Output: a prioritized list of pages with the largest CTR-vs-rank gap, what queries they're losing, and which to optimize first. Without this loop I would not know which page to touch this week.
 
-For paid ads, `/google-ads` audits campaigns against the same business context — flagging stale keywords, mismatch between ad copy and landing page, and budget pacing issues. Treats Google Ads like a code review.
+For paid ads, `/google-ads` audits campaigns against the same business context, flagging stale keywords, mismatches between ad copy and landing page, and budget pacing issues — Google Ads as a code review.
 
 ## Updating
 

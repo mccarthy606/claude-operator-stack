@@ -36,7 +36,7 @@ Tells Claude:
 4. **Content work:** drafts go in `~/Brain/Content/`, tracked in `~/Brain/Projects/YT Scenarios.md` if relevant.
 5. **Language convention:** vault language is Russian (or whatever yours is). Code is English; vault prose is the operator's first language.
 
-The rule is short — under 80 lines. That's the contract. Everything else is convention.
+The rule is short, under 80 lines. That's the contract; everything else is convention.
 
 ## Project note shape
 
@@ -101,13 +101,11 @@ Daily notes are not where decisions live. Decisions migrate from Daily to either
 
 Obsidian Git plugin → private GitHub repo. Auto-commit every 10 min. Auto-pull every 10 min. Conflicts are rare if I only edit on one device at a time; when they happen, resolve manually in Obsidian.
 
-GitHub repo is private. The vault is **personal infrastructure**, not a content product.
+GitHub repo is private. The vault is personal infrastructure, not a content product.
 
-## What this is not
+## Scope
 
-This is not "AI takes notes for me." Obsidian is curated by the operator. Claude reads from it (lots) and writes to it (sparingly, with structure). The judgment about what belongs in the vault stays with the human.
-
-The day Claude starts deciding what's important enough to remember in your second brain, you stop being the operator and start being the audience.
+Obsidian is curated by the operator. Claude reads from it (lots) and writes to it (sparingly, with structure), but the judgment about what belongs in the vault stays with the human. The day Claude starts deciding what's important enough to remember in your second brain, you stop being the operator and start being the audience.
 
 ## Common failure modes
 

@@ -4,9 +4,9 @@
 **Author:** [@affaan-m](https://github.com/affaan-m)
 **License:** MIT
 
-ECC is the **skill + agent backbone** of this stack. 182 skills, 48 agents, 68 commands, hooks, rules. All under MIT.
+ECC is the skill and agent backbone of this stack: 182 skills, 48 agents, 68 commands, hooks, and rules — all under MIT.
 
-This stack does not redistribute ECC. The installer adds the marketplace and lets ECC update independently — you always pull the latest from upstream.
+This stack does not redistribute ECC. The installer adds the marketplace and lets ECC update independently, so you always pull the latest from upstream.
 
 ## What I actually use from ECC, daily
 
@@ -41,9 +41,9 @@ These are the skills I touch most weeks. Full list lives in ECC's own README.
 
 ## Why ECC over rolling my own
 
-I tried both. Rolling your own means the surface area you maintain grows linearly with the number of products. ECC means **the surface area is maintained by an active community**, and I get the long tail of skills (Kotlin testing, Rust patterns, springboot-tdd, etc.) for free even if I only use a handful.
+I tried both. Rolling your own means the surface area you maintain grows linearly with the number of products. With ECC, the surface area is maintained by an active community, and I get the long tail of skills (Kotlin testing, Rust patterns, springboot-tdd, etc.) for free even if I only use a handful.
 
-The cost: ECC has its own opinions and conventions. For 90% of cases I align with them. For the 10% where I don't, I add custom rules and hooks in this stack — they sit on top, ECC stays untouched.
+The cost: ECC has its own opinions and conventions. For 90% of cases I align with them. For the 10% where I don't, I add custom rules and hooks in this stack that sit on top, while ECC stays untouched.
 
 ## Setup
 

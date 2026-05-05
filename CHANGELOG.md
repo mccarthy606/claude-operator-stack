@@ -8,7 +8,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). The
 
 ### Added
 
-- **README.md** — public framing, the stack table, the 7-products-in-4-months hook, install path
+- **README.md** — public framing, stack table, 7-products-in-4-months hook, install path
 - **install.sh** — non-destructive installer with `--dry-run` and `--yes` flags. Copies sanitized configs as sidecars (`*.from-operator-stack`) so existing user configs are not silently overwritten
 - **stack/** — six-component breakdown with attribution: ECC, Toprank, Frontend-Design, Obsidian, OMEGA Memory, MCP servers
 - **workflows/** — five operator playbooks: ship-a-product-in-a-day, parallel-projects, obsidian-as-context, content-pipeline, solo-ops

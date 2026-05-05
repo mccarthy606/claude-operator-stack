@@ -64,7 +64,7 @@ created: YYYY-MM-DD
 - Use `[[wikilinks]]` for cross-references between notes
 - Keep notes concise and actionable
 - Update project status when it changes
-- Don't create duplicate notes — update existing ones
+- Don't create duplicate notes; update existing ones
 - After updating vault files, let Obsidian Git handle the sync
 
 ## Operator language

@@ -39,4 +39,4 @@ If you need to run *before* ECC, you'd have to disable that ECC hook and re-impl
 - Modify files outside the current working directory
 - Block on long-running operations without a timeout
 
-If a hook violates any of these, it's not a hook — it's a deploy script. Move it elsewhere.
+If a hook violates any of these, it's a deploy script, not a hook. Move it elsewhere.

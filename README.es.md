@@ -10,13 +10,9 @@
 [![Last commit](https://img.shields.io/github/last-commit/mccarthy606/claude-operator-stack)](https://github.com/mccarthy606/claude-operator-stack/commits/main)
 [![Built by](https://img.shields.io/badge/built_by-%40mccarthy606-orange)](https://github.com/mccarthy606)
 
-**7 productos · 4 meses · 0 inversión · 0 equipo · 1 persona**
+**7 productos en 4 meses · solo · pre-revenue**
 
-> Empecé a escribir código en enero de 2026 con Cursor + Claude.
-> Cuatro meses después: 3 sitios en vivo, 4 SaaS listos para lanzar, 1 canal de YouTube activo.
-> Solo. Sin equipo. Sin título de CS.
->
-> Este repo es el stack y el playbook que lo hicieron posible.
+> Empecé a escribir código en enero de 2026 con Cursor y Claude. Cuatro meses después: 3 sitios en vivo, 4 codebases SaaS listos para deployar, 1 canal de YouTube activo. Este repo es el stack y el playbook con los que trabajo.
 
 </div>
 
@@ -39,17 +35,13 @@
 
 ## Qué es esto
 
-**Claude Operator Stack no es un fork.** Es un toolkit curado + el playbook del operador para fundadores solo que quieren lanzar varios productos AI en paralelo sin equipo.
+Un toolkit curado y un playbook para fundadores solo que llevan varios productos AI al mismo tiempo.
 
-La mayoría de los repos «awesome Claude» tiran skills y listo. Este hace lo contrario: elige el **conjunto mínimo de componentes de alto apalancamiento** que realmente componen un workflow diario, atribuye a los autores originales y explica *cómo se usan juntos* a través de proyectos reales lanzados.
+El stack es lo que instalo y actualizo. El playbook es cómo lo uso a lo largo de la semana: a qué componente recurrir y en qué orden, qué leer primero, dónde están las costuras.
 
-Si sos:
+La mayoría del stack es trabajo de otra gente, atribuido donde se usa. Lo que se agrega acá: la ruta de instalación, los workflows que componen las partes, y cuatro case studies de productos construidos encima.
 
-- Fundador solo lanzando 2+ productos al mismo tiempo
-- Persona no-CS usando AI para comprimir el ciclo de build
-- Operador que quiere que Claude Code sea un compañero de equipo real, no un chatbot
-
-— esto es para vos.
+Apunta a quienes llevan 2+ productos en simultáneo, fundadores sin background CS, y a cualquiera que quiera que Claude Code haga trabajo real en lugar de ser un chat companion.
 
 ---
 
@@ -64,7 +56,7 @@ Si sos:
 | **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` como contexto de proyectos e identidad |
 | **Orquestación** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | El runtime |
 
-Cada skill, cada agent y cada prompt en este stack acredita a su autor original. **Nada acá está re-marqueado.** Si una pieza viene de otro lado, es donde el link te lleva.
+Cada skill y agent en este stack acredita a su autor original. Si una pieza viene de otro lado, ahí lleva el link.
 
 Ver [stack/](stack/) para notas de setup componente por componente.
 
@@ -90,11 +82,11 @@ Ver [case-studies/](case-studies/) para el *cómo*.
 
 ## Quick Start
 
-Levanta el stack completo en una máquina nueva en menos de 5 minutos. macOS + Linux soportados, Windows vía WSL.
+Levanta el stack en una máquina nueva. macOS y Linux soportados; Windows vía WSL.
 
-> **Elegí un solo camino.** Este stack es opinionado sobre los métodos de install. No combines `curl | bash` encima de un clone manual — van a entrar en conflicto.
+> Elegí un solo camino de install. No corras `curl | bash` encima de un clone manual: entran en conflicto.
 
-**Recomendado — clonar, auditar, correr:**
+Clonar, auditar, correr:
 
 ```bash
 git clone https://github.com/mccarthy606/claude-operator-stack.git
@@ -158,54 +150,54 @@ claude-operator-stack/
 
 ## El Playbook del Operador
 
-Cinco workflows que realmente manejan mi semana.
+Cinco workflows que manejan mi semana.
 
 ### 1. Lanzar un producto en un día
-De idea a URL en vivo en una sola sesión enfocada. Ver [workflows/ship-a-product-in-a-day.md](workflows/ship-a-product-in-a-day.md).
+De idea a URL en vivo en una sola sesión. Ver [workflows/ship-a-product-in-a-day.md](workflows/ship-a-product-in-a-day.md).
 
 ### 2. Proyectos paralelos
-Cómo siete proyectos siguen en vuelo sin colapsar el contexto. Ver [workflows/parallel-projects.md](workflows/parallel-projects.md).
+Mantener siete proyectos en vuelo sin perder contexto entre ellos. Ver [workflows/parallel-projects.md](workflows/parallel-projects.md).
 
 ### 3. Obsidian como contexto
-Por qué cada proyecto también es una nota en `~/Brain` — y cómo Claude Code lee de ahí. Ver [workflows/obsidian-as-context.md](workflows/obsidian-as-context.md).
+Cada proyecto también tiene una nota en `~/Brain`; Claude Code la lee al inicio de la sesión. Ver [workflows/obsidian-as-context.md](workflows/obsidian-as-context.md).
 
 ### 4. Pipeline de contenido
-YouTube + Instagram + drive2 en 3 marcas, casi todo automatizado. Ver [workflows/content-pipeline.md](workflows/content-pipeline.md).
+YouTube, Instagram y drive2 en tres marcas, con la mayoría de los pasos de producción automatizados. Ver [workflows/content-pipeline.md](workflows/content-pipeline.md).
 
 ### 5. Solo ops
-Soporte al cliente, billing, scheduling e infra desde el calendario de una sola persona. Ver [workflows/solo-ops.md](workflows/solo-ops.md).
+Soporte al cliente, billing, scheduling e infra resueltos desde el calendario de una sola persona. Ver [workflows/solo-ops.md](workflows/solo-ops.md).
 
 ---
 
 ## Por qué existe
 
-La mayoría del contenido sobre AI tooling lo escriben ingenieros de AI, para ingenieros de AI. Esto está escrito por un operador, para operadores.
+La mayoría del material sobre AI tooling está escrito para ingenieros. Esto está escrito para operadores.
 
-No estoy tratando de convencerte de que AI reemplaza ingenieros. Te muestro que un **no-ingeniero con una lista clara de proyectos, un stack curado y un loop que compone** puede lanzar más que un equipo chico — si el stack está bien armado.
+La apuesta: un no-ingeniero con una lista compacta de proyectos, un stack curado y un workflow que compone, puede lanzar más que un equipo chico, dado el setup correcto. No discuto si AI reemplaza ingenieros; documento qué puede hacer un operador con las herramientas correctas cargadas.
 
-Las herramientas en este repo son ~95% trabajo de otra gente. El otro 5% es el **pegamento, los workflows y los case studies que hacen que el stack funcione como una sola cosa en lugar de siete**.
+La mayoría de los componentes acá son trabajo de otra gente. Lo mío es el pegamento: la ruta de instalación, los workflows y los case studies que juntan siete proyectos separados en un solo stack.
 
 ---
 
 ## Agradecimientos
 
-Este stack se para sobre los hombros de:
+Construido con:
 
-- **[@affaan-m](https://github.com/affaan-m)** — Everything Claude Code. La base de skills + agents.
-- **nowork-studio** — Toprank. SEO, Google Ads, Meta Ads.
-- **Anthropic** — Claude Code, Frontend-Design, la API.
-- **Equipo de Obsidian** — el runtime del second-brain.
-- **Cada autor individual de skill** acreditado en el frontmatter `origin:` y en [credits/README.md](credits/README.md).
+- [@affaan-m](https://github.com/affaan-m) — Everything Claude Code (skills y agents)
+- nowork-studio — Toprank (SEO, Google Ads, Meta Ads)
+- Anthropic — Claude Code, Frontend-Design, la API
+- Equipo de Obsidian — el runtime del second-brain
+- Cada autor individual de skill acreditado en el frontmatter `origin:` y en [credits/README.md](credits/README.md)
 
-Si tu trabajo está acá y no está acreditado, abrí un issue — lo arreglo el mismo día.
+Si tu trabajo está acá y no está acreditado, abrí un issue y lo arreglo el mismo día.
 
 ---
 
 ## Estado
 
-Este repo es **joven**. v0.1 es estructura + configs sanitizados + 5 workflow drafts. Los case studies se llenan en orden de shipping. El CHANGELOG trackea qué está hecho.
+Repo joven. v0.2 sumó el banner hero, los diagramas Mermaid, la nav en 7 idiomas y traducciones completas a RU y ES. Los case studies se llenan a medida que los productos se shippean. El CHANGELOG lleva el resto.
 
-Issues, PRs y forks bienvenidos. Sobre todo forks — el stack está pensado para customizarse a tu propio perfil de operador, no para copiarse al pie de la letra.
+Issues, PRs y forks bienvenidos. El stack está pensado para customizarse: copiá lo que sirve, descartá lo que no.
 
 ---
 

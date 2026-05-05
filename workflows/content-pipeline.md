@@ -2,7 +2,7 @@
 
 How a one-person operation runs YouTube and Instagram across multiple brands without becoming a full-time content creator.
 
-The trap: solo founders who try to "build in public" end up running a content company instead of a software company. The fix is **automation everywhere except the parts that need a human's voice and face.**
+The trap: solo founders who try to "build in public" end up running a content company instead of a software company. The fix is automation everywhere except the parts that need a human's voice and face.
 
 ## Pipeline shape
 
@@ -11,7 +11,7 @@ The trap: solo founders who try to "build in public" end up running a content co
    (Claude)         (Claude)         (human)        (Claude)     (manual)        (Claude)
 ```
 
-Three of six steps are heavily Claude-assisted. Two are manual (recording on camera, hitting publish). One — editing — is hybrid.
+Three of six steps are heavily Claude-assisted. Two are manual (recording on camera, hitting publish). Editing is hybrid.
 
 ## Step 1: Research (Claude)
 
@@ -47,7 +47,7 @@ publish_date:
 
 ## Step 3: Record (manual)
 
-This step does not get AI in the loop. The whole point of being on camera is the human signal. Claude wrote the script, I deliver it — sometimes verbatim, often as bullet points I riff from.
+This step does not get AI in the loop, because the whole point of being on camera is the human signal. Claude wrote the script and I deliver it, sometimes verbatim and often as bullet points I riff from.
 
 Setup is fixed and minimal: mirrorless camera, prime lens, lavalier mic, soft key light. Pre-staged so recording starts in under 5 minutes from "let's go."
 
@@ -99,9 +99,9 @@ The mistake is letting one brand's voice bleed into another. The fix is brand-sp
 
 Publishing more does not produce better outcomes once you're past the discovery threshold. Better content with consistent cadence beats more content with chaotic cadence.
 
-## What this is not
+## Scope
 
-This is not "AI generates all my content and I just hit publish." That output is detectable, hateable, and short-lived. The pipeline puts AI in the steps where it compresses time (research, drafting, captioning, cross-posting) and keeps humans in the steps where authenticity is the product (recording, voice, judgment about what to publish).
+The pipeline puts AI in the steps where it compresses time (research, drafting, captioning, cross-posting) and keeps humans in the steps where authenticity is the product (recording, voice, judgment about what to publish). Pure AI-generated content that the operator just publishes is detectable, hateable, and short-lived.
 
 ## Anti-patterns
 

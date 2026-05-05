@@ -8,13 +8,9 @@ Internal automation that takes a video idea from research → script → caption
 
 ## Why this isn't a SaaS
 
-This is **infrastructure, not product**. It exists to make the content side of the operation cheap enough that one person can run it alongside building software. There's no plan to commercialize it.
+This is internal infrastructure, not a product. It exists to make the content side of the operation cheap enough that one person can run it alongside building software. There's no plan to commercialize it.
 
-But it's worth documenting as a case study because:
-
-1. It's the most-used "product" in the stack (touched daily, not weekly)
-2. It demonstrates the **internal-tools-as-leverage** pattern that solo founders underuse
-3. The architecture transfers to anyone in the same situation
+It's worth documenting as a case study because it's the most-used "product" in the stack (touched daily, not weekly), it demonstrates the internal-tools-as-leverage pattern that solo founders underuse, and the architecture transfers to anyone in the same situation.
 
 ## Pipeline shape
 
@@ -34,7 +30,7 @@ flowchart LR
     class R,S,C,X,D agent
 ```
 
-Three of seven steps are manual. The rest is Claude-assisted. The split is deliberate — see [`workflows/content-pipeline.md`](../workflows/content-pipeline.md).
+Three of seven steps are manual; the rest is Claude-assisted. The split is deliberate — see [`workflows/content-pipeline.md`](../workflows/content-pipeline.md).
 
 ## Stack and why
 
@@ -72,7 +68,7 @@ Rejected:
 
 - **Don't optimize the pipeline before optimizing the publish cadence.** I spent week 1 making the pipeline fast. Should have spent it making sure I'd actually publish 1 video/week consistently. Pipeline is useless if cadence isn't there.
 - **Treat the brief as the artifact.** The 1-page brief is the most-reused output — it powers script + thumbnail + description + cross-post + email. I should have invested more in brief quality and less in script quality. The script comes from the brief.
-- **Skip the script generator entirely for short-form.** Short-form needs voice, voice means I have to write it. Auto-generated short-form scripts are detectable. The pipeline is for long-form research and for the cross-post outputs; short-form scripts I now write by hand from the brief.
+- **Skip the script generator entirely for short-form.** Short-form needs voice, which means I have to write it — auto-generated short-form scripts are detectable. The pipeline is for long-form research and the cross-post outputs; short-form scripts I now write by hand from the brief.
 
 ## Estimated time + cost
 

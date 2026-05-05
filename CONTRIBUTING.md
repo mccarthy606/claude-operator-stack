@@ -16,7 +16,7 @@ Contributions are welcome. The stack is small on purpose — adds need to clear 
 
 - Adding skills/agents that duplicate ECC content (link to ECC instead)
 - Marketing pages, landing pages, branding work (this is a tool, not a product)
-- Forks of the stack that just rename + repackage — fork freely, but those are forks, not contributions
+- Forks of the stack that just rename and repackage. Fork freely, but those are forks, not contributions.
 - Tooling specific to one cloud provider, one stack, or one ecosystem unless it's clearly opt-in
 
 ## How to contribute

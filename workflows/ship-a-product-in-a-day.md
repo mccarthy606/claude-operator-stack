@@ -2,7 +2,7 @@
 
 How a focused day takes a product from idea to live URL.
 
-This is not "build a SaaS in 24 hours." It's the cadence I run when I need to validate a niche idea fast and get something publicly visible — a landing page with one clear ask (booking, signup, lead capture), real domain, real analytics.
+This is the cadence I run when I need to validate a niche idea fast and get something publicly visible: a landing page with one clear ask (booking, signup, lead capture), real domain, real analytics. It's not "build a SaaS in 24 hours."
 
 ## The day, in blocks
 
@@ -29,7 +29,7 @@ One sentence. What is the visitor expected to do?
 - ...
 ```
 
-Without this 5-line frame, the day drifts.
+If you skip this 5-line frame, the day drifts.
 
 ### 1. Domain + repo (30 min)
 
@@ -56,7 +56,7 @@ Verify locally with the preview tools before you push.
 ### 3. Forms + analytics (60 min)
 
 - Lead form goes to either Supabase (if you'll need a DB anyway) or just a Telegram bot for the first week. Telegram bot wins for v0 — you get instant notifications and can validate demand before paying for infra.
-- GA4 + Cloudflare web analytics. Both free, both 5 minutes. Without analytics the day was wasted.
+- GA4 + Cloudflare web analytics. Both free, both take 5 minutes. Skip analytics and the day was wasted.
 
 ### 4. Deploy (30 min)
 
@@ -91,13 +91,11 @@ Update the Obsidian project note:
 - "## Decisions" block — what stack choices, what's deferred
 - "## Open questions" block — what to test in week 2
 
-Without this update, day-2 starts from zero.
+Skip this update and day-2 starts from zero.
 
-## What this is not
+## Scope
 
-This is not the day you build the *product*. This is the day you build the *evidence that the product is worth building*. Landing page + lead capture + content baseline = enough to start running paid ads or organic outreach in week 2.
-
-If the lead form is dead after 2 weeks of effort, you killed the idea cheaply. That is the whole point.
+This is the day you build the evidence that the product is worth building, not the product itself. Landing page + lead capture + content baseline is enough to start running paid ads or organic outreach in week 2. If the lead form is dead after 2 weeks of effort, you killed the idea cheaply.
 
 ## Anti-patterns I've fallen into
 
