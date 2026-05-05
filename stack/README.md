@@ -43,6 +43,7 @@ flowchart TB
 | Component | Layer | Original author | Notes |
 |-----------|-------|-----------------|-------|
 | [Everything Claude Code](ecc.md) | Skills + Agents | [@affaan-m](https://github.com/affaan-m) | 182 skills, 48 agents — the backbone |
+| [ECC Skill Index](ecc-skill-index.md) | Navigation | this stack | Curated lookup of the ~30 ECC skills the operator actually uses |
 | [Toprank](toprank.md) | SEO + Paid Ads | nowork-studio | Google Ads, Meta Ads, GEO, GSC analysis |
 | [Frontend-Design](frontend-design.md) | UI generation | Anthropic | Distinctive, opinionated UI, anti-template |
 | [Obsidian as Second Brain](obsidian-brain.md) | Operator-curated context | local | `~/Brain` vault as shared context surface |
