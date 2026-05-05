@@ -203,9 +203,20 @@ If your work is in here and not credited, open an issue — I will fix it the sa
 
 ## Status
 
-This repo is **young**. v0.1 is the structure + sanitized configs + 5 workflow drafts. Case studies are being filled in shipping order. The CHANGELOG tracks what's done.
+This repo is **young**. v0.2 ships visual identity (hero banner, Mermaid diagrams, 7-language nav, RU + ES full translations). Case studies are filled in shipping order. The CHANGELOG tracks what's done.
 
 Issues, PRs, and forks welcome. Especially forks — the stack is meant to be customized to your operator profile, not copied verbatim.
+
+### Currently looking for
+
+Open `good first issue`s if you want to contribute:
+
+- [Translate README to PT-BR](https://github.com/mccarthy606/claude-operator-stack/issues/1) · [TR](https://github.com/mccarthy606/claude-operator-stack/issues/2) · [中文](https://github.com/mccarthy606/claude-operator-stack/issues/3) · [日本語](https://github.com/mccarthy606/claude-operator-stack/issues/4) (stubs in place, replace with full translations)
+- [Add native Windows install script](https://github.com/mccarthy606/claude-operator-stack/issues/5) (`install.ps1`)
+- [Capture 3 README screenshots](https://github.com/mccarthy606/claude-operator-stack/issues/6) (Obsidian + Claude Code + asciinema of installer)
+- [Add Mermaid to content-pipeline.md](https://github.com/mccarthy606/claude-operator-stack/issues/7) (~30 min)
+
+See [all open issues](https://github.com/mccarthy606/claude-operator-stack/issues) and [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
