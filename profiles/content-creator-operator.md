@@ -20,7 +20,7 @@ The full stack has six layers (see [stack/](../stack/)). For this profile, insta
 | 2 | **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | Doubles as content backlog (`~/Brain/Content/`) and project memory (`~/Brain/Projects/`). Single source of truth for both engines. |
 | 3 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill backbone. The `crosspost`, `humanizer`, `content-engine`, and `brand-voice` skills are why you are here. |
 | 4 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub for product, scrapling for content research, x-api for posting, scheduled-tasks for cadence. |
-| 5 | **OMEGA Memory** ([stack/omega-memory.md](../stack/omega-memory.md)) | Cross-session memory for the product side. Less critical for content (Obsidian covers it). |
+| 5 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Run across `~/Brain/Content/` and `~/Brain/Projects/` — the knowledge graph that surfaces overlap between content topics and product threads is the use case for this profile. |
 | 6 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | For when the product needs a landing page or a launch surface that does not look like every other indie SaaS. |
 
 Skip Toprank unless you also run paid ads — most creators do not need it for the audience-funded path.

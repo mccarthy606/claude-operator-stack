@@ -19,7 +19,7 @@ The full stack has six layers (see [stack/](../stack/)). For this profile, insta
 | 1 | **Claude Code** | The runtime, installed once globally. |
 | 2 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill and agent backbone, with the GSD family for client-shaped delivery. |
 | 3 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub is non-negotiable. Add Linear, Jira, or Supabase per the client mix. |
-| 4 | **OMEGA Memory** ([stack/omega-memory.md](../stack/omega-memory.md)) | Tagged by client, so a decision made for Client A does not bleed into Client B. |
+| 4 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Run per client folder so a knowledge graph of Client A stays scoped to Client A. The cross-client query is opt-in, not default. |
 | 5 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | Only if you do UI work. The visible polish lever clients pay for. |
 | 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | Only if SEO and ads are part of your delivery scope. |
 
@@ -74,7 +74,7 @@ What this profile drops:
 ## A typical week for this profile
 
 - Monday morning: 45-minute review across all active client engagements. Decide what each client gets this week. Send each client a one-paragraph status note before noon.
-- Tuesday through Thursday: deep work in client repos. One client per half-day, branched and PR'd by end of session. Auto-time-tracked via the per-client OMEGA tag.
+- Tuesday through Thursday: deep work in client repos. One client per half-day, branched and PR'd by end of session. Per-client graphify runs scoped to that repo's folder.
 - Friday morning: PR review, merge what is ready, request changes on what is not. Ops sweep across all clients.
 - Friday afternoon: invoicing, scheduling, the audit-trail tasks that protect the engagement. Close the week clean.
 

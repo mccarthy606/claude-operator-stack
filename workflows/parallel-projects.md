@@ -17,8 +17,8 @@ flowchart LR
 
     F --> O[Per-session: open project dir<br/>Claude reads ~/Brain/Projects/&lt;name&gt;.md]
     O --> W[Work + update note + commit]
-    W --> X[OMEGA stores tagged decisions]
-    X -.cross-session.-> O
+    W --> X[graphify builds project knowledge graph]
+    X -.cross-project query.-> O
 
     classDef gate fill:#0a0a0f,stroke:#22d3ee,color:#e4e4e7
     classDef focus fill:#0a0a0f,stroke:#22c55e,color:#f4f4f5
@@ -75,9 +75,9 @@ These I learned the hard way:
 
 ## What about context windows?
 
-Each project session uses its own context window. Memory bridges via OMEGA: a decision made in one project's session can be queried from another's — but only if it's tagged correctly (project name in the memory).
+Each project session uses its own context window. Cross-session bridging happens through graphify: each project builds a knowledge graph from its notes and code, and `/graphify query "<concept>"` traverses that graph to surface decisions made in other projects' sessions.
 
-OMEGA's typed memory is what stops context-window-isolated sessions from feeling siloed.
+The graph layer is what stops context-window-isolated sessions from feeling siloed — instead of typed memory lookups, you get BFS/DFS traversal across the cross-project knowledge graph and community detection that clusters related decisions even when they live in different project notes.
 
 ## Scope
 

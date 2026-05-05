@@ -29,7 +29,7 @@
 - **Skills + Agents：** [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) — [@affaan-m](https://github.com/affaan-m)
 - **SEO + 广告：** [Toprank](https://github.com/nowork-studio/toprank) — nowork-studio
 - **UI 生成：** [Frontend-Design](https://github.com/anthropics/claude-plugins-official) — Anthropic
-- **记忆：** OMEGA Memory + Obsidian Vault
+- **记忆 / 图谱:** graphify（自建知识图谱层）+ Obsidian Vault
 - **编排：** [Claude Code](https://www.anthropic.com/claude-code) — Anthropic
 
 ## 快速开始

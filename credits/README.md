@@ -13,7 +13,7 @@ Below is the full list of authors whose work this stack depends on. If your work
 | **Toprank** | nowork-studio | [github.com/nowork-studio/toprank](https://github.com/nowork-studio/toprank) | see upstream |
 | **Frontend-Design plugin** | Anthropic | [github.com/anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | MIT |
 | **Obsidian** | Obsidian team | [obsidian.md](https://obsidian.md) | proprietary, free for personal use |
-| **OMEGA Memory** | local protocol | — | — |
+| **graphify** | operator-built knowledge-graph layer | — | TODO: add upstream link when public |
 
 ## MCP servers used in the example config
 

@@ -53,7 +53,7 @@
 | **Скилы + агенты** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | 182 скила, 48 агентов — основа для любой задачи |
 | **SEO + реклама** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Google Ads, Meta Ads, GEO, проверка битых ссылок |
 | **Генерация UI** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | Производство непохожих на шаблоны UI |
-| **Память** | OMEGA Memory | local | Постоянный контекст между сессиями |
+| **Граф знаний** | graphify | local | Папка файлов → навигируемый граф знаний с детекцией сообществ |
 | **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` как контекст проектов и личности |
 | **Оркестрация** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | Среда выполнения |
 
@@ -74,7 +74,7 @@
 | 3 | WhatsApp B2B SaaS — для автодилеров | Код готов | FastAPI · Docker · WhatsApp Cloud API |
 | 4 | AI Legal Tool — обжалование штрафов | Код готов | Next.js · Prisma · Claude API |
 | 5 | YouTube production pipeline | **Live** (активно) | Python · yt-dlp · Whisper · Claude |
-| 6 | Jarvis Workspace — личный AI-ассистент | **Live** (ежедневно) | Claude Code · Obsidian · OMEGA |
+| 6 | Jarvis Workspace — личный AI-ассистент | **Live** (ежедневно) | Claude Code · Obsidian · graphify |
 | 7 | Внутренняя ops-автоматизация | **Live** | hooks + skills + cron |
 
 Подробнее в [case-studies/](case-studies/).
@@ -121,7 +121,7 @@ claude-operator-stack/
 │   ├── toprank.md               ← Toprank — SEO + Ads workflow
 │   ├── frontend-design.md       ← генерация UI
 │   ├── obsidian-brain.md        ← Obsidian как second brain
-│   ├── omega-memory.md          ← OMEGA persistent memory
+│   ├── graphify.md              ← graphify слой графа знаний
 │   └── mcp-servers.md           ← MCP-серверы которые я запускаю
 │
 ├── workflows/                   ← как я реально работаю

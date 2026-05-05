@@ -13,7 +13,7 @@ The MCP (Model Context Protocol) servers I run, what each is for, and how to aut
 | **playwright** | browser automation for testing | none (local) |
 | **filesystem** | sandboxed file ops outside CWD | path allowlist |
 | **memory** (Anthropic ref) | persistent KV memory | none (local) |
-| **omega-memory** | typed cross-session memory tier | none (local) |
+| **graphify** | knowledge-graph layer — BFS/DFS traversal + community detection over project notes and code | none (local) |
 | **context7** | live docs lookup for libraries | optional API key |
 | **sequential-thinking** | structured chain-of-thought | none |
 | **vercel** | deploys, project management | Vercel token |

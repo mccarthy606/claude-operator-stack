@@ -42,7 +42,7 @@ The hook tweet is what the timeline scrolls past or stops at. It does the work f
 
 ### Tweet 2
 
-> The stack is six layers. Everything Claude Code (skills + agents). Toprank (SEO + ads). Frontend-Design. OMEGA (memory). Obsidian as the second brain. Claude Code as the runtime.
+> The stack is six layers. Everything Claude Code (skills + agents). Toprank (SEO + ads). Frontend-Design. graphify (knowledge graph). Obsidian as the second brain. Claude Code as the runtime.
 >
 > Five of those six are other people's work. What is mine is the install path and the glue.
 

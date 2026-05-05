@@ -18,7 +18,7 @@ The full stack has six layers (see [stack/](../stack/)). For this profile, insta
 |-------|-----------|----------------------|
 | 1 | **Claude Code** | The runtime. |
 | 2 | **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) | Your project memory. Where you write goals, requirements, decisions in plain language. Claude reads this on every session. |
-| 3 | **OMEGA Memory** ([stack/omega-memory.md](../stack/omega-memory.md)) | Agent-curated memory layer. Sits underneath Obsidian and remembers technical decisions you do not need to track yourself. |
+| 3 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Knowledge-graph layer over your folders. Sits underneath Obsidian — when you have multiple projects, point it at the parent directory and ask cross-project questions in plain language. Skip on day one if you only have one project. |
 | 4 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill and agent backbone. The `chief-of-staff`, `gsd-*`, and review skills are how you delegate without losing oversight. |
 | 5 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub, Supabase, Vercel — the integrations that turn "make a change" into "deployed change." |
 | 6 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | Generated UI that does not look like a template. The visible-quality lever you can pull without designing. |

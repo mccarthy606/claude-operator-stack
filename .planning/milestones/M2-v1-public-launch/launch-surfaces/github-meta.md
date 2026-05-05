@@ -20,13 +20,13 @@ GitHub caps the description at 350 characters. Use closer to 200 for skim-readab
 
 **Variant 2 — metric-first framing:**
 
-> The stack and playbook one operator used to ship 7 AI products in 4 months solo. Install path, cookbook, sanitized hooks, scaffolds, profiles. Curator-toolkit, not a runtime — built on Everything Claude Code, Toprank, Frontend-Design, OMEGA, Obsidian.
+> The stack and playbook one operator used to ship 7 AI products in 4 months solo. Install path, cookbook, sanitized hooks, scaffolds, profiles. Curator-toolkit, not a runtime — built on Everything Claude Code, Toprank, Frontend-Design, graphify, Obsidian.
 
 (251 chars.)
 
 **Variant 3 — outcome-first framing:**
 
-> A non-engineer's install path for Claude Code as orchestrator across multiple products. Twelve copy-pasteable recipes, six sanitized hooks, two scaffolds, four operator profiles. MIT. Curator-toolkit on top of ECC, Toprank, Frontend-Design, OMEGA, Obsidian.
+> A non-engineer's install path for Claude Code as orchestrator across multiple products. Twelve copy-pasteable recipes, six sanitized hooks, two scaffolds, four operator profiles. MIT. Curator-toolkit on top of ECC, Toprank, Frontend-Design, graphify, Obsidian.
 
 (257 chars.)
 

@@ -19,7 +19,7 @@ The full stack has six layers (see [stack/](../stack/)). For this profile, insta
 | 1 | **Claude Code** | The runtime. Everything else loads on top. |
 | 2 | **Everything Claude Code** ([stack/ecc.md](../stack/ecc.md)) | The skill and agent backbone. Turns Claude Code from a chat box into a tool runtime. |
 | 3 | **MCP servers** ([stack/mcp-servers.md](../stack/mcp-servers.md)) | GitHub, Supabase, Vercel, scrapling. The integrations every product reaches for. |
-| 4 | **OMEGA Memory** ([stack/omega-memory.md](../stack/omega-memory.md)) | Cross-session memory. The fix for "by Thursday I forgot." |
+| 4 | **graphify** ([stack/graphify.md](../stack/graphify.md)) | Knowledge-graph queries across all your project folders. The fix for "by Thursday I forgot which decision belonged to which product." |
 | 5 | **Frontend-Design** ([stack/frontend-design.md](../stack/frontend-design.md)) | UI generation that does not look like every other shadcn template. |
 | 6 | **Toprank** ([stack/toprank.md](../stack/toprank.md)) | Skip until you have a product that needs paid distribution. |
 
@@ -67,7 +67,7 @@ If you are building a WhatsApp-first service, use [scaffolds/whatsapp-saas](../s
 
 The stack has parts that do not earn their keep for this profile:
 
-- **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) — useful, but the setup cost is high and OMEGA Memory covers most of the cross-session gap. Add Obsidian once you have five or more concurrent projects, or once you are also doing content.
+- **Obsidian Brain** ([stack/obsidian-brain.md](../stack/obsidian-brain.md)) — useful, but the setup cost is high and graphify covers most of the cross-project context gap. Add Obsidian once you have five or more concurrent projects, or once you are also doing content.
 - **Toprank** ([stack/toprank.md](../stack/toprank.md)) — paid distribution is rarely the bottleneck on a product that has not validated. Skip until your first product clears its first paying-user threshold.
 - **content-pipeline workflow** — only relevant if content is part of your distribution. If your distribution is X build-in-public posts, you do not need a pipeline yet.
 - **GSD skill family** (see [stack/ecc-skill-index.md](../stack/ecc-skill-index.md)) — opinionated, slows you down at three-product cadence. Adopt later when one product becomes a real long-running build.
@@ -77,7 +77,7 @@ The stack has parts that do not earn their keep for this profile:
 
 - Monday morning: 30-minute review of all three products. Pick two for focused work. The third gets a Friday touchpoint.
 - Tuesday and Wednesday: deep work on Product A. Ship one feature, push, write the build-log post.
-- Thursday: switch to Product B. Open the OMEGA-stored decisions from last time. Ship one feature.
+- Thursday: switch to Product B. Run a graphify query against the project folder to surface the last decisions. Ship one feature.
 - Friday morning: 30 minutes on Product C — respond to issues, merge a small PR, update the project status.
 - Friday afternoon: ops sweep across all three. Sentry, Stripe, customer messages.
 
@@ -85,6 +85,6 @@ The stack has parts that do not earn their keep for this profile:
 
 A 30-60 minute first session should produce:
 
-1. Claude Code installed, ECC marketplace added, OMEGA Memory wired in.
+1. Claude Code installed, ECC marketplace added, graphify skill wired in.
 2. The three hooks above copied into `~/.claude/hooks/` and registered in `settings.json`.
 3. One product cloned from [scaffolds/web-saas](../scaffolds/web-saas/), env file filled, dev server running locally.

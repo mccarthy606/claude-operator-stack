@@ -54,10 +54,10 @@
       "description": "Anthropic reference: persistent KV memory"
     },
 
-    "omega-memory": {
-      "command": "uvx",
-      "args": ["omega-memory", "serve"],
-      "description": "Typed cross-session memory tier — install with: uv tool install omega-memory"
+    "graphify": {
+      "command": "graphify",
+      "args": ["--mcp"],
+      "description": "Knowledge-graph layer — exposes graph queries (BFS/DFS traversal, community detection) over project notes and code. Install graphify separately, then comment out if you query it via /graphify only."
     },
 
     "context7": {

@@ -14,6 +14,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). The
 ### Changed
 
 - Replaced static hero with animated SVG (P8.1)
+- Replaced OMEGA Memory with `graphify` knowledge-graph layer across the stack
+- Renamed `stack/omega-memory.md` → `stack/graphify.md`
+- Updated stack table, all 7 READMEs, configs, profiles, skills, workflows, credits to reference graphify
+- Added `Graphify/`, `Weekly/`, `graphify-out/` to documented Brain vault structure
 
 ## [1.0.0] — 2026-05-05
 

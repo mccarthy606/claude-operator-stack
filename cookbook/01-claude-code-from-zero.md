@@ -1,7 +1,7 @@
 # Claude Code from Zero
 
 > **Time:** ~1h
-> **Stack:** Claude Code CLI, ECC, Toprank, Frontend-Design, OMEGA Memory, MCPs
+> **Stack:** Claude Code CLI, ECC, Toprank, Frontend-Design, graphify, MCPs
 > **Used in:** every project in the [stack](../stack/), referenced by all other recipes
 
 ## The problem
@@ -51,9 +51,9 @@ This file is global instructions for every project on the machine. Keep it short
 
 ```markdown
 ## Memory
-- OMEGA persistent memory enabled (call omega_welcome at session start)
 - ~/Brain Obsidian vault is canonical project memory
 - Before non-trivial tasks, check ~/Brain/Projects/ for context
+- Knowledge graph: trigger `/graphify` in any project root to build/refresh the graph; use `/graphify query "<concept>"` mid-session for cross-file context
 
 ## Voice
 - Operator-first, terse, opinionated
@@ -116,7 +116,13 @@ When you open Claude Code in the new project the first time:
 2. Run `/gsd-progress` if using the GSD skills, or just `ls .planning/` if not
 3. Ask Claude to summarize the repo structure as a sanity check before any edits
 4. Verify the relevant MCP tools are loaded (`/mcp` lists them)
-5. If memory matters across sessions, store one memory now: `omega_store("project bootstrapped on <date>, stack is <X>", "decision")`
+5. If you want a knowledge graph for the project, run `/graphify` once at the root — output lands in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<project>/`. Rebuild incrementally with `--update`.
+
+### Knowledge graph (optional but recommended)
+
+Trigger: `/graphify`. Run once in your project root to build the initial graph; use `/graphify query "<concept>"` mid-session to pull cross-file context.
+
+Output appears in `~/Brain/graphify-out/<project>/` and `~/Brain/Graphify/<project>/`. The graph rebuilds incrementally with `--update` and live with `--watch`.
 
 ## Pitfalls
 

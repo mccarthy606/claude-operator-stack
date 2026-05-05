@@ -18,7 +18,7 @@ These ship alongside [Everything Claude Code](https://github.com/affaan-m/everyt
 | Skill | Use case | Path |
 |-------|----------|------|
 | `solo-billing-monitor` | Weekly cost rollup across cloud + AI APIs; flags >30% W/W jumps | [./solo-billing-monitor/SKILL.md](./solo-billing-monitor/SKILL.md) |
-| `multi-project-context-bridge` | Bridge OMEGA decisions from one project into another with anonymisation | [./multi-project-context-bridge/SKILL.md](./multi-project-context-bridge/SKILL.md) |
+| `multi-project-context-bridge` | Bridge cross-project decisions via graphify queries with anonymisation | [./multi-project-context-bridge/SKILL.md](./multi-project-context-bridge/SKILL.md) |
 | `obsidian-sync-helper` | Verify `~/Brain/Projects/<name>.md` matches the project's actual git state | [./obsidian-sync-helper/SKILL.md](./obsidian-sync-helper/SKILL.md) |
 | `case-study-anonymiser` | Apply the operator's redaction playbook to a draft case study | [./case-study-anonymiser/SKILL.md](./case-study-anonymiser/SKILL.md) |
 | `weekly-monday-review` | Monday review producing the 2-of-N focus pick + paused-project status | [./weekly-monday-review/SKILL.md](./weekly-monday-review/SKILL.md) |

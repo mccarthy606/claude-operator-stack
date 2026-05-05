@@ -48,4 +48,4 @@ Never put raw tokens in shell rc files that get committed to git or screenshot.
 - My OAuth-resolved tokens (those live in the keychain)
 - Project-level overrides — those live in each project's own `.claude/`
 
-If you want to see how I wire all this together end-to-end, see [stack/mcp-servers.md](../stack/mcp-servers.md) and [stack/omega-memory.md](../stack/omega-memory.md).
+If you want to see how I wire all this together end-to-end, see [stack/mcp-servers.md](../stack/mcp-servers.md) and [stack/obsidian-brain.md](../stack/obsidian-brain.md).

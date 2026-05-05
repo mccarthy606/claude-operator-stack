@@ -16,18 +16,18 @@ flowchart TB
 
     subgraph memory["Two-tier memory"]
         OB[Obsidian Brain<br/><sub>operator-curated context</sub>]
-        OM[OMEGA Memory<br/><sub>agent-curated typed memory</sub>]
+        GR[graphify<br/><sub>knowledge-graph layer</sub>]
     end
 
     subgraph integrations["MCP servers (~15)"]
-        MCP[github · supabase · railway · vercel<br/>scrapling · playwright · omega-memory<br/>filesystem · context7 · exa · firecrawl · ...]
+        MCP[github · supabase · railway · vercel<br/>scrapling · playwright<br/>filesystem · context7 · exa · firecrawl · ...]
     end
 
     CC --> ECC
     CC --> TR
     CC --> FD
     CC --> OB
-    CC --> OM
+    CC --> GR
     CC --> MCP
 
     classDef rt fill:#0a0a0f,stroke:#22c55e,stroke-width:2px,color:#f4f4f5
@@ -36,7 +36,7 @@ flowchart TB
     classDef int fill:#0a0a0f,stroke:#f59e0b,color:#e4e4e7
     class CC rt
     class ECC,TR,FD plug
-    class OB,OM mem
+    class OB,GR mem
     class MCP int
 ```
 
@@ -47,26 +47,26 @@ flowchart TB
 | [Toprank](toprank.md) | SEO + Paid Ads | nowork-studio | Google Ads, Meta Ads, GEO, GSC analysis |
 | [Frontend-Design](frontend-design.md) | UI generation | Anthropic | Distinctive, opinionated UI, anti-template |
 | [Obsidian as Second Brain](obsidian-brain.md) | Operator-curated context | local | `~/Brain` vault as shared context surface |
-| [OMEGA Memory](omega-memory.md) | Agent-curated memory | local | Persistent typed memory across sessions |
+| [graphify](graphify.md) | Knowledge graph | local | Folder of files → navigable knowledge graph with community detection |
 | [MCP Servers](mcp-servers.md) | Integrations | various | The MCP servers I actually run |
 
 ## Read order
 
 If you are setting this up for the first time, read in this order:
 
-1. **mcp-servers.md** — the integrations are the foundation. Without GitHub + Supabase + scrapling + omega-memory, the workflows below don't have anything to call.
+1. **mcp-servers.md** — the integrations are the foundation. Without GitHub + Supabase + scrapling, the workflows below don't have anything to call.
 2. **ecc.md** — the skill + agent layer that sits on top of MCP.
 3. **toprank.md** — only if you do SEO or paid ads (most operators do).
 4. **frontend-design.md** — only if you ship UIs.
 5. **obsidian-brain.md** — once you have more than one project in flight.
-6. **omega-memory.md** — once Obsidian alone stops being enough.
+6. **graphify.md** — once you have two or more projects and want cross-project knowledge-graph queries.
 
 ## Why these six
 
 Everyone's stack has skills and agents. The combination that makes this one different:
 
 - **ECC + Toprank** = code work + business work share one runtime
-- **Obsidian + OMEGA** = two-tier memory (operator-curated + agent-curated) instead of one
+- **Obsidian + graphify** = two-tier context (operator-curated notes + knowledge-graph layer over folders) instead of one
 - **MCP set chosen for solo operator load** — the minimum that pays for itself, not the maximum
 
 Adding more components is easy; the discipline is removing components that don't pay off.

@@ -17,12 +17,21 @@ When you ship 7 products in parallel, the bottleneck is context recovery, not co
 ├── Projects/        ← one note per project (status, stack, open tasks, decisions)
 ├── Ideas/           ← raw inbox
 ├── Daily/           ← daily notes (YYYY-MM-DD.md)
+├── Weekly/          ← Monday review notes (separate from Daily for cadence)
 ├── Knowledge/       ← reusable solutions, patterns, gotchas
 ├── People/          ← contacts (counterparties, partners, customers)
 ├── Content/         ← YouTube scripts, blog drafts, research
 ├── Templates/       ← note templates
+├── Graphify/        ← per-project knowledge graph outputs (HTML viz, GraphRAG JSON, GRAPH_REPORT.md)
+├── graphify-out/    ← graphify pipeline output buffer
 └── Archive/         ← completed / frozen
 ```
+
+`Graphify/<project>/` is the curated, human-readable layer per project: an interactive HTML visualization, a `GRAPH_REPORT.md` summarizing communities and key concepts, and the GraphRAG JSON consumed by `/graphify query`. Treat this directory as durable artifacts you can browse and link to from project notes.
+
+`graphify-out/` is the pipeline's output buffer — the cache, intermediate JSON, and raw artifacts produced during graph builds. It rebuilds on every `/graphify` run (incremental with `--update`, continuous with `--watch`) and is safe to delete; the curated `Graphify/` outputs survive.
+
+`Weekly/` exists separately from `Daily/` because the cadence is different — daily notes are scratch and capture, weekly notes are the Monday review described in [workflows/parallel-projects.md](../workflows/parallel-projects.md).
 
 ## The integration rule
 

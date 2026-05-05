@@ -53,7 +53,7 @@ Apunta a quienes llevan 2+ productos en simultáneo, fundadores sin background C
 | **Skills + Agents** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | 182 skills, 48 agents — base para cualquier tarea |
 | **SEO + Ads** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Google Ads, Meta Ads, GEO, chequeo de links rotos |
 | **Generación de UI** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | UI distintiva, no template |
-| **Memoria** | OMEGA Memory | local | Contexto persistente entre conversaciones |
+| **Grafo de conocimiento** | graphify | local | Carpeta de archivos → grafo navegable con detección de comunidades |
 | **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | Vault `~/Brain` como contexto de proyectos e identidad |
 | **Orquestación** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | El runtime |
 
@@ -74,7 +74,7 @@ Lo que este stack realmente lanzó entre enero y mayo de 2026.
 | 3 | WhatsApp B2B SaaS — para concesionarias | Código completo | FastAPI · Docker · WhatsApp Cloud API |
 | 4 | AI Legal Tool — apelación de multas con AI | Código completo | Next.js · Prisma · Claude API |
 | 5 | Pipeline de producción de YouTube | **Live** (activo) | Python · yt-dlp · Whisper · Claude |
-| 6 | Jarvis Workspace — asistente AI personal | **Live** (uso diario) | Claude Code · Obsidian · OMEGA |
+| 6 | Jarvis Workspace — asistente AI personal | **Live** (uso diario) | Claude Code · Obsidian · graphify |
 | 7 | Automatización ops interna | **Live** | hooks + skills + cron |
 
 Ver [case-studies/](case-studies/) para el *cómo*.
@@ -121,7 +121,7 @@ claude-operator-stack/
 │   ├── toprank.md               ← Toprank — SEO + Ads workflow
 │   ├── frontend-design.md       ← generación de UI
 │   ├── obsidian-brain.md        ← Obsidian como second brain
-│   ├── omega-memory.md          ← OMEGA persistent memory
+│   ├── graphify.md              ← capa de grafo de conocimiento graphify
 │   └── mcp-servers.md           ← los MCP servers que corro
 │
 ├── workflows/                   ← cómo trabajo realmente

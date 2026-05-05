@@ -29,7 +29,7 @@
 - **Skills + Agents:** [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) — [@affaan-m](https://github.com/affaan-m)
 - **SEO + 広告:** [Toprank](https://github.com/nowork-studio/toprank) — nowork-studio
 - **UI 生成:** [Frontend-Design](https://github.com/anthropics/claude-plugins-official) — Anthropic
-- **メモリ:** OMEGA Memory + Obsidian Vault
+- **メモリ / グラフ:** graphify (自前の知識グラフ層) + Obsidian Vault
 - **オーケストレーション:** [Claude Code](https://www.anthropic.com/claude-code) — Anthropic
 
 ## クイックスタート

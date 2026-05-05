@@ -57,7 +57,7 @@ It's aimed at people running 2+ products at the same time, founders without a CS
 | **Skills + Agents** | [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | [@affaan-m](https://github.com/affaan-m) | 182 skills, 48 agents — backbone for any task |
 | **SEO + Ads** | [Toprank](https://github.com/nowork-studio/toprank) | nowork-studio | Google Ads, Meta Ads, GEO, broken-link checks |
 | **UI generation** | [Frontend-Design](https://github.com/anthropics/claude-plugins-official) | Anthropic | Distinctive, production-grade UI |
-| **Memory** | OMEGA Memory | local | Persistent context across conversations |
+| **Knowledge graph** | graphify | local | Folder of files → navigable knowledge graph with community detection |
 | **Second Brain** | [Obsidian](https://obsidian.md) | Obsidian | `~/Brain` vault as project + identity context |
 | **Orchestration** | [Claude Code](https://www.anthropic.com/claude-code) | Anthropic | The runtime |
 
@@ -78,7 +78,7 @@ What this stack actually shipped between January and May 2026.
 | 3 | WhatsApp B2B SaaS — WhatsApp SaaS for dealers | Code complete | FastAPI · Docker · WhatsApp Cloud API |
 | 4 | AI Legal Tool — AI traffic-fine appeals | Code complete | Next.js · Prisma · Claude API |
 | 5 | YouTube production pipeline | **Live** (active) | Python · yt-dlp · Whisper · Claude |
-| 6 | Jarvis Workspace — personal AI assistant | **Live** (daily use) | Claude Code · Obsidian · OMEGA |
+| 6 | Jarvis Workspace — personal AI assistant | **Live** (daily use) | Claude Code · Obsidian · graphify |
 | 7 | Internal ops automation | **Live** | hooks + skills + cron |
 
 See [case-studies/](case-studies/) for the *how*.
@@ -140,7 +140,7 @@ claude-operator-stack/
 │   ├── toprank.md               ← Toprank: SEO + Ads workflow
 │   ├── frontend-design.md       ← UI generation
 │   ├── obsidian-brain.md        ← Obsidian as second brain
-│   ├── omega-memory.md          ← OMEGA persistent memory
+│   ├── graphify.md              ← graphify knowledge-graph layer
 │   └── mcp-servers.md           ← The MCP servers I run + what they do
 │
 ├── workflows/                   ← how I actually work
@@ -260,7 +260,7 @@ Six original `SKILL.md` packages targeting solo-founder use-cases ECC's 182-skil
 | Skill | Use case |
 |-------|----------|
 | [`solo-billing-monitor`](skills/solo-billing-monitor/SKILL.md) | Weekly cost rollup across cloud + AI APIs |
-| [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) | Bridge OMEGA decisions across projects with anonymisation |
+| [`multi-project-context-bridge`](skills/multi-project-context-bridge/SKILL.md) | Bridge graphify decisions across projects with anonymisation |
 | [`obsidian-sync-helper`](skills/obsidian-sync-helper/SKILL.md) | Verify Brain notes vs git state |
 | [`case-study-anonymiser`](skills/case-study-anonymiser/SKILL.md) | Apply the redaction playbook to a draft case study |
 | [`weekly-monday-review`](skills/weekly-monday-review/SKILL.md) | Monday review → 2-of-N focus pick |
