@@ -1,0 +1,114 @@
+{
+  "_comment": "Sanitized example — copy to ~/.claude/mcp-configs/mcp-servers.json and replace placeholders. Keep under ~15 MCP servers enabled to preserve context window.",
+
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PAT}"
+      },
+      "description": "GitHub operations — PRs, issues, repos, code search"
+    },
+
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server-supabase@latest", "--project-ref=YOUR_PROJECT_REF"],
+      "description": "Supabase database, migrations, edge functions"
+    },
+
+    "railway": {
+      "command": "npx",
+      "args": ["-y", "@railway/mcp-server"],
+      "description": "Railway deployments + logs"
+    },
+
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com",
+      "description": "Vercel deployments"
+    },
+
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp", "--browser", "chrome"],
+      "description": "Browser automation + testing"
+    },
+
+    "scrapling": {
+      "command": "uvx",
+      "args": ["scrapling-mcp"],
+      "description": "Stealthy web scraping with browser fingerprint protection"
+    },
+
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${HOME}/Projects"],
+      "description": "Sandboxed file ops outside CWD — set the path to your projects root"
+    },
+
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Anthropic reference: persistent KV memory"
+    },
+
+    "omega-memory": {
+      "command": "uvx",
+      "args": ["omega-memory", "serve"],
+      "description": "Typed cross-session memory tier — install with: uv tool install omega-memory"
+    },
+
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Live docs lookup — pair with /docs command"
+    },
+
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Structured chain-of-thought"
+    },
+
+    "exa-web-search": {
+      "command": "npx",
+      "args": ["-y", "exa-mcp-server"],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      },
+      "description": "Neural web search via Exa"
+    },
+
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      },
+      "description": "Web scraping + crawling"
+    },
+
+    "fal-ai": {
+      "command": "npx",
+      "args": ["-y", "fal-ai-mcp-server"],
+      "env": {
+        "FAL_KEY": "${FAL_KEY}"
+      },
+      "description": "Image / video / audio generation via fal.ai"
+    },
+
+    "scheduled-tasks": {
+      "command": "npx",
+      "args": ["-y", "claude-scheduled-tasks-mcp"],
+      "description": "Cron-style scheduled prompts"
+    }
+  },
+
+  "_usage": {
+    "env_vars": "Use ${VAR} substitution. Export tokens from your shell or load from a .env file before launching Claude Code. Never commit resolved tokens.",
+    "disabling": "Comment out servers you don't need. Each loaded server costs context tokens at session start.",
+    "auth_pattern": "For OAuth-based servers (Vercel, Cloudflare, Toprank/NotFair, ClickHouse), the first invocation triggers a browser flow. Tokens get stored in your OS keychain.",
+    "context_budget": "Keep under 15 MCP servers enabled. Past that, the tool schema overhead degrades response quality."
+  }
+}

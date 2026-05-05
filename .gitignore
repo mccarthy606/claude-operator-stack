@@ -1,0 +1,36 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local secrets — never commit
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*-credentials.json
+
+# Local install state — these are per-machine artifacts, not source
+configs/settings.json
+configs/mcp-servers.json
+configs/installed_plugins.json
+configs/known_marketplaces.json
+
+# Per-machine logs and caches
+*.log
+node_modules/
+__pycache__/
+.cache/
+
+# Personal vault path leaks (paranoia)
+**/Brain/**
+**/.brain/**
+
+# Anything matching these names anywhere should be a red flag
+**/secret*
+**/secrets*
+**/*-token*
+**/*-key.json
